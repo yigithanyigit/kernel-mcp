@@ -1,12 +1,38 @@
-# nvidia-docs-mcp
+# kernel-mcp
 
-MCP server for NVIDIA PTX ISA and CuTe DSL documentation. Enables AI agents to search and query GPU programming documentation.
+MCP server that gives AI agents deep access to NVIDIA GPU programming documentation — PTX ISA instructions, CuTe DSL APIs, source code, and real-world kernel examples.
+
+Agents can query "how does wgmma.mma_async work on Hopper?" and get back the full instruction syntax, register fragment layouts with thread-to-element mappings, and the CuTe DSL Python wrapper — all from one tool call.
+
+## What's indexed
+
+| Source | Content | Sections |
+|--------|---------|----------|
+| **PTX ISA v9.2** | Every instruction, memory model, sync primitives, arch-specific features | ~1,600 |
+| **PTX Figures** | 247 layout diagrams described by VLM (thread-to-register mappings, swizzle patterns, packing formats) | 247 |
+| **CuTe DSL Docs** | Guides (intro, code gen, control flow, JIT, framework integration) + full API reference | ~280 |
+| **CuTe DSL Source** | Python implementation from CUTLASS repo (`warpgroup/mma.py`, `tcgen05/`, `pipeline/`, etc.) | 125 modules |
+| **CuTe DSL Examples** | Blackwell FMHA, MLA decode, Mamba2 SSD, persistent GEMM, distributed ops, and more | 103 files |
 
 ## Setup
 
 ```bash
 uv sync
-uv run nvidia-docs-mcp --scrape   # fetch and index documentation (~30s)
+uv run nvidia-docs-mcp --scrape  # scrape docs + index source code (~60s)
+```
+
+### Optional: Generate figure descriptions
+
+PTX ISA contains 247 figures (register layouts, memory diagrams, packing formats) that are critical for understanding instructions. By default these are referenced by caption only. To generate detailed text descriptions using a VLM:
+
+```bash
+FAL_KEY=your-fal-key uv run nvidia-docs-mcp --describe-figures
+```
+
+This sends each figure through Claude Sonnet via [fal.ai](https://fal.ai) OpenRouter and injects the descriptions inline. Costs ~$1-2 total, runs once. You can also use a different model:
+
+```bash
+FAL_KEY=your-key uv run nvidia-docs-mcp --describe-figures --model=google/gemini-2.5-flash
 ```
 
 ## Usage
@@ -20,7 +46,7 @@ Add to `~/.claude/settings.json`:
   "mcpServers": {
     "nvidia-docs": {
       "command": "uv",
-      "args": ["--directory", "/path/to/nvidia-docs-mcp", "run", "nvidia-docs-mcp"]
+      "args": ["--directory", "/absolute/path/to/kernel-mcp", "run", "nvidia-docs-mcp"]
     }
   }
 }
@@ -28,31 +54,80 @@ Add to `~/.claude/settings.json`:
 
 ### Claude Desktop
 
-Add to Claude Desktop MCP settings:
+Add to your MCP config:
 
 ```json
 {
   "nvidia-docs": {
     "command": "uv",
-    "args": ["--directory", "/path/to/nvidia-docs-mcp", "run", "nvidia-docs-mcp"]
+    "args": ["--directory", "/absolute/path/to/kernel-mcp", "run", "nvidia-docs-mcp"]
   }
 }
 ```
 
 ## Tools
 
+### PTX ISA
+
 | Tool | Description |
 |------|-------------|
-| `search_ptx` | Search PTX ISA docs (instructions, memory model, sync primitives) |
-| `get_ptx_instruction` | Get detailed docs for a specific PTX instruction |
-| `list_ptx_instructions` | List PTX instructions by category or architecture |
-| `search_cutedsl` | Search CuTe DSL docs (kernel patterns, APIs, JIT, framework integration) |
-| `get_cutedsl_api` | Get API reference for a specific CuTe DSL module |
+| `search_ptx(query, architecture?, top_k?)` | Full-text search across PTX ISA docs |
+| `get_ptx_instruction(instruction, architecture?)` | Detailed docs for a specific instruction (includes figure descriptions) |
+| `list_ptx_instructions(category?, architecture?)` | Browse by category (`matrix`, `sync`, `memory`, `tcgen05`, `wgmma`, ...) or arch (`sm_90`, `sm_100`) |
 
-## Examples
+### CuTe DSL Documentation
 
-- "What does the wgmma.mma_async instruction do on Hopper?"
-- "How do I use MMA in CuTe DSL?"
-- "List all tcgen05 instructions for sm_100"
-- "How does cp.async.bulk work?"
-- "Show me the CuTe DSL warpgroup API"
+| Tool | Description |
+|------|-------------|
+| `search_cutedsl(query, top_k?)` | Search guides + API reference |
+| `get_cutedsl_api(module, symbol?)` | API reference for a module (`cute`, `cute_nvgpu.warpgroup`, `cute_nvgpu.tcgen05`, `pipeline`, ...) |
+
+### CuTe DSL Source Code & Examples
+
+| Tool | Description |
+|------|-------------|
+| `search_cutedsl_source(query, top_k?)` | Search library source + example kernels |
+| `read_cutedsl_source(module_or_file)` | Read full source of a module or example file |
+| `list_cutedsl_modules(filter?)` | List available modules and examples |
+
+## Example queries
+
+```
+"What does the wgmma.mma_async instruction do on Hopper?"
+"How are matrix A fragments distributed across threads for mma.m16n8k16?"
+"List all tcgen05 instructions for sm_100"
+"How does cp.async.bulk.tensor work?"
+"Show me the CuTe DSL warpgroup MMA API"
+"Read the source code for cutlass.cute.nvgpu.tcgen05.mma"
+"Show me the Blackwell FMHA example"
+"How do I integrate CuTe DSL with PyTorch?"
+"What's the shared memory swizzle pattern for 128B?"
+"How does the pipeline work for Hopper GEMM?"
+```
+
+## Architecture
+
+```
+src/nvidia_docs_mcp/
+├── server.py           # MCP server with 8 tools (FastMCP)
+├── scraper.py          # Fetches PTX ISA + CuTe DSL docs, indexes CUTLASS source
+├── search.py           # TF-IDF search engine with instruction lookup + arch filtering
+└── describe_figures.py # VLM pipeline for figure descriptions (fal.ai + OpenRouter)
+
+data/                   # Generated by --scrape (gitignored)
+├── ptx/                # PTX ISA sections + figure descriptions
+├── cutedsl/            # CuTe DSL doc sections
+└── cutedsl_source/     # Source code + examples index
+```
+
+## How figure descriptions work
+
+PTX ISA figures contain critical data (thread-to-register mappings, memory layouts) trapped in PNG images. The `--describe-figures` command:
+
+1. Parses the PTX HTML to find all 267 `<figure>` elements
+2. Categorizes each (register layout, metadata layout, shared memory, packing format, etc.)
+3. Sends each image to a VLM with a category-specific prompt designed to extract structured data
+4. Saves descriptions to `data/ptx/figure_descriptions.json` (resumable)
+5. Injects descriptions inline into the PTX index, replacing `[Figure: name]` markers
+
+The result: when an agent queries `get_ptx_instruction("mma.m16n8k16")`, it gets the full thread-to-element mapping table inline — not just "see Figure 46".
