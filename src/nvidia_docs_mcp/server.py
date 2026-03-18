@@ -10,9 +10,41 @@ MAX_RESPONSE_CHARS = 50000
 
 
 def _truncate(text: str, limit: int = MAX_RESPONSE_CHARS) -> str:
+    """If text exceeds limit, return a TOC of all sections + the first section's content."""
     if len(text) <= limit:
         return text
-    return text[:limit] + "\n\n... (truncated — use a more specific query or add a symbol filter to narrow results)"
+
+    # Split into sections and build a table of contents
+    import re
+    sections = re.split(r'\n---\n', text)
+    headings = []
+    for s in sections:
+        match = re.search(r'^##?\s+(.+)', s.strip())
+        if match:
+            headings.append(match.group(1).strip()[:120])
+        else:
+            headings.append(s.strip()[:80])
+
+    toc = "**Response too large — showing table of contents. Use the `symbol` parameter or a more specific query to get details.**\n\n"
+    toc += f"Found {len(sections)} sections:\n\n"
+    for i, h in enumerate(headings, 1):
+        toc += f"{i}. {h}\n"
+
+    # Include as many full sections as we can fit
+    toc += "\n---\n\n"
+    remaining = limit - len(toc) - 200
+    included = []
+    for s in sections:
+        if remaining <= 0:
+            break
+        if len(s) <= remaining:
+            included.append(s)
+            remaining -= len(s) + 5  # account for separator
+        else:
+            included.append(s[:remaining] + "\n\n... (section truncated)")
+            break
+
+    return toc + "\n\n---\n\n".join(included)
 
 mcp = FastMCP(
     "nvidia-docs",
