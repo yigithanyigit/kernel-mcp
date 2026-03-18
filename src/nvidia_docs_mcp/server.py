@@ -6,6 +6,14 @@ from mcp.server.fastmcp import FastMCP
 
 from nvidia_docs_mcp.search import ptx_index, cutedsl_index, cutedsl_source_index
 
+MAX_RESPONSE_CHARS = 50000
+
+
+def _truncate(text: str, limit: int = MAX_RESPONSE_CHARS) -> str:
+    if len(text) <= limit:
+        return text
+    return text[:limit] + "\n\n... (truncated — use a more specific query or add a symbol filter to narrow results)"
+
 mcp = FastMCP(
     "nvidia-docs",
     instructions=(
@@ -42,7 +50,7 @@ def search_ptx(query: str, architecture: str | None = None, top_k: int = 5) -> s
             header += f" [{', '.join(r['architectures'])}]"
         parts.append(f"{header}\n\n{r['content']}")
 
-    return "\n\n---\n\n".join(parts)
+    return _truncate("\n\n---\n\n".join(parts))
 
 
 @mcp.tool()
@@ -69,7 +77,7 @@ def get_ptx_instruction(instruction: str, architecture: str | None = None) -> st
             header += f" [{', '.join(r['architectures'])}]"
         parts.append(f"{header}\n\n{r['content']}")
 
-    return "\n\n---\n\n".join(parts)
+    return _truncate("\n\n---\n\n".join(parts))
 
 
 @mcp.tool()
@@ -96,7 +104,7 @@ def search_cutedsl(query: str, top_k: int = 5) -> str:
             header += f" (from {r['source_page']})"
         parts.append(f"{header}\n\n{r['content']}")
 
-    return "\n\n---\n\n".join(parts)
+    return _truncate("\n\n---\n\n".join(parts))
 
 
 @mcp.tool()
@@ -154,7 +162,7 @@ def get_cutedsl_api(module: str, symbol: str | None = None) -> str:
     for doc in results:
         parts.append(f"## {doc['heading']}\n\n{doc['content']}")
 
-    return "\n\n---\n\n".join(parts)
+    return _truncate("\n\n---\n\n".join(parts))
 
 
 @mcp.tool()
@@ -239,7 +247,7 @@ def search_cutedsl_source(query: str, top_k: int = 5) -> str:
             content = content[:4000] + "\n\n... (truncated, use read_cutedsl_source for full content)"
         parts.append(f"{header}\n\n{content}")
 
-    return "\n\n---\n\n".join(parts)
+    return _truncate("\n\n---\n\n".join(parts))
 
 
 @mcp.tool()
@@ -282,7 +290,7 @@ def read_cutedsl_source(module_or_file: str) -> str:
     if file_path:
         header += f"\nFile: `{file_path}`"
 
-    return f"{header}\n\n```python\n{source}\n```"
+    return _truncate(f"{header}\n\n```python\n{source}\n```")
 
 
 @mcp.tool()
