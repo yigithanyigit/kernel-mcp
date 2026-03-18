@@ -1,0 +1,5 @@
+{
+  "heading": "9.7.19.4.Miscellaneous Instructions:trap\uf0c1",
+  "level": 4,
+  "content": "`trap`\n\nPerform trap operation.\n\nSyntax\n\n```\ntrap;\n```\n\nDescription\n\nAbort execution and generate an interrupt to the host CPU.\n\nPTX ISA Notes\n\nIntroduced in PTX ISA version 1.0.\n\nTarget ISA Notes\n\nSupported on all target architectures.\n\nExamples\n\n```\n    trap;\n@p  trap;\n```"
+}

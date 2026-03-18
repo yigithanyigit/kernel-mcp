@@ -1,0 +1,5 @@
+{
+  "heading": "6.3.Destination Operands\uf0c1",
+  "level": 2,
+  "content": "PTX instructions that produce a single result store the result in the field denoted by `d` (for\ndestination) in the instruction descriptions. The result operand is a scalar or vector variable in\nthe register state space."
+}

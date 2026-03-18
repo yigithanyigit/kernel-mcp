@@ -1,0 +1,8 @@
+{
+  "heading": "@kernel",
+  "level": 3,
+  "content": "Defines GPU kernel functions, compiled as specialized GPU symbols through dynamic compilation.\n\n**Decorator Parameters**:\n\n* `preprocessor`:\n\n  + `True` (default) \u2014 Automatically expands Python loops/ifs into GPU-compatible IR operations.\n  + `False` \u2014 Expects manual or simplified kernel implementations.\n\n**Kernel Launch Parameters**:\n\n* `grid`\n  Specifies the grid size as a list of integers.\n* `block`\n  Specifies the block size as a list of integers.\n* `cluster`\n  Specifies the cluster size as a list of integers.\n* `smem`\n  Specifies the size of shared memory in bytes (integer).",
+  "source_page": "cute_dsl_general/dsl_introduction.html",
+  "source_url": "https://docs.nvidia.com/cutlass/latest/media/docs/pythonDSL/cute_dsl_general/dsl_introduction.html",
+  "page_title": "Introduction"
+}

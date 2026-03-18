@@ -1,0 +1,8 @@
+{
+  "heading": "Loading in Python",
+  "level": 3,
+  "content": "Load pre-compiled object files or shared libraries into Python for execution.\n\n```\nimport cutlass.cute as cute\nimport torch\nfrom cutlass.cute import from_dlpack\nimport cutlass.cute.cuda as cuda\n\n# Load module from object file\nmodule = cute.runtime.load_module(\"./artifacts/print_tensor_example.o\")\n# or\nmodule = cute.runtime.load_module(\"./artifacts/libprint_tensor_example.so\")\n\n# Prepare data\na = torch.arange(160, dtype=torch.float32, device=\"cuda\").reshape(16, 10)\na_cute = from_dlpack(a).mark_layout_dynamic()\nstream = cuda.CUstream(0)\n\n# Call the function (no JIT compilation needed!)\nmodule.print_tensor(a_cute, stream=stream)\n\n# This will fail because 'non_existing_api' was not exported:\n# module.non_existing_api()\n```",
+  "source_page": "cute_dsl_general/dsl_ahead_of_time_compilation.html",
+  "source_url": "https://docs.nvidia.com/cutlass/latest/media/docs/pythonDSL/cute_dsl_general/dsl_ahead_of_time_compilation.html",
+  "page_title": "Ahead"
+}

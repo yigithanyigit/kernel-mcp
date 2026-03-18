@@ -1,0 +1,7 @@
+{
+  "heading": "11.4.3.Performance-Tuning Directives:.reqntid\uf0c1",
+  "instruction": "Performance-Tuning Directives:.reqntid",
+  "level": 3,
+  "architectures": [],
+  "content": "`.reqntid`\n\nNumber of threads in the thread block (CTA).\n\nSyntax\n\n```\n.reqntid nx\n.reqntid nx, ny\n.reqntid nx, ny, nz\n```\n\nDescription\n\nDeclare the number of threads in the thread block (CTA) by specifying the extent of each dimension\nof the 1D, 2D, or 3D CTA. The total number of threads is the product of the number of threads in\neach dimension.\n\nSemantics\n\nThe size of each CTA dimension specified in any invocation of the kernel is required to be equal to\nthat specified in this directive. Specifying a different CTA dimension at launch will result in a\nruntime error or kernel launch failure.\n\nNotes\n\nThe `.reqntid` directive cannot be used in conjunction with the `.maxntid` directive.\n\nPTX ISA Notes\n\nIntroduced in PTX ISA version 2.1.\n\nTarget ISA Notes\n\nSupported on all target architectures.\n\nExamples\n\n```\n.entry foo .reqntid 256       { ... }  // num threads = 256\n.entry bar .reqntid 16,16,4   { ... }  // num threads = 1024\n```"
+}

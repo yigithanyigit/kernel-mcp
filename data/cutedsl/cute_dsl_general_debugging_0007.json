@@ -1,0 +1,8 @@
+{
+  "heading": "Dump the generated PTX & CUBIN",
+  "level": 3,
+  "content": "For users familiar with PTX and SASS, CuTe DSL supports dumping the generated PTX and CUBIN.\n\n```\n# Dump generated PTX in a .ptx file (default: False)\nexport CUTE_DSL_KEEP_PTX=1\n\n# Dump generated cubin in a .cubin file (default: False)\nexport CUTE_DSL_KEEP_CUBIN=1\n```\n\nTo further get SASS from cubin, users can use `nvdisasm` (usually installed with CUDA toolkit) to disassemble the cubin.\n\n```\nnvdisasm your_dsl_code.cubin > your_dsl_code.sass\n```",
+  "source_page": "cute_dsl_general/debugging.html",
+  "source_url": "https://docs.nvidia.com/cutlass/latest/media/docs/pythonDSL/cute_dsl_general/debugging.html",
+  "page_title": "Debugging"
+}

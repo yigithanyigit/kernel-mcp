@@ -1,0 +1,5 @@
+{
+  "heading": "7.2.Variadic Functions\uf0c1",
+  "level": 2,
+  "content": "Note\n\n**Support for variadic functions which was unimplemented has been removed from the spec.**\n\nPTX version 6.0 supports passing unsized array parameter to a function which can be used to\nimplement variadic functions.\n\nRefer to [Kernel and Function Directives: .func](#kernel-and-function-directives-func) for details"
+}

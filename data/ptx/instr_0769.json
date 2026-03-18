@@ -1,0 +1,7 @@
+{
+  "heading": "9.7.16.10.4.2.Packing format for matrix A and B\uf0c1",
+  "instruction": "Packing format for matrix A and B",
+  "level": 6,
+  "architectures": [],
+  "content": "The 6-bit and 4-bit floating point types have different packing format requirements for\ndifferent MMA kinds in both Tensor memory and Shared memory. The requirements are as follows."
+}

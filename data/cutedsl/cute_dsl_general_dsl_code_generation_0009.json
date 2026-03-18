@@ -1,0 +1,8 @@
+{
+  "heading": "Practical Implications",
+  "level": 3,
+  "content": "* **Use** `print()` **to debug your meta-program** \u2014 inspect shapes, strides,\n  tile sizes, and compile-time decisions.\n* **Constexpr parameters enable specialization** \u2014 the compiler can generate\n  tighter code when values are known at JIT time.\n* **Dynamic parameters preserve generality** \u2014 a single compiled kernel can\n  handle varying input sizes without recompilation.",
+  "source_page": "cute_dsl_general/dsl_code_generation.html",
+  "source_url": "https://docs.nvidia.com/cutlass/latest/media/docs/pythonDSL/cute_dsl_general/dsl_code_generation.html",
+  "page_title": "End"
+}

@@ -1,0 +1,5 @@
+{
+  "heading": "5.2.5.3.Packed Fixed-Point Data Types\uf0c1",
+  "level": 4,
+  "content": "PTX supports `.s2f6x2` packed fixed-point data type consisting of two `.s2f6` packed\nfixed-point values. A register variable containing `.s2f6x2` value must be declared with\n`.b16` type. Packed fixed-point data type cannot be used as fundamental type and is only\nsupported as instruction type."
+}

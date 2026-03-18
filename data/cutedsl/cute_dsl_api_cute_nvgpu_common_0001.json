@@ -1,0 +1,8 @@
+{
+  "heading": "Common (part 2)",
+  "level": 1,
+  "content": "    Parameters:\n    :   * **op** (*Union**[*[*CopyBulkTensorTileG2SOp*](cute_nvgpu_cpasync.html#cutlass.cute.nvgpu.cpasync.CopyBulkTensorTileG2SOp \"cutlass.cute.nvgpu.cpasync.CopyBulkTensorTileG2SOp\")*,* [*CopyBulkTensorTileG2SMulticastOp*](cute_nvgpu_cpasync.html#cutlass.cute.nvgpu.cpasync.CopyBulkTensorTileG2SMulticastOp \"cutlass.cute.nvgpu.cpasync.CopyBulkTensorTileG2SMulticastOp\")*]*) \u2013 The Copy Operation to construct an Atom for\n        * **gmem_tensor** (*Tensor*) \u2013 The GMEM tensor to be loaded by this copy atom\n        * **smem_layout** (*Union**[**Layout**,* *ComposedLayout**]*) \u2013 Shared memory layout to load the tensor into (PDSL)\n        * **mma_tiler_mnk** (*Shape*) \u2013 The MMA Tiler shape (TILE_M, TILE_N, TILE_K) in MNK dimensions\n        * **tiled_mma** (*core.TiledMma*) \u2013 The TiledMMA that will consume the load as operands\n        * **cluster_shape_vmnk** (*Shape*) \u2013 The Cluster-level shape in VMNK dimensions\n        * **internal_type** (*Type**[**Numeric**]*) \u2013 An optional parameter for the internal data type to when element\n          type does not match the copy type\n\n    Returns:\n    :   A Copy Atom for this Operation and the associated TMA tensor\n\n    Return type:\n    :   Tuple[[atom.CopyAtom](cute.html#cutlass.cute.CopyAtom \"cutlass.cute.atom.CopyAtom\"), Tensor]",
+  "source_page": "cute_dsl_api/cute_nvgpu_common.html",
+  "source_url": "https://docs.nvidia.com/cutlass/latest/media/docs/pythonDSL/cute_dsl_api/cute_nvgpu_common.html",
+  "page_title": "Common"
+}

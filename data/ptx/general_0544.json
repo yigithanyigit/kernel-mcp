@@ -1,0 +1,5 @@
+{
+  "heading": "10.17.Special Registers:%cluster_nctarank\uf0c1",
+  "level": 2,
+  "content": "`%cluster_nctarank`\n\nNumber of CTA identifiers in a cluster across all dimensions.\n\nSyntax (predefined)\n\n```\n.sreg .u32 %cluster_nctarank;\n```\n\nDescription\n\nA predefined, read-only special register initialized with the nunber of CTAs within a cluster across\nall dimensions.\n\nPTX ISA Notes\n\nIntroduced in PTX ISA version 7.8.\n\nTarget ISA Notes\n\nRequires `sm_90` or higher.\n\nExamples\n\n```\n.reg .b32 %r;\n\nmov.u32  %r, %cluster_nctarank;\n```"
+}

@@ -1,0 +1,8 @@
+{
+  "heading": "Returns:",
+  "level": 2,
+  "content": "Either SmemStoreMatrix or SimtSyncCopy, based on the input parameters.",
+  "source_page": "cute_dsl_api/utils_sm90.html",
+  "source_url": "https://docs.nvidia.com/cutlass/latest/media/docs/pythonDSL/cute_dsl_api/utils_sm90.html",
+  "page_title": "Utilities for SM90"
+}

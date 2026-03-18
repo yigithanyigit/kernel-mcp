@@ -1,0 +1,10 @@
+{
+  "heading": "9.7.13.15.16.Parallel Synchronization and Communication Instructions:mbarrier.test_wait/mbarrier.try_wait\uf0c1 (part 2)",
+  "instruction": "Parallel Synchronization and Communication Instructions:mbarrier.test_wait/mbarrier.try_wait",
+  "level": 5,
+  "architectures": [
+    "sm_80",
+    "sm_90"
+  ],
+  "content": "// Absence of .noinc accounts for arrive-on from prior cp.async operation\ncp.async.mbarrier.arrive.shared.b64 [shMem2];\n...\nmbarrier.arrive.shared.b64 state, [shMem2];\n\nwaitLoop:\nmbarrier.test_wait.shared::cta.b64 p, [shMem2], state;\n@!p bra waitLoop;\n\n// Example 4, Synchronizing the CTA0 threads with cluster threads\n.reg .b64 %r1, addr, remAddr;\n.shared .b64 shMem;\n\ncvta.shared.u64          addr, shMem;\nmapa.u64                 remAddr, addr, 0;     // CTA0's shMem instance\n\n// One thread from CTA0 executing the below initialization operation\n@p0 mbarrier.init.shared::cta.b64 [shMem], N;  // N = no of cluster threads\n\nbarrier.cluster.arrive;\nbarrier.cluster.wait;\n\n// Entire cluster executing the below arrive operation\nmbarrier.arrive.release.cluster.b64              _, [remAddr];\n\n// computation not requiring mbarrier synchronization ...\n\n// Only CTA0 threads executing the below wait operation\nwaitLoop:\nmbarrier.try_wait.parity.acquire.cluster.shared::cta.b64  complete, [shMem], 0;\n@!complete bra waitLoop;\n```"
+}

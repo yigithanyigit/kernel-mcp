@@ -1,0 +1,8 @@
+{
+  "heading": "@jit",
+  "level": 3,
+  "content": "Declares JIT-compiled functions that can be invoked from Python or from other CuTe DSL functions.\n\n**Decorator Parameters**:\n\n* `preprocessor`:\n\n  + `True` (default) \u2014 Automatically translate Python flow control (e.g., loops, if-statements) into IR operations.\n  + `False` \u2014 No automatic expansion; Python flow control must be handled manually or avoided.\n\n**Call-site Parameters**:\n\n* `no_cache`:\n\n  + `True` \u2014 Disables JIT caching, forcing a fresh compilation each call.\n  + `False` (default) \u2014 Enables caching for faster subsequent calls.",
+  "source_page": "cute_dsl_general/dsl_introduction.html",
+  "source_url": "https://docs.nvidia.com/cutlass/latest/media/docs/pythonDSL/cute_dsl_general/dsl_introduction.html",
+  "page_title": "Introduction"
+}

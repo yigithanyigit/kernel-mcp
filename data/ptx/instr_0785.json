@@ -1,0 +1,7 @@
+{
+  "heading": "9.7.16.10.7.Block Scaling fortcgen05.mma\uf0c1 (part 3)",
+  "instruction": "Block Scaling fortcgen05.mma",
+  "level": 5,
+  "architectures": [],
+  "content": "For example, if *SFB_ID* is 0, then all the green columns are selected to form the\nscale factor matrix. Similarly, if *SFB_ID* is 2, then all of the blue columns are\nselected to form the scale factor matrix."
+}

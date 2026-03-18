@@ -1,0 +1,5 @@
+{
+  "heading": "8.2.6.Initialization\uf0c1",
+  "level": 3,
+  "content": "Each byte in memory is initialized by a hypothetical write *W0* executed before starting any thread\nin the program. If the byte is included in a program variable, and that variable has an initial\nvalue, then *W0* writes the corresponding initial value for that byte; else *W0* is assumed to have\nwritten an unknown but constant value to the byte."
+}

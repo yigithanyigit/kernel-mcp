@@ -1,0 +1,7 @@
+{
+  "heading": "10.6.Special Registers:%ctaid\uf0c1",
+  "instruction": "Special Registers:%ctaid",
+  "level": 2,
+  "architectures": [],
+  "content": "`%ctaid`\n\nCTA identifier within a grid.\n\nSyntax (predefined)\n\n```\n.sreg .v4 .u32 %ctaid;                      // CTA id vector\n.sreg .u32 %ctaid.x, %ctaid.y, %ctaid.z;    // CTA id components\n```\n\nDescription\n\nA predefined, read-only special register initialized with the CTA identifier within the CTA\ngrid. The `%ctaid` special register contains a 1D, 2D, or 3D vector, depending on the shape and\nrank of the CTA grid. The fourth element is unused and always returns zero.\n\nIt is guaranteed that:\n\n```\n0  <=  %ctaid.x <  %nctaid.x\n0  <=  %ctaid.y <  %nctaid.y\n0  <=  %ctaid.z <  %nctaid.z\n```\n\nPTX ISA Notes\n\nIntroduced in PTX ISA version 1.0 with type `.v4.u16`.\n\nRedefined as type `.v4.u32` in PTX ISA version 2.0. For compatibility with legacy PTX code, 16-bit\n`mov` and `cvt` instructions may be used to read the lower 16-bits of each component of\n`%ctaid`.\n\nTarget ISA Notes\n\nSupported on all target architectures.\n\nExamples\n\n```\nmov.u32  %r0,%ctaid.x;\nmov.u16  %rh,%ctaid.y;   // legacy code\n```"
+}

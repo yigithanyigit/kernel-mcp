@@ -1,0 +1,5 @@
+{
+  "heading": "13.31.Changes in PTX ISA Version 4.1\uf0c1",
+  "level": 2,
+  "content": "New Features\n\nPTX ISA version 4.1 introduces the following new features:\n\n* Support for `sm_37` and `sm_52` target architectures.\n* Support for new fields `array_size`, `num_mipmap_levels` and `num_samples` for Textures, and\n  the `txq` instruction support for querying these fields.\n* Support for new field `array_size` for Surfaces, and the `suq` instruction support for\n  querying this field.\n* Support for special registers `%total_smem_size` and `%dynamic_smem_size`.\n\nSemantic Changes and Clarifications\n\nNone."
+}

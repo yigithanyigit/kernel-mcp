@@ -1,0 +1,11 @@
+{
+  "heading": "11.2.Specifying Kernel Entry Points and Functions\uf0c1 (part 2)",
+  "instruction": "Specifying Kernel Entry Points and Functions",
+  "level": 2,
+  "architectures": [
+    "sm_70",
+    "sm_80",
+    "sm_90"
+  ],
+  "content": "Prototype of `fAlias` and `fAliasee` must match.\n\nProgram can use either `fAlias` or `fAlisee` identifiers to reference function defined with\n`fAliasee`.\n\nPTX ISA Notes\n\n`.alias` directive introduced in PTX ISA 6.3.\n\nTarget ISA Notes\n\n`.alias` directive requires `sm_30` or higher.\n\nExamples\n\n```\n.visible .func foo(.param .u32 p) {\n   ...\n}\n.visible .func bar(.param .u32 p);\n.alias bar, foo;\n.entry test()\n{\n      .param .u32 p;\n      ...\n      call foo, (p);       // call foo directly\n       ...\n       .param .u32 p;\n       call bar, (p);        // call foo through alias\n}\n.entry filter ( .param .b32 x, .param .b32 y, .param .b32 z )\n{\n    .reg .b32 %r1, %r2, %r3;\n    ld.param.b32  %r1, [x];\n    ld.param.b32  %r2, [y];\n    ld.param.b32  %r3, [z];\n    ...\n}\n```"
+}

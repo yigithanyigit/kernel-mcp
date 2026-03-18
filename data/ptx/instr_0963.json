@@ -1,0 +1,9 @@
+{
+  "heading": "13.26.Changes in PTX ISA Version 6.1\uf0c1",
+  "instruction": "Changes in PTX ISA Version 6.1",
+  "level": 2,
+  "architectures": [
+    "sm_72"
+  ],
+  "content": "New Features\n\nPTX ISA version 6.1 introduces the following new features:\n\n* Support for `sm_72` target architecture.\n* Support for new matrix shapes `32x8x16` and `8x32x16` in `wmma` instruction.\n\nSemantic Changes and Clarifications\n\nNone."
+}

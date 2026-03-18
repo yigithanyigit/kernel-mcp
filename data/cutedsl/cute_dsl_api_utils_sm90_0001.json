@@ -1,0 +1,8 @@
+{
+  "heading": "Parameters:",
+  "level": 2,
+  "content": "layout_dLayoutEnum\n:   The layout enum of the output tensor D.\n\nelem_ty_dType[Numeric]\n:   The element type for output tensor D.\n\nelem_ty_accType[Numeric]\n:   The element type for accumulator.",
+  "source_page": "cute_dsl_api/utils_sm90.html",
+  "source_url": "https://docs.nvidia.com/cutlass/latest/media/docs/pythonDSL/cute_dsl_api/utils_sm90.html",
+  "page_title": "Utilities for SM90"
+}

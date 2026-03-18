@@ -1,0 +1,12 @@
+{
+  "heading": "9.7.9.25.4.Data Movement and Conversion Instructions: Bulk copy\uf0c1 (part 4)",
+  "instruction": "Data Movement and Conversion Instructions: Bulk copy",
+  "level": 5,
+  "architectures": [
+    "sm_100",
+    "sm_100a",
+    "sm_90",
+    "sm_90a"
+  ],
+  "content": "Each reduction operation performed by the `multimem.cp.reduce.async.bulk` has individually\n`.relaxed.sys` memory ordering semantics. The load operations in `multimem.cp.reduce.async.bulk`\nare treated as weak memory operations as described in the [Memory Consistency Model](#memory-consistency-model).\n\nPTX ISA Notes\n\nIntroduced in PTX ISA version 9.1.\n\nTarget ISA Notes\n\nRequires `sm_90` or higher.\n\nExamples\n\n```\nmultimem.cp.reduce.async.bulk.global.shared::cta.bulk_group.add.u32 [dstMem], [srcMem], size;\n\nmultimem.cp.reduce.async.bulk.global.shared::cta.bulk_group.xor.b64 [dstMem], [srcMem], size;\n\nmultimem.cp.reduce.async.bulk.global.shared::cta.bulk_group.inc.u32 [dstMem], [srcMem], size;\n\nmultimem.cp.reduce.async.bulk.global.shared::cta.bulk_group.dec.u32 [dstMem], [srcMem], size;\n\nmultimem.cp.reduce.async.bulk.global.shared::cta.bulk_group.max.s32 [dstMem], [srcMem], size;\n\nmultimem.cp.reduce.async.bulk.global.shared::cta.bulk_group.add.noftz.f16 [dstMem], [srcMem], size;\n\nmultimem.cp.reduce.async.bulk.global.shared::cta.bulk_group.min.bf16 [dstMem], [srcMem], size;\n\nmultimem.cp.reduce.async.bulk.global.shared::cta.bulk_group.add.noftz.bf16 [dstMem], [srcMem], size;\n```"
+}

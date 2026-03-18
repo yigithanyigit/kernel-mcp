@@ -1,0 +1,8 @@
+{
+  "heading": "1.1 AST Rewrite",
+  "level": 3,
+  "content": "The function\u2019s abstract-syntax tree is analysed **before** execution.\nPython control-flow (`for`/`while`, `if`/`else`) and built-ins are converted to structured intermediate representation (IR)\nconstructs. Computation inside each region is left untouched at this stage.\n\n*Advantages*\n\n* Sees the entire program, so every branch and loop is preserved.\n* Keeps loop structure intact for optimization such as tiling, vectorisation\n  or GPU thread mapping.\n\n*Disadvantages*\n\n* Requires a well-defined Python subset that the rewriter understands.",
+  "source_page": "cute_dsl_general/dsl_code_generation.html",
+  "source_url": "https://docs.nvidia.com/cutlass/latest/media/docs/pythonDSL/cute_dsl_general/dsl_code_generation.html",
+  "page_title": "End"
+}

@@ -1,0 +1,9 @@
+{
+  "heading": "9.7.5.1.Mixed Precision Floating Point Instructions:add\uf0c1",
+  "instruction": "Mixed Precision Floating Point Instructions:add",
+  "level": 4,
+  "architectures": [
+    "sm_100"
+  ],
+  "content": "`add`\n\nAdd 2 values.\n\nSyntax\n\n```\nadd{.rnd}{.sat}.f32.atype  d, a, c;\n\n.atype = { .f16, .bf16};\n.rnd   = { .rn, .rz, .rm, .rp };\n```\n\nDescription\n\nConverts input operand `a` from `.atype` into `.f32` type. The converted value is then\nused for the addition. The resulting value is stored in the destination operand `d`.\n\nSemantics\n\n```\nd = convert(a) + c;\n```\n\nNotes\n\nRounding modifiers:\n\n`.rn`\n:   mantissa LSB rounds to nearest even\n\n`.rz`\n:   mantissa LSB rounds towards zero\n\n`.rm`\n:   mantissa LSB rounds towards negative infinity\n\n`.rp`\n:   mantissa LSB rounds towards positive infinity\n\nThe default value of rounding modifier is `.rn`. Note that an `add` instruction with an explicit\nrounding modifier is treated conservatively by the code optimizer. An `add` instruction with no\nrounding modifier defaults to round-to-nearest-even and may be optimized aggressively by the code\noptimizer. In particular, `mul`/`add` sequences with no rounding modifiers may be optimized to\nuse fused-multiply-add instructions on the target device.\n\nSubnormal numbers:\n:   By default, subnormal numbers are supported.\n\nSaturation modifier:\n:   `add.sat` clamps the result to [0.0, 1.0]. `NaN` results are flushed to `+0.0f`.\n\nPTX ISA Notes\n\n`add.f32.{f16/bf16}` introduced in PTX ISA version 8.6.\n\nTarget ISA Notes\n\n`add.f32.{f16/bf16}` requires `sm_100` or higher.\n\nExamples\n\n```\n.reg .f32 fc, fd;\n.reg .b16 ba;\nadd.rz.f32.bf16.sat   fd, fa, fc;\n```"
+}

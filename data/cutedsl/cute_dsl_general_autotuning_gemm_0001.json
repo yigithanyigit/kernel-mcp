@@ -1,0 +1,8 @@
+{
+  "heading": "Guidance for Auto-Tuning (part 2)",
+  "level": 1,
+  "content": "```\nconfig_key = (m, n, k)\nif config_key in input_kernel_dict:\n    compiled_gemm = input_kernel_dict[config_key]\nelse:\n    compiled_gemm = autotune_gemm(...)\n    input_kernel_dict[config_key] = compiled_gemm\n# launch gemm kernel\ncompiled_gemm(a_tensor, b_tensor, c_tensor, stream)\n```\n\nBy following the methods above, you can customize your own auto-tuner to find the optimal GEMM kernel configuration\nfor specific matrix dimensions and data types, significantly improving computational performance for models.",
+  "source_page": "cute_dsl_general/autotuning_gemm.html",
+  "source_url": "https://docs.nvidia.com/cutlass/latest/media/docs/pythonDSL/cute_dsl_general/autotuning_gemm.html",
+  "page_title": "Guidance for Auto"
+}

@@ -1,0 +1,7 @@
+{
+  "heading": "9.7.16.2.1.1.Target ISA Note\uf0c1",
+  "instruction": "Target ISA Note",
+  "level": 6,
+  "architectures": [],
+  "content": "* K = 96 is only supported for following architecture-specific targets:\n\n  + `sm_103a`."
+}

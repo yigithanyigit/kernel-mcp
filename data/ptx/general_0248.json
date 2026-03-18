@@ -1,0 +1,5 @@
+{
+  "heading": "9.7.8.9.Logic and Shift Instructions:shr\uf0c1",
+  "level": 4,
+  "content": "`shr`\n\nShift bits right, sign or zero-fill on left.\n\nSyntax\n\n```\nshr.type d, a, b;\n\n.type = { .b16, .b32, .b64,\n          .u16, .u32, .u64,\n          .s16, .s32, .s64 };\n```\n\nDescription\n\nShift `a` right by the amount specified by unsigned 32-bit value in `b`. Signed shifts fill with\nthe sign bit, unsigned and untyped shifts fill with `0`.\n\nSemantics\n\n```\nd = a >> b;\n```\n\nNotes\n\nShift amounts greater than the register width *N* are clamped to *N*.\n\nThe sizes of the destination and first source operand must match, but not necessarily the type. The\n`b` operand must be a 32-bit value, regardless of the instruction type.\n\nBit-size types are included for symmetry with `shl`.\n\nPTX ISA Notes\n\nIntroduced in PTX ISA version 1.0.\n\nTarget ISA Notes\n\nSupported on all target architectures.\n\nExample\n\n```\nshr.u16  c,a,2;\nshr.s32  i,i,1;\nshr.b16  k,i,j;\n```"
+}

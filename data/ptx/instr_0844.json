@@ -1,0 +1,7 @@
+{
+  "heading": "10.5.Special Registers:%nwarpid\uf0c1",
+  "instruction": "Special Registers:%nwarpid",
+  "level": 2,
+  "architectures": [],
+  "content": "`%nwarpid`\n\nNumber of warp identifiers.\n\nSyntax (predefined)\n\n```\n.sreg .u32 %nwarpid;\n```\n\nDescription\n\nA predefined, read-only special register that returns the maximum number of warp identifiers.\n\nPTX ISA Notes\n\nIntroduced in PTX ISA version 2.0.\n\nTarget ISA Notes\n\n`%nwarpid` requires `sm_20` or higher.\n\nExamples\n\n```\nmov.u32  %r, %nwarpid;\n```"
+}

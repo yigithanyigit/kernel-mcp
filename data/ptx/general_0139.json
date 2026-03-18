@@ -1,0 +1,5 @@
+{
+  "heading": "8.10.1.Coherence\uf0c1",
+  "level": 3,
+  "content": "If a write W precedes an *overlapping* write W\u2019 in *causality order*, then W must precede W\u2019 in\n*coherence order*."
+}

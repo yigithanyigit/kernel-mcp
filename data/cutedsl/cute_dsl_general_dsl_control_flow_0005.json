@@ -1,0 +1,8 @@
+{
+  "heading": "Software Pipelining",
+  "level": 3,
+  "content": "Software pipelining is a technique used to optimize loops. Typically, this involves writing a prefetch loop and a main loop.\n\n```\n@cute.jit\ndef example():\n    ...\n    # build a circular buffer\n    buffer = ...\n\n    # prefetch loop\n    for i in range(prefetch_stages):\n        cute.copy(atom, gmem[i], buffer[i], ...)\n\n    # main loop\n    for i in range(bound):\n        if i + prefetch_stages < bound:\n            cute.copy(atom, gmem[i + prefetch_stages], buffer[(i + prefetch_stages) % total_stages], ...)\n\n        use(buffer[i % total_stages])\n\n    ...\n```\n\nThis can be tedious to write and tune. CuTe DSL provides a loop attribute to ask the compiler to do this.\n\n```\n@cute.jit\ndef example():\n    ...\n    # build a circular buffer\n    buffer = ...\n\n    for i in cutlass.range(bound, prefetch_stages=prefetch_stages):\n        # Compiler automatically handles the pipelining:\n        # - Generates prefetch loop for initial stages\n        # - In main loop, prefetches future data while using current data\n        cute.copy(atom, gmem[i], buffer[i % total_stages], ...)\n        use(buffer[i % total_stages])  # Uses data from previous iterations\n\n    ...\n```\n\nCompiler will automatically generate the prefetch loop with prefetch_stages iterations and a corresponding main loop.\n\nThis feature is experimental and only supported on sm90 and above.",
+  "source_page": "cute_dsl_general/dsl_control_flow.html",
+  "source_url": "https://docs.nvidia.com/cutlass/latest/media/docs/pythonDSL/cute_dsl_general/dsl_control_flow.html",
+  "page_title": "Control Flow"
+}

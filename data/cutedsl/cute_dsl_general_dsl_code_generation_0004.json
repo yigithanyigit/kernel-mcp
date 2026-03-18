@@ -1,0 +1,8 @@
+{
+  "heading": "1.2 Tracing",
+  "level": 3,
+  "content": "The decorated function is executed once with *proxy* arguments; overloaded\noperators record every tensor operation that actually runs and produce a flat\ntrace that is lowered to intermediate representation (IR).\n\n*Advantages*\n\n* Near-zero compile latency, ideal for straight-line arithmetic.\n* No need to parse Python source, so it supports many dynamic Python\n  features, and Python has many features.\n\n*Disadvantages*\n\n* Untaken branches vanish, so the generated kernel may be wrong for other\n  inputs.\n* Loops are flattened to the iteration count observed during tracing.\n* Data-dependent control-flow freezes to a single execution path.",
+  "source_page": "cute_dsl_general/dsl_code_generation.html",
+  "source_url": "https://docs.nvidia.com/cutlass/latest/media/docs/pythonDSL/cute_dsl_general/dsl_code_generation.html",
+  "page_title": "End"
+}

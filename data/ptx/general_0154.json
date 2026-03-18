@@ -1,0 +1,5 @@
+{
+  "heading": "9.3.2.Manipulating Predicates\uf0c1",
+  "level": 3,
+  "content": "Predicate values may be computed and manipulated using the following instructions: `and`, `or`,\n`xor`, `not`, and `mov`.\n\nThere is no direct conversion between predicates and integer values, and no direct way to load or\nstore predicate register values. However, `setp` can be used to generate a predicate from an\ninteger, and the predicate-based select (`selp`) instruction can be used to generate an integer\nvalue based on the value of a predicate; for example:\n\n```\nselp.u32 %r1,1,0,%p;    // convert predicate to 32-bit value\n```"
+}

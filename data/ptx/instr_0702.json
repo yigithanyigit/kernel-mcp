@@ -1,0 +1,7 @@
+{
+  "heading": "9.7.16.1.2.Tensor Memory Allocation\uf0c1",
+  "instruction": "Tensor Memory Allocation",
+  "level": 5,
+  "architectures": [],
+  "content": "The Tensor Memory is dynamically allocated. The Tensor Memory must be allocated by a single\nwarp in a CTA using the\n[Tensor Memory Allocation and Management Instructions](#tcgen05-memory-alloc-manage-instructions).\n\nThe allocation and deallocation of [Tensor Memory](#tensor-memory) is performed in terms of\ncolumns. The unit of allocation is 32 columns and the number of columns being allocated must be\na power of 2. When a column is allocated, all 128 lanes of the column are allocated.\n\nAll of the Tensor Memory that was allocated in a kernel, must be explicitly deallocated\nbefore the kernel exits."
+}

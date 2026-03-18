@@ -1,0 +1,5 @@
+{
+  "heading": "6.1.Operand Type Information\uf0c1",
+  "level": 2,
+  "content": "All operands in instructions have a known type from their declarations. Each operand type must be\ncompatible with the type determined by the instruction template and instruction type. There is no\nautomatic conversion between types.\n\nThe bit-size type is compatible with every type having the same size. Integer types of a common size\nare compatible with each other. Operands having type different from but compatible with the\ninstruction type are silently cast to the instruction type."
+}

@@ -1,0 +1,8 @@
+{
+  "heading": "If-Else Statements",
+  "level": 2,
+  "content": "Standard Python `if`/`elif`/`else` is supported.\n\n* **Predicate without annotation** \u2192 lowered to intermediate representation (IR).\n* **Predicate annotated with `cutlass.const_expr`** \u2192 evaluated at compile time.\n\n**Example:**\n\n```\n@cute.jit\ndef main(const_var: cutlass.Constexpr, dynamic_var: cutlass.Int32):\n    # \u2705 This branch is Python branch, evaluated at compile time.\n    if cutlass.const_expr(const_var):\n        cute.printf(\"Const branch\\\\n\")\n    else:\n        cute.printf(\"Const else\\\\n\")\n\n    # \u2705 This branch is dynamic branch, emitted IR branch.\n    if dynamic_var == 10:\n        cute.printf(\"Dynamic True\\\\n\")\n    else:\n        cute.printf(\"Dynamic False\\\\n\")\n\n    # \u274c Using a dynamic value with `cutlass.const_expr` is not allowed.\n    if cutlass.const_expr(dynamic_var == 10):\n        cute.printf(\"Bound is 10\\\\n\")\n```",
+  "source_page": "cute_dsl_general/dsl_control_flow.html",
+  "source_url": "https://docs.nvidia.com/cutlass/latest/media/docs/pythonDSL/cute_dsl_general/dsl_control_flow.html",
+  "page_title": "Control Flow"
+}

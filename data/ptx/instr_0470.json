@@ -1,0 +1,7 @@
+{
+  "heading": "9.7.10.6.Texture Instructions:istypep\uf0c1",
+  "instruction": "Texture Instructions:istypep",
+  "level": 4,
+  "architectures": [],
+  "content": "`istypep`\n\nQuery whether a register points to an opaque variable of a specified type.\n\nSyntax\n\n```\nistypep.type   p, a;  // result is .pred\n\n.type = { .texref, .samplerref, .surfref };\n```\n\nDescription\n\nWrite predicate register `p` with 1 if register `a` points to an opaque variable of the\nspecified type, and with 0 otherwise. Destination `p` has type `.pred`; the source address\noperand must be of type `.u64`.\n\nPTX ISA Notes\n\nIntroduced in PTX ISA version 4.0.\n\nTarget ISA Notes\n\nistypep requires `sm_30` or higher.\n\nExamples\n\n```\nistypep.texref istex, tptr;\nistypep.samplerref issampler, sptr;\nistypep.surfref issurface, surfptr;\n```"
+}

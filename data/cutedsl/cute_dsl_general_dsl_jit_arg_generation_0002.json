@@ -1,0 +1,8 @@
+{
+  "heading": "In a nutshell",
+  "level": 2,
+  "content": "When using the `@jit` or `@kernel` decorators to define a JIT-compiled function, the arguments to the function are traced to determine the JIT function\u2019s signature.\nCuTe DSL provides a Pythonic way to write the arguments for JIT function as one normally would in Python, and the CuTe DSL will take care of the rest for you.\n\nSpecifically, CuTe DSL honors following when generating the JIT function\u2019s arguments:\n\n* JIT function arguments are assumed to be **dynamic arguments** by default.\n* If an argument is explicitly type annotated with `cutlass.Constexpr`, it is treated as a **compile-time constant**.\n* If type annotation is provided, CuTe DSL validates the argument type at compile time for **type safety**.\n* CuTe DSL provides **runtime checkable protocols** (`JitArgument` and `DynamicExpression`) for generating JIT function arguments for customized types.\n\nMore details below for each of the above.",
+  "source_page": "cute_dsl_general/dsl_jit_arg_generation.html",
+  "source_url": "https://docs.nvidia.com/cutlass/latest/media/docs/pythonDSL/cute_dsl_general/dsl_jit_arg_generation.html",
+  "page_title": "JIT Function Argument Generation"
+}

@@ -1,0 +1,5 @@
+{
+  "heading": "13.15.Changes in PTX ISA Version 7.6\uf0c1",
+  "level": 2,
+  "content": "New Features\n\nPTX ISA version 7.6 introduces the following new features:\n\n* Support for `szext` instruction which performs sign-extension or zero-extension on a specified\n  value.\n* Support for `bmsk` instruction which creates a bitmask of the specified width starting at the\n  specified bit position.\n* Support for special registers `%reserved_smem_offset_begin`, `%reserved_smem_offset_end`,\n  `%reserved_smem_offset_cap`, `%reserved_smem_offset<2>`.\n\nSemantic Changes and Clarifications\n\nNone."
+}

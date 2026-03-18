@@ -1,0 +1,5 @@
+{
+  "heading": "9.2.PTX Instructions\uf0c1",
+  "level": 2,
+  "content": "PTX instructions generally have from zero to four operands, plus an optional guard predicate\nappearing after an `@` symbol to the left of the `opcode`:\n\n* `@p\u00a0\u00a0 opcode;`\n* `@p\u00a0\u00a0 opcode a;`\n* `@p\u00a0\u00a0 opcode d, a;`\n* `@p\u00a0\u00a0 opcode d, a, b;`\n* `@p\u00a0\u00a0 opcode d, a, b, c;`\n\nFor instructions that create a result value, the `d` operand is the destination operand, while\n`a`, `b`, and `c` are source operands.\n\nThe `setp` instruction writes two destination registers. We use a `|` symbol to separate\nmultiple destination registers.\n\n```\nsetp.lt.s32  p|q, a, b;  // p = (a < b); q = !(a < b);\n```\n\nFor some instructions the destination operand is optional. A *bit bucket* operand denoted with an\nunderscore (`_`) may be used in place of a destination register."
+}

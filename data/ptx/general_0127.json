@@ -1,0 +1,5 @@
+{
+  "heading": "8.7.2.Limitations on Mixed-size Data-races\uf0c1",
+  "level": 3,
+  "content": "A *data-race* between operations that *overlap* completely is called a *uniform-size data-race*,\nwhile a *data-race* between operations that *overlap* partially is called a *mixed-size data-race*.\n\nThe axioms in the memory consistency model do not apply if a PTX program contains one or more\n*mixed-size data-races*. But these axioms are sufficient to describe the behavior of a PTX program\nwith only *uniform-size data-races*.\n\nAtomicity of mixed-size RMW operations\n\nIn any program with or without *mixed-size data-races*, the following property holds for every pair\nof *overlapping atomic* operations A1 and A2 such that each specifies a *scope* that includes the\nother: Either the *read-modify-write* operation specified by A1 is performed completely before A2 is\ninitiated, or vice versa. This property holds irrespective of whether the two operations A1 and A2\noverlap partially or completely."
+}

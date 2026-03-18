@@ -1,0 +1,7 @@
+{
+  "heading": "10.23.Special Registers:%clock,%clock_hi\uf0c1",
+  "instruction": "Special Registers:%clock,%clock_hi",
+  "level": 2,
+  "architectures": [],
+  "content": "`%clock`, `%clock_hi`\n\n`%clock`\n:   A predefined, read-only 32-bit unsigned cycle counter.\n\n`%clock_hi`\n:   The upper 32-bits of `%clock64` special register.\n\nSyntax (predefined)\n\n```\n.sreg .u32 %clock;\n.sreg .u32 %clock_hi;\n```\n\nDescription\n\nSpecial register `%clock` and `%clock_hi` are unsigned 32-bit read-only cycle counters that wrap\nsilently.\n\nPTX ISA Notes\n\n`%clock` introduced in PTX ISA version 1.0.\n\n`%clock_hi` introduced in PTX ISA version 5.0.\n\nTarget ISA Notes\n\n`%clock` supported on all target architectures.\n\n`%clock_hi` requires `sm_20` or higher.\n\nExamples\n\n```\nmov.u32 r1,%clock;\nmov.u32 r2, %clock_hi;\n```"
+}

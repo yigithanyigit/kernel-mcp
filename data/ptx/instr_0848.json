@@ -1,0 +1,7 @@
+{
+  "heading": "10.9.Special Registers:%nsmid\uf0c1",
+  "instruction": "Special Registers:%nsmid",
+  "level": 2,
+  "architectures": [],
+  "content": "`%nsmid`\n\nNumber of SM identifiers.\n\nSyntax (predefined)\n\n```\n.sreg .u32 %nsmid;\n```\n\nDescription\n\nA predefined, read-only special register that returns the maximum number of SM identifiers. The SM\nidentifier numbering is not guaranteed to be contiguous, so `%nsmid` may be larger than the\nphysical number of SMs in the device.\n\nPTX ISA Notes\n\nIntroduced in PTX ISA version 2.0.\n\nTarget ISA Notes\n\n`%nsmid` requires `sm_20` or higher.\n\nExamples\n\n```\nmov.u32  %r, %nsmid;\n```"
+}

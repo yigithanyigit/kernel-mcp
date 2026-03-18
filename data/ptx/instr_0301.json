@@ -1,0 +1,7 @@
+{
+  "heading": "9.7.3.1.Floating Point Instructions:testp\uf0c1",
+  "instruction": "Floating Point Instructions:testp",
+  "level": 4,
+  "architectures": [],
+  "content": "`testp`\n\nTest floating-point property.\n\nSyntax\n\n```\ntestp.op.type  p, a;  // result is .pred\n\n.op   = { .finite, .infinite,\n          .number, .notanumber,\n          .normal, .subnormal };\n.type = { .f32, .f64 };\n```\n\nDescription\n\n`testp` tests common properties of floating-point numbers and returns a predicate value of `1`\nif `True` and `0` if `False`.\n\n`testp.finite`\n:   `True` if the input is not infinite or `NaN`\n\n`testp.infinite`\n:   `True` if the input is positive or negative infinity\n\n`testp.number`\n:   `True` if the input is not `NaN`\n\n`testp.notanumber`\n:   `True` if the input is `NaN`\n\n`testp.normal`\n:   `True` if the input is a normal number (not `NaN`, not infinity)\n\n`testp.subnormal`\n:   `True` if the input is a subnormal number (not `NaN`, not infinity)\n\nAs a special case, positive and negative zero are considered normal numbers.\n\nPTX ISA Notes\n\nIntroduced in PTX ISA version 2.0.\n\nTarget ISA Notes\n\nRequires `sm_20` or higher.\n\nExamples\n\n```\ntestp.notanumber.f32  isnan, f0;\ntestp.infinite.f64    p, X;\n```"
+}

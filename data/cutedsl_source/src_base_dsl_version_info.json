@@ -1,0 +1,9 @@
+{
+  "heading": "Source: cutlass.base_dsl.version_info",
+  "module": "cutlass.base_dsl.version_info",
+  "file_path": "base_dsl/version_info.py",
+  "content": "# Module: `cutlass.base_dsl.version_info`\n\nFile: `base_dsl/version_info.py`\n",
+  "symbols": [],
+  "source_code": "# SPDX-FileCopyrightText: Copyright (c) 2025 - 2026 NVIDIA CORPORATION & AFFILIATES. All rights reserved.\n# SPDX-License-Identifier: LicenseRef-NvidiaProprietary\n#\n# Use of this software is governed by the terms and conditions of the\n# NVIDIA End User License Agreement (EULA), available at:\n# https://docs.nvidia.com/cutlass/media/docs/pythonDSL/license.html\n#\n# Any use, reproduction, disclosure, or distribution of this software\n# and related documentation outside the scope permitted by the EULA\n# is strictly prohibited.\n\nfrom typing import Callable\n\nfrom .common import DSLCudaVersion, DSLRuntimeError, _get_cuda_version\n\ntry:\n    CUDA_VERSION = DSLCudaVersion(_get_cuda_version())\nexcept Exception as e:\n    raise DSLRuntimeError(\n        \"\ud83d\udca5\ud83d\udca5\ud83d\udca5 Failed to get CUDA version \ud83d\udca5\ud83d\udca5\ud83d\udca5\",\n        cause=e,\n        suggestion=\"Consider re-installing the package.\",\n    ) from e\n",
+  "type": "source"
+}

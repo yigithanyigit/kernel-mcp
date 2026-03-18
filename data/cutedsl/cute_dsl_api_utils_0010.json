@@ -1,0 +1,8 @@
+{
+  "heading": "cutlass.utils - API Reference (part 1)",
+  "level": 2,
+  "content": "### `cutlass.utils.get_smem_capacity_in_bytes(compute_capability:str|None=None,)\u2192int#`\n\n:   Get the shared memory capacity in bytes for a given compute capability.\n\n    Returns the maximum shared memory capacity in bytes available for the specified\n    GPU compute capability.\n\n    Parameters:\n    :   **compute_capability** (*Optional**[**str**]*) \u2013 The compute capability string (e.g. \u201c70\u201d, \u201c75\u201d, \u201c80\u201d)\n\n    Returns:\n    :   The shared memory capacity in bytes\n\n    Return type:\n    :   int\n\n    Raises:\n    :   **ValueError** \u2013 If the compute capability is not supported",
+  "source_page": "cute_dsl_api/utils.html",
+  "source_url": "https://docs.nvidia.com/cutlass/latest/media/docs/pythonDSL/cute_dsl_api/utils.html",
+  "page_title": "cutlass.utils"
+}

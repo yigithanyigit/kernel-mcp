@@ -1,0 +1,7 @@
+{
+  "heading": "9.7.9.25.2.Async Proxy\uf0c1",
+  "instruction": "Async Proxy",
+  "level": 5,
+  "architectures": [],
+  "content": "The `cp{.reduce}.async.bulk` operations are performed in the *asynchronous proxy* (or *async\nproxy*).\n\nAccessing the same memory location across multiple proxies needs a cross-proxy fence. For the\n*async proxy*, `fence.proxy.async` should be used to synchronize memory between *generic\nproxy* and the *async proxy*.\n\nThe completion of a `cp{.reduce}.async.bulk` operation is followed by an implicit *generic-async*\nproxy fence. So the result of the asynchronous operation is made visible to the generic proxy as\nsoon as its completion is observed. *Async-group* OR *mbarrier-based* completion mechanism must\nbe used to wait for the completion of the `cp{.reduce}.async.bulk` instructions."
+}

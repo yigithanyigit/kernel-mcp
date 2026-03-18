@@ -1,0 +1,5 @@
+{
+  "heading": "3.3.On-chip Shared Memory\uf0c1",
+  "level": 2,
+  "content": "As illustrated by [Figure 4](#set-of-simt-multiprocessors-hardware-model), each multiprocessor has\non-chip memory of the four following types:\n\n* One set of local 32-bit *registers* per processor,\n* A parallel data cache or *shared memory* that is shared by all scalar processor cores and is where\n  the shared memory space resides,\n* A read-only *constant cache* that is shared by all scalar processor cores and speeds up reads from\n  the constant memory space, which is a read-only region of device memory,\n* A read-only *texture cache* that is shared by all scalar processor cores and speeds up reads from\n  the texture memory space, which is a read-only region of device memory; each multiprocessor\n  accesses the texture cache via a *texture unit* that implements the various addressing modes and\n  data filtering.\n\nThe local and global memory spaces are read-write regions of device memory."
+}

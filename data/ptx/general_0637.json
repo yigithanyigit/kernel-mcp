@@ -1,0 +1,5 @@
+{
+  "heading": "13.32.Changes in PTX ISA Version 4.0\uf0c1",
+  "level": 2,
+  "content": "New Features\n\nPTX ISA version 4.0 introduces the following new features:\n\n* Support for `sm_32` and `sm_50` target architectures.\n* Support for 64bit performance counter special registers `%pm0_64,..,%pm7_64`.\n* A new `istypep` instruction.\n* A new instruction, `rsqrt.approx.ftz.f64` has been added to compute a fast approximation of the\n  square root reciprocal of a value.\n* Support for a new directive `.attribute` for specifying special attributes of a variable.\n* Support for `.managed` variable attribute.\n\nSemantic Changes and Clarifications\n\nThe `vote` instruction semantics were updated to clearly indicate that an inactive thread in a\nwarp contributes a 0 for its entry when participating in `vote.ballot.b32`."
+}

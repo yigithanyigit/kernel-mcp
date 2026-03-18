@@ -1,0 +1,5 @@
+{
+  "heading": "8.6.Proxies\uf0c1",
+  "level": 2,
+  "content": "A *memory proxy*, or a *proxy* is an abstract label applied to a method of memory access. When two\nmemory operations use distinct methods of memory access, they are said to be different *proxies*.\n\nMemory operations as defined in [Operation types](#operation-types) use *generic*\nmethod of memory access, i.e. a *generic proxy*. Other operations such as textures and surfaces all\nuse distinct methods of memory access, also distinct from the *generic* method.\n\nA *proxy fence* is required to synchronize memory operations across different *proxies*. Although\nvirtual aliases use the *generic* method of memory access, since using distinct virtual addresses\nbehaves as if using different *proxies*, they require a *proxy fence* to establish memory ordering."
+}

@@ -1,0 +1,7 @@
+{
+  "heading": "13.18.Changes in PTX ISA Version 7.3\uf0c1",
+  "instruction": "Changes in PTX ISA Version 7.3",
+  "level": 2,
+  "architectures": [],
+  "content": "New Features\n\nPTX ISA version 7.3 introduces the following new features:\n\n* Extends `mask()` operator used in initializers to also support integer constant expression.\n* Adds support for stack manpulation instructions that allow manipulating stack using `stacksave`\n  and `stackrestore` instructions and allocation of per-thread stack using `alloca`\n  instruction.\n\nSemantic Changes and Clarifications\n\nThe unimplemented version of `alloca` from the older PTX ISA specification has been replaced with\nnew stack manipulation instructions in PTX ISA version 7.3."
+}

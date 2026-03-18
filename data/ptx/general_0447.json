@@ -1,0 +1,5 @@
+{
+  "heading": "9.7.16.6.4.1.Pipelined instructions, same thread\uf0c1",
+  "level": 6,
+  "content": "In this pattern, no explicit ordering mechanism is needed and the ordering guarantee is\nprovided by the pipelined instruction pairing.\n\nExample:\n\n```\ntcgen05.mma\ntcgen05.mma (same shape and accumulator)\n```\n\nThe two instructions will be executed in program order."
+}

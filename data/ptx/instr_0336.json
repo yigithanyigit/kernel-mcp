@@ -1,0 +1,10 @@
+{
+  "heading": "9.7.4.10.Half Precision Floating Point Instructions:ex2\uf0c1",
+  "instruction": "Half Precision Floating Point Instructions:ex2",
+  "level": 4,
+  "architectures": [
+    "sm_75",
+    "sm_90"
+  ],
+  "content": "`ex2`\n\nFind the base-2 exponent of input.\n\nSyntax\n\n```\nex2.approx.atype     d, a;\nex2.approx.ftz.btype d, a;\n\n.atype = { .f16,  .f16x2}\n.btype = { .bf16, .bf16x2}\n```\n\nDescription\n\nRaise 2 to the power `a`.\n\nThe type of operands `d` and `a` are as specified by `.type`.\n\nFor `.f16x2` or `.bf16x2` instruction type, each of the half-word operands are operated in\nparallel and the results are packed appropriately into a `.f16x2` or `.bf16x2`.\n\nSemantics\n\n```\nif (.type == .f16 || .type == .bf16) {\n  d = 2 ^ a\n} else if (.type == .f16x2 || .type == .bf16x2) {\n  fA[0] = a[0:15];\n  fA[1] = a[16:31];\n  d[0] = 2 ^ fA[0]\n  d[1] = 2 ^ fA[1]\n}\n```\n\nNotes\n\n`ex2.approx.{f16, f16x2, bf16, bf16x2}` implement a fast approximation to 2a.\n\nFor the `.f16` type, subnormal inputs are supported. `ex2.approx.ftz.bf16` flushes subnormal\ninputs and results to sign-preserving zero.\n\nResults of `ex2.approx.ftz.bf16` for various corner-case inputs are as follows:\n\n| Input | Result |\n| --- | --- |\n| -Inf | +0.0 |\n| -subnormal | +1.0 |\n| -0.0 | +1.0 |\n| +0.0 | +1.0 |\n| +subnormal | +1.0 |\n| +Inf | +Inf |\n| NaN | NaN |\n\nResults of `ex2.approx.f16` for various corner-case inputs are as follows:\n\n| Input | Result |\n| --- | --- |\n| -Inf | +0.0 |\n| -0.0 | +1.0 |\n| +0.0 | +1.0 |\n| +Inf | +Inf |\n| NaN | NaN |\n\nThe maximum relative error for `.f16` type is 2-9.9. The maximum relative error for `.bf16` type\nis 2-7.\n\nPTX ISA Notes\n\nIntroduced in PTX ISA version 7.0.\n\n`ex2.approx.ftz.{bf16/bf16x2}` introduced in PTX ISA version 7.8.\n\nTarget ISA Notes\n\nRequires `sm_75` or higher.\n\n`ex2.approx.ftz.{bf16/bf16x2}` requires `sm_90` or higher.\n\nExamples\n\n```\nex2.approx.f16         h1, h0;\nex2.approx.f16x2       hd1, hd0;\nex2.approx.ftz.bf16    b1, b2;\nex2.approx.ftz.bf16x2  hb1, hb2;\n```"
+}

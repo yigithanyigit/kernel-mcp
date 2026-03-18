@@ -1,0 +1,12 @@
+{
+  "heading": "Source: cutlass.impl_utils",
+  "module": "cutlass.impl_utils",
+  "file_path": "impl_utils.py",
+  "content": "# Module: `cutlass.impl_utils`\n\nFile: `impl_utils.py`\n\n\n---\n\n## `check_value_in(value, possible_values: list, value_description: str, prefix) -> None`\n\n\n\n---\n\n## `check_type_in(ty, possible_types: list, type_description: str, prefix) -> None`\n\n",
+  "symbols": [
+    "check_value_in",
+    "check_type_in"
+  ],
+  "source_code": "# SPDX-FileCopyrightText: Copyright (c) 2025 - 2026 NVIDIA CORPORATION & AFFILIATES. All rights reserved.\n# SPDX-License-Identifier: LicenseRef-NvidiaProprietary\n#\n# Use of this software is governed by the terms and conditions of the\n# NVIDIA End User License Agreement (EULA), available at:\n# https://docs.nvidia.com/cutlass/media/docs/pythonDSL/license.html\n#\n# Any use, reproduction, disclosure, or distribution of this software\n# and related documentation outside the scope permitted by the EULA\n# is strictly prohibited.\n\n\ndef check_value_in(\n    value, possible_values: list, value_description: str, prefix=\"\"\n) -> None:\n    if value not in possible_values:\n        err_msg = prefix\n        if err_msg != \"\":\n            err_msg += \": \"\n        err_msg += f\"invalid {value_description}, got {value}, must be one of {possible_values}\"\n        raise ValueError(err_msg)\n\n\ndef check_type_in(ty, possible_types: list, type_description: str, prefix=\"\") -> None:\n    if not isinstance(ty, type):\n        ty = type(ty)\n    if ty not in possible_types:\n        err_msg = prefix\n        if err_msg != \"\":\n            err_msg += \": \"\n        err_msg += f\"invalid type for {type_description}, got {ty}, must be one of {possible_types}\"\n        raise TypeError(err_msg)\n",
+  "type": "source"
+}

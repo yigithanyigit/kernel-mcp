@@ -1,0 +1,5 @@
+{
+  "heading": "5.3.1.Texture and Surface Properties\uf0c1",
+  "level": 3,
+  "content": "Fields `width`, `height`, and `depth` specify the size of the texture or surface in number of\nelements in each dimension.\n\nThe `channel_data_type` and `channel_order` fields specify these properties of the texture or\nsurface using enumeration types corresponding to the source language API. For example, see\n[Channel Data Type and Channel Order Fields](#channel-data-type-and-channel-order-fields) for\nthe OpenCL enumeration types currently supported in PTX."
+}

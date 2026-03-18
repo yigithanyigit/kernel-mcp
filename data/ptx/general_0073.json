@@ -1,0 +1,5 @@
+{
+  "heading": "5.5.3.1.Bounding Box\uf0c1",
+  "level": 4,
+  "content": "A tensor can be accessed in chunks known as *Bounding Box*. The Bounding Box has the same\ndimensionality as the tensor they are accessing into. Size of each bounding Box must be a multiple\nof 16 bytes. The address of the bounding Box must also be aligned to 16 bytes.\n\nBounding Box has the following access properties:\n\n* Bounding Box dimension sizes\n* Out of boundary access mode\n* Traversal strides\n\nThe tensor-coordinates, specified in the PTX tensor instructions, specify the starting offset of the\nbounding box. Starting offset of the bounding box along with the rest of the bounding box\ninformation together are used to determine the elements which are to be accessed."
+}

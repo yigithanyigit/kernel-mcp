@@ -1,0 +1,5 @@
+{
+  "heading": "5.4.7.Variable Attributes\uf0c1",
+  "level": 3,
+  "content": "Variables may be declared with an optional `.attribute` directive which allows specifying special\nattributes of variables. Keyword `.attribute` is followed by attribute specification inside\nparenthesis. Multiple attributes are separated by comma.\n\n[Variable and Function Attribute Directive: .attribute](#variable-and-function-attribute-directive-attribute) describes the `.attribute`\ndirective."
+}

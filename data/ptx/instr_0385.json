@@ -1,0 +1,18 @@
+{
+  "heading": "9.7.9.Data Movement and Conversion Instructions\uf0c1 (part 26)",
+  "instruction": "Data Movement and Conversion Instructions",
+  "level": 3,
+  "architectures": [
+    "sm_100",
+    "sm_100a",
+    "sm_101a",
+    "sm_70",
+    "sm_72",
+    "sm_75",
+    "sm_80",
+    "sm_89",
+    "sm_90",
+    "sm_90a"
+  ],
+  "content": "The values of `.elemtype` do not correspond to the values of the `CUtensorMapDataType` enum used in the driver API.\n\nIf no state space is specified then [Generic Addressing](#generic-addressing) is used.\nIf the address specified by `addr` does not fall within the address window of `.global`\nor `.shared::cta` state space then the behavior is undefined.\n\n`tensormap.replace` is treated as a weak memory operation, on the entire 1024-bit opaque\n[tensor-map](#tensor-tensormap) object, in the [Memory Consistency Model](#memory-consistency-model).\n\nPTX ISA Notes\n\nIntroduced in PTX ISA version 8.3.\n\nQualifier `.swizzle_atomicity` introduced in PTX ISA version 8.6.\n\nQualifier `.elemtype` with values from `13` to `15`, both inclusive, is\nsupported in PTX ISA version 8.7 onwards.\n\nQualifier `.swizzle_mode` with value `4` is supported from PTX ISA version 8.8 onwards.\n\nTarget ISA Notes\n\nSupported on following architectures:\n\n* `sm_90a`\n* `sm_100a`\n* `sm_101a` (Renamed to `sm_110a` from PTX ISA version 9.0)\n* `sm_120a`\n* And is supported on following family-specific architectures from PTX ISA version 8.8:\n\n  + `sm_100f` or higher in the same family\n  + `sm_101f` or higher in the same family (Renamed to `sm_110f` from PTX ISA version 9.0)\n  + `sm_120f` or higher in the same family\n* `sm_110f` or higher in the same family\n\nQualifier `.swizzle_atomicity` is supported on following architectures:\n\n* `sm_100a`\n* `sm_101a` (Renamed to `sm_110a` from PTX ISA version 9.0)\n* `sm_120a` (refer to [section](#data-movement-and-conversion-instructions-tensor-copy-restrictions)\n  for restrictions on sm_120a)\n* And is supported on following family-specific architectures from PTX ISA version 8.8:\n\n  + `sm_100f` or higher in the same family\n  + `sm_101f` or higher in the same family (Renamed to `sm_110f` from PTX ISA version 9.0)\n  + `sm_120f` or higher in the same family\n* `sm_110f` or higher in the same family\n\n`.field3` variant `.elemtype` corresponding to `new_val` values `13`, `14`\nand `15` is supported on following architectures:\n\n* `sm_100a`\n* `sm_101a` (Renamed to `sm_110a` from PTX ISA version 9.0)\n* `sm_120a` (refer to [section](#data-movement-and-conversion-instructions-tensor-copy-restrictions)\n  for restrictions on sm_120a)\n* And is supported on following family-specific architectures from PTX ISA version 8.8:\n\n  + `sm_100f` or higher in the same family\n  + `sm_101f` or higher in the same family (Renamed to `sm_110f` from PTX ISA version 9.0)\n  + `sm_120f` or higher in the same family\n* `sm_110f` or higher in the same family\n\n`.field3` variant `.swizzle_mode` corresponding to `new_val` value `4` is supported on\nfollowing architectures:\n\n* `sm_103a` (refer to [section](#data-movement-and-conversion-instructions-tensor-copy-restrictions)\n  for restrictions on sm_103a)\n\nExamples\n\n```\ntensormap.replace.tile.global_address.shared::cta.b1024.b64   [sMem], new_val;\n```"
+}

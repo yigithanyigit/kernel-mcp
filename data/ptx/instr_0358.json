@@ -1,0 +1,7 @@
+{
+  "heading": "9.7.8.8.Logic and Shift Instructions:shl\uf0c1",
+  "instruction": "Logic and Shift Instructions:shl",
+  "level": 4,
+  "architectures": [],
+  "content": "`shl`\n\nShift bits left, zero-fill on right.\n\nSyntax\n\n```\nshl.type d, a, b;\n\n.type = { .b16, .b32, .b64 };\n```\n\nDescription\n\nShift `a` left by the amount specified by unsigned 32-bit value in `b`.\n\nSemantics\n\n```\nd = a << b;\n```\n\nNotes\n\nShift amounts greater than the register width *N* are clamped to *N*.\n\nThe sizes of the destination and first source operand must match, but not necessarily the type. The\n`b` operand must be a 32-bit value, regardless of the instruction type.\n\nPTX ISA Notes\n\nIntroduced in PTX ISA version 1.0.\n\nTarget ISA Notes\n\nSupported on all target architectures.\n\nExample\n\n```\nshl.b32  q,a,2;\n```"
+}

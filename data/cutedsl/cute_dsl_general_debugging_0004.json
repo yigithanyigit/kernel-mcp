@@ -1,0 +1,8 @@
+{
+  "heading": "Enabling Logging",
+  "level": 3,
+  "content": "CuTe DSL provides environment variables to control logging level:\n\n```\n# Enable console logging (default: False)\nexport CUTE_DSL_LOG_TO_CONSOLE=1\n\n# Log to file instead of console (default: False)\nexport CUTE_DSL_LOG_TO_FILE=my_log.txt\n\n# Control log verbosity (0, 10, 20, 30, 40, 50, default: 10)\nexport CUTE_DSL_LOG_LEVEL=20\n```",
+  "source_page": "cute_dsl_general/debugging.html",
+  "source_url": "https://docs.nvidia.com/cutlass/latest/media/docs/pythonDSL/cute_dsl_general/debugging.html",
+  "page_title": "Debugging"
+}

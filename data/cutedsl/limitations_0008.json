@@ -1,0 +1,8 @@
+{
+  "heading": "Design Limitations Likely to Remain",
+  "level": 2,
+  "content": "The primary objective of CuTe DSL is to provide a domain-specific language for expressing\ncomplex CUDA kernels with optimal GPU performance, not to execute arbitrary Python code on GPU hardware.\n\nThe following limitations will likely remain by design:\n\n* **Complex Data Structures as Dynamic Values**: Lists, tuples, and dictionaries will continue to function\n  as static containers. While they can store dynamic values, their structure (adding/removing elements)\n  cannot be modified during execution of JIT-compiled functions.\n* **Dependent Types**: Supporting dependent types would introduce substantial complexity and\n  adversely affect the performance characteristics of generated code.\n* **CuTe Layout Algebra**: We don\u2019t have plan to extend the support of CuTe Layout Algebra\n  under native Python Context. We are planning to extend support for data types and allow\n  JIT function to interoperate with native Python code.",
+  "source_page": "limitations.html",
+  "source_url": "https://docs.nvidia.com/cutlass/latest/media/docs/pythonDSL/limitations.html",
+  "page_title": "Limitations"
+}

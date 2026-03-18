@@ -1,0 +1,7 @@
+{
+  "heading": "13.7.Changes in PTX ISA Version 8.5\uf0c1",
+  "instruction": "Changes in PTX ISA Version 8.5",
+  "level": 2,
+  "architectures": [],
+  "content": "New Features\n\nPTX ISA version 8.5 introduces the following new features:\n\n* Adds support for `mma.sp::ordered_metadata` instruction.\n\nSemantic Changes and Clarifications\n\n* Values `0b0000`, `0b0101`, `0b1010`, `0b1111` for sparsity metadata (operand `e`)\n  of instruction `mma.sp` are invalid and their usage results in undefined behavior."
+}

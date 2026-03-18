@@ -1,0 +1,8 @@
+{
+  "heading": "Using Compute-Sanitizer",
+  "level": 3,
+  "content": "For detecting memory errors and race conditions:\n\n```\ncompute-sanitizer --some_options python your_dsl_code.py\n```\n\nPlease refer to the [compute-sanitizer documentation](https://developer.nvidia.com/compute-sanitizer) for more details.",
+  "source_page": "cute_dsl_general/debugging.html",
+  "source_url": "https://docs.nvidia.com/cutlass/latest/media/docs/pythonDSL/cute_dsl_general/debugging.html",
+  "page_title": "Debugging"
+}

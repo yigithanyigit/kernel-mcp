@@ -1,0 +1,11 @@
+{
+  "heading": "9.7.13.4.Parallel Synchronization and Communication Instructions:membar/fence\uf0c1 (part 2)",
+  "instruction": "Parallel Synchronization and Communication Instructions:membar/fence",
+  "level": 4,
+  "architectures": [
+    "sm_60",
+    "sm_70",
+    "sm_90"
+  ],
+  "content": "// Acquire remote barrier state via async proxy.\nbarrier.cluster.wait.acquire;\nfence.proxy.async::generic.acquire.sync_restrict::shared::cluster.cluster;\n\n// Release local barrier state via generic proxy.\nmbarrier.init [bar];\nfence.mbarrier_init.release.cluster;\nbarrier.cluster.arrive.relaxed;\n\n// Acquire local shared memory via generic proxy.\nmbarrier.try_wait.relaxed.cluster.shared::cta.b64 complete, [addr], parity;\nfence.acquire.sync_restrict::shared::cluster.cluster;\n\n// Release local shared memory via generic proxy.\nfence.release.sync_restrict::shared::cta.cluster;\nmbarrier.arrive.relaxed.cluster.shared::cluster.b64 state, [bar];\n```"
+}

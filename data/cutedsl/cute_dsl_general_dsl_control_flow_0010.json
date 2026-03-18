@@ -1,0 +1,8 @@
+{
+  "heading": "Limitations of Dynamic Control Flow",
+  "level": 3,
+  "content": "* Early-exit `break`, `continue`, `pass` or raising exception from\n  control flow body are not yet supported.\n* Operations in the control flow body are traced only when tracing is active in\n  that region.\n* Values originating in control flow body are not available outside the control\n  flow.\n* Changing type of a variable in control flow body is not allowed.\n\n**Example:**\n\n```\n@cute.jit\ndef control_flow_negative_examples(predicate: cutlass.Boolean):\n    n = 10\n\n    # \u274c This loop is dynamic, early-exit isn't allowed.\n    for i in range(n):\n        if i == 5:\n            break         # Early-exit\n\n    if predicate:\n        val = 10\n        # \u274c return from control flow body is not allowed.\n        return\n        # \u274c Raising exception from control flow body is not allowed.\n        raise ValueError(\"This is not allowed\")\n        # \u274c Using pass in control flow body is not allowed.\n        pass\n\n    # \u274c val is not available outside the dynamic if\n    cute.printf(\"%d\\\\n\", val)\n\n    if predicate:\n        # \u274c Changing type of a variable in control flow body is not allowed.\n        n = 10.0\n```",
+  "source_page": "cute_dsl_general/dsl_control_flow.html",
+  "source_url": "https://docs.nvidia.com/cutlass/latest/media/docs/pythonDSL/cute_dsl_general/dsl_control_flow.html",
+  "page_title": "Control Flow"
+}

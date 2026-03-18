@@ -1,0 +1,5 @@
+{
+  "heading": "11.4.5.Performance-Tuning Directives:.maxnctapersm(deprecated)\uf0c1",
+  "level": 3,
+  "content": "`.maxnctapersm`\n\nMaximum number of CTAs per SM.\n\nSyntax\n\n```\n.maxnctapersm ncta\n```\n\nDescription\n\nDeclare the maximum number of CTAs from the kernel\u2019s grid that may be mapped to a single\nmultiprocessor (SM).\n\nNotes\n\nOptimizations based on .maxnctapersm generally need `.maxntid` to be specified as well. The\noptimizing backend compiler uses `.maxntid` and `.maxnctapersm` to compute an upper-bound on\nper-thread register usage so that the specified number of CTAs can be mapped to a single\nmultiprocessor. However, if the number of registers used by the backend is sufficiently lower than\nthis bound, additional CTAs may be mapped to a single multiprocessor. For this reason,\n`.maxnctapersm` has been renamed to .minnctapersm in PTX ISA version 2.0.\n\nPTX ISA Notes\n\nIntroduced in PTX ISA version 1.3. Deprecated in PTX ISA version 2.0.\n\nTarget ISA Notes\n\nSupported on all target architectures.\n\nExamples\n\n```\n.entry foo .maxntid 256 .maxnctapersm 4 { ... }\n```"
+}

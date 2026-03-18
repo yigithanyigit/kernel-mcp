@@ -1,0 +1,8 @@
+{
+  "heading": "Access the dumped contents programmatically",
+  "level": 3,
+  "content": "For compiled kernels, the generated PTX/CUBIN/IR can be accessed programmatically as well through following attributes:\n\n* `__ptx__`: The generated PTX code of the compiled kernel.\n* `__cubin__`: The generated CUBIN data of the compiled kernel.\n* `__mlir__`: The generated IR code of the compiled kernel.\n\n```\ncompiled_foo = cute.compile(foo, ...)\nprint(f\"PTX: {compiled_foo.__ptx__}\")\nwith open(\"foo.cubin\", \"wb\") as f:\n    f.write(compiled_foo.__cubin__)\n```",
+  "source_page": "cute_dsl_general/debugging.html",
+  "source_url": "https://docs.nvidia.com/cutlass/latest/media/docs/pythonDSL/cute_dsl_general/debugging.html",
+  "page_title": "Debugging"
+}

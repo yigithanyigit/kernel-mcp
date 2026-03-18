@@ -1,0 +1,8 @@
+{
+  "heading": "Using Python\u2019sprintand CuTe\u2019scute.printf",
+  "level": 3,
+  "content": "CuTe DSL programs can use both Python\u2019s native `print()` as well as our own `cute.printf()` to\nprint debug information during kernel generation and execution. They differ in a few key ways:\n\n* Python\u2019s `print()` executes during compile-time only (no effect on the generated kernel) and is\n  typically used for printing static values (e.g. a fully static layouts).\n* `cute.printf()` executes at runtime on the GPU itself and changes the PTX being generated. This\n  can be used for printing values of tensors at runtime for diagnostics, but comes at a performance\n  overhead similar to that of printf() in CUDA C.\n\nFor detailed examples of using these functions for debugging, please refer to the associated\nnotebook referenced in [Educational Notebooks](notebooks.html).",
+  "source_page": "cute_dsl_general/debugging.html",
+  "source_url": "https://docs.nvidia.com/cutlass/latest/media/docs/pythonDSL/cute_dsl_general/debugging.html",
+  "page_title": "Debugging"
+}

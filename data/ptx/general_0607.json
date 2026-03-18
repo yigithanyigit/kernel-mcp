@@ -1,0 +1,5 @@
+{
+  "heading": "13.2.Changes in PTX ISA Version 9.1\uf0c1",
+  "level": 2,
+  "content": "New Features\n\nPTX ISA version 9.1 introduces the following new features:\n\n* Adds support for `.volatile` qualifier with `.local` state space for `ld` and\n  `st` instructions.\n* Adds support for `.f16x2` and `.bf16x2` source types for `cvt` instruction\n  with destination types `.e2m1x2`, `.e2m3x2`, `.e3m2x2`, `.e4m3x2`, `.e5m2x2`.\n* Adds support for `.scale_vec::4X` with `.ue8m0` as `.stype` with `.kind::mxf4nvf4` for\n  `mma`/`mma.sp` instructions.\n* Adds support for `.s2f6x2` instruction type for `cvt` instruction.\n* Adds support for `multimem.cp.async.bulk` and `multimem.cp.reduce.async.bulk` instructions.\n\nSemantic Changes and Clarifications\n\nNone."
+}

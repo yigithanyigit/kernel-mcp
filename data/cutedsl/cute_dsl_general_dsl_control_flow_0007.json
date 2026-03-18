@@ -1,0 +1,8 @@
+{
+  "heading": "While Loops",
+  "level": 2,
+  "content": "Standard Python `while` is supported.\n\n* **Condition without annotation** \u2192 lowered to intermediate representation (IR).\n* **Condition annotated with `cutlass.const_expr`** \u2192 evaluated at compile time.\n\n**Example:**\n\n```\n@cute.jit\ndef main(dynamic_var: cutlass.Int32):\n    n = 0\n\n    # \u2705 This is Python while loop, evaluated at compile time.\n    while cutlass.const_expr(n < 10):\n        cute.printf(\"Const branch\\\\n\")\n        n += 1\n\n    # \u2705 This is dynamic while loop, emitted IR while loop.\n    while dynamic_var == 10:\n        cute.printf(\"Dynamic True\\\\n\")\n        n += 1\n\n    # \u274c Using a dynamic value with `cutlass.const_expr` is not allowed.\n    while cutlass.const_expr(n < dynamic_var):\n        n += 1\n```",
+  "source_page": "cute_dsl_general/dsl_control_flow.html",
+  "source_url": "https://docs.nvidia.com/cutlass/latest/media/docs/pythonDSL/cute_dsl_general/dsl_control_flow.html",
+  "page_title": "Control Flow"
+}

@@ -1,0 +1,7 @@
+{
+  "heading": "13.33.Changes in PTX ISA Version 3.2\uf0c1",
+  "instruction": "Changes in PTX ISA Version 3.2",
+  "level": 2,
+  "architectures": [],
+  "content": "New Features\n\nPTX ISA version 3.2 introduces the following new features:\n\n* The texture instruction supports reads from multi-sample and multisample array textures.\n* Extends `.section` debugging directive to include label + immediate expressions.\n* Extends `.file` directive to include timestamp and file size information.\n\nSemantic Changes and Clarifications\n\nThe `vavrg2` and `vavrg4` instruction semantics were updated to indicate that instruction adds 1\nonly if Va[i] + Vb[i] is non-negative, and that the addition result is shifted by 1 (rather than\nbeing divided by 2)."
+}

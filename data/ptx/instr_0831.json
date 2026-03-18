@@ -1,0 +1,7 @@
+{
+  "heading": "9.7.19.1.Miscellaneous Instructions:brkpt\uf0c1",
+  "instruction": "Miscellaneous Instructions:brkpt",
+  "level": 4,
+  "architectures": [],
+  "content": "`brkpt`\n\nBreakpoint.\n\nSyntax\n\n```\nbrkpt;\n```\n\nDescription\n\nSuspends execution.\n\nPTX ISA Notes\n\nIntroduced in PTX ISA version 1.0.\n\nTarget ISA Notes\n\n`brkpt` requires `sm_11` or higher.\n\nExamples\n\n```\n    brkpt;\n@p  brkpt;\n```"
+}

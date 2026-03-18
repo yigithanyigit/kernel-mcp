@@ -1,0 +1,7 @@
+{
+  "heading": "13.9.Changes in PTX ISA Version 8.3\uf0c1",
+  "instruction": "Changes in PTX ISA Version 8.3",
+  "level": 2,
+  "architectures": [],
+  "content": "New Features\n\nPTX ISA version 8.3 introduces the following new features:\n\n* Adds support for pragma `used_bytes_mask` that is used to specify mask for used bytes for a load operation.\n* Extends `isspacep`, `cvta.to`, `ld` and `st` instructions to accept `::entry` and `::func`\n  sub-qualifiers with `.param` state space qualifier.\n* Adds support for `.b128` type on instructions `ld`, `ld.global.nc`, `ldu`, `st`, `mov` and `atom`.\n* Add support for instructions `tensormap.replace`, `tensormap.cp_fenceproxy` and support for qualifier\n  `.to_proxykind::from_proxykind` on instruction `fence.proxy` to support modifying `tensor-map`.\n\nSemantic Changes and Clarifications\n\nNone."
+}

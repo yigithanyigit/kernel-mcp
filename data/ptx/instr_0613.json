@@ -1,0 +1,12 @@
+{
+  "heading": "9.7.14.5.15.Warp-level matrix load instruction:ldmatrix\uf0c1 (part 2)",
+  "instruction": "Warp-level matrix load instruction:ldmatrix",
+  "level": 5,
+  "architectures": [
+    "sm_100",
+    "sm_100a",
+    "sm_101a",
+    "sm_75"
+  ],
+  "content": "// Load two 8x8 matrices in column-major format\n.reg .b64 addr;\n.reg .b32 d<2>;\nldmatrix.sync.aligned.m8n8.x2.trans.shared.b16 {d0, d1}, [addr];\n\n// Load four 8x8 matrices\n.reg .b64 addr;\n.reg .b32 d<4>;\nldmatrix.sync.aligned.m8n8.x4.b16 {d0, d1, d2, d3}, [addr];\n\n// Load one 16x16 matrices of 64-bit elements and transpose them\n.reg .b64 addr;\n.reg .b32 d<2>;\nldmatrix.sync.aligned.m16n16.x1.trans.shared.b8 {d0, d1}, [addr];\n\n// Load two 16x16 matrices of 64-bit elements and transpose them\n.reg .b64 addr;\n.reg .b32 d<4>;\nldmatrix.sync.aligned.m16n16.x2.trans.shared::cta.b8 {d0, d1, d2, d3}, [addr];\n\n// Load two 16x16 matrices of 6-bit elements and transpose them\n.reg .b64 addr;\n.reg .b32 d<4>;\nldmatrix.sync.aligned.m16n16.x2.trans.shared::cta.b8x16.b6x16_p32 {d0, d1, d2, d3}, [addr];\n```"
+}

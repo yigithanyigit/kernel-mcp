@@ -1,0 +1,7 @@
+{
+  "heading": "9.7.16.3.2.Stride Dimension Byte Offset\uf0c1",
+  "instruction": "Stride Dimension Byte Offset",
+  "level": 5,
+  "architectures": [],
+  "content": "The stride dimension byte offset is defined differently for transposed and non-transposed\nmatrices. The stride dimension byte offset is defined as follows for matrices whose element\ntypes are normalized to 128-bits:\n\n| Major-ness | Definition |\n| --- | --- |\n| K-Major | The offset from the first 8 rows to the next 8 rows. |\n| MN-Major | * Interleave: offset from the first row to the next row. * Swizzled layout: offset from the first 8 columns to the next 8   columns |"
+}

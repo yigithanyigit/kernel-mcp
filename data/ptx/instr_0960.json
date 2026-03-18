@@ -1,0 +1,9 @@
+{
+  "heading": "13.23.Changes in PTX ISA Version 6.4\uf0c1",
+  "instruction": "Changes in PTX ISA Version 6.4",
+  "level": 2,
+  "architectures": [
+    "sm_70"
+  ],
+  "content": "New Features\n\nPTX ISA version 6.4 introduces the following new features:\n\n* Adds support for `.noreturn` directive which can be used to indicate a function does not return\n  to it\u2019s caller function.\n* Adds support for `mma` instruction which allows performing matrix multiply-and-accumulate\n  operation.\n\nDeprecated Features\n\nPTX ISA version 6.4 deprecates the following features:\n\n* Support for `.satfinite` qualifier on floating point `wmma.mma` instruction.\n\nRemoved Features\n\nPTX ISA version 6.4 removes the following features:\n\n* Support for `shfl` and `vote` instructions without the `.sync` qualifier has been removed\n  for `.target``sm_70` and higher. This support was deprecated since PTX ISA version 6.0 as\n  documented in PTX ISA version 6.2.\n\nSemantic Changes and Clarifications\n\n* Clarified that resolving references of a `.weak` symbol considers only `.weak` or `.visible`\n  symbols with the same name and does not consider local symbols with the same name.\n* Clarified that in `cvt` instruction, modifier `.ftz` can only be specified when either\n  `.atype` or `.dtype` is `.f32`."
+}

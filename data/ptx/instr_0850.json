@@ -1,0 +1,9 @@
+{
+  "heading": "10.11.Special Registers:%is_explicit_cluster\uf0c1",
+  "instruction": "Special Registers:%is_explicit_cluster",
+  "level": 2,
+  "architectures": [
+    "sm_90"
+  ],
+  "content": "`%is_explicit_cluster`\n\nChecks if user has explicitly specified cluster launch.\n\nSyntax (predefined)\n\n```\n.sreg .pred %is_explicit_cluster;\n```\n\nDescription\n\nA predefined, read-only special register initialized with the predicate value of whether the cluster\nlaunch is explicitly specified by user.\n\nPTX ISA Notes\n\nIntroduced in PTX ISA version 7.8.\n\nTarget ISA Notes\n\nRequires `sm_90` or higher.\n\nExamples\n\n```\n.reg .pred p;\n\nmov.pred  p, %is_explicit_cluster;\n```"
+}

@@ -1,0 +1,8 @@
+{
+  "heading": "API documentation (part 3)",
+  "level": 2,
+  "content": "    __init__(*arg*)\n\ncutlass.cute.runtime.find_runtime_libraries( : *\\**, : *enable_tvm_ffi: bool = True*, ) \u2192 List[str]\n:   Find the runtime libraries that needs to be available for loading modules.\n\n    Parameters:\n    :   **enable_tvm_ffi** (*bool**,* *optional*) \u2013 Whether to enable TVM-FFI.\n\n    Returns:\n    :   A list of runtime libraries that needs to be available for loading modules.\n\n    Return type:\n    :   list\n\ncutlass.cute.runtime.load_module(*file_path: str*, *\\**, *enable_tvm_ffi: bool = False*)\n:   Load a module from a file path.\n\n    Parameters:\n    :   * **file_path** (*str*) \u2013 The path to the module file\n        * **enable_tvm_ffi** (*bool**,* *optional*) \u2013 Whether to enable TVM-FFI, defaults to True. When True, the module will be loaded as a TVM-FFI module.\n\n    Returns:\n    :   A module object\n\n    Return type:\n    :   module",
+  "source_page": "cute_dsl_api/cute_runtime.html",
+  "source_url": "https://docs.nvidia.com/cutlass/latest/media/docs/pythonDSL/cute_dsl_api/cute_runtime.html",
+  "page_title": "Runtime"
+}

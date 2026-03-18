@@ -1,0 +1,12 @@
+{
+  "heading": "9.7.14.4.5.Warp-level Matrix Multiply-and-Accumulate Instruction:wmma.mma\uf0c1 (part 2)",
+  "instruction": "Warp-level Matrix Multiply-and-Accumulate Instruction:wmma.mma",
+  "level": 5,
+  "architectures": [
+    "sm_70",
+    "sm_72",
+    "sm_75",
+    "sm_80"
+  ],
+  "content": "// Compute double precision wmma\n.reg .f64 a, b, c<2>, d<2>;\nwmma.mma.sync.aligned.m8n8k4.row.col.f64.f64.f64.f64\n        {d0, d1}, {a}, {b}, {c0, c1};\n\n// Compute alternate floating point precision wmma\n.reg .b32 a<2>, b<2>, c<8>, d<8>;\nwmma.mma.sync.aligned.m16n16k8.row.col.f32.tf32.tf32.f32\n        {d0, d1, d2, d3, d4, d5, d6, d7},\n        {a0, a1, a2, a3}, {b0, b1, b2, b3},\n        {c0, c1, c2, c3, c4, c5, c6, c7};\n```"
+}

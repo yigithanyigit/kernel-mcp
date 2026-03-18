@@ -1,0 +1,5 @@
+{
+  "heading": "8.1.1.Limitations on atomicity at system scope\uf0c1",
+  "level": 3,
+  "content": "When communicating with the host CPU, certain strong operations with system scope may not be\nperformed atomically on some systems. For more details on atomicity guarantees to host memory, see\nthe *CUDA Atomicity Requirements*."
+}

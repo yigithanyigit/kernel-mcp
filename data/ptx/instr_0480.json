@@ -1,0 +1,7 @@
+{
+  "heading": "9.7.12.2.Control Flow Instructions:@\uf0c1",
+  "instruction": "Control Flow Instructions:@",
+  "level": 4,
+  "architectures": [],
+  "content": "`@`\n\nPredicated execution.\n\nSyntax\n\n```\n@{!}p    instruction;\n```\n\nDescription\n\nExecute an instruction or instruction block for threads that have the guard predicate\n`True`. Threads with a `False` guard predicate do nothing.\n\nSemantics\n\nIf `{!}p` then instruction\n\nPTX ISA Notes\n\nIntroduced in PTX ISA version 1.0.\n\nTarget ISA Notes\n\nSupported on all target architectures.\n\nExamples\n\n```\n    setp.eq.f32  p,y,0;     // is y zero?\n@!p div.f32      ratio,x,y  // avoid division by zero\n\n@q  bra L23;                // conditional branch\n```"
+}

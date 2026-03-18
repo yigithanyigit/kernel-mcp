@@ -1,0 +1,5 @@
+{
+  "heading": "5.4.3.Array Declarations\uf0c1",
+  "level": 3,
+  "content": "Array declarations are provided to allow the programmer to reserve space. To declare an array, the\nvariable name is followed with dimensional declarations similar to fixed-size array declarations\nin C. The size of each dimension is a constant expression.\n\nExamples\n\n```\n.local  .u16 kernel[19][19];\n.shared .u8  mailbox[128];\n```\n\nThe size of the array specifies how many elements should be reserved. For the declaration of array\n*kernel* above, 19\\*19 = 361 halfwords are reserved, for a total of 722 bytes.\n\nWhen declared with an initializer, the first dimension of the array may be omitted. The size of the\nfirst array dimension is determined by the number of elements in the array initializer.\n\nExamples\n\n```\n.global .u32 index[] = { 0, 1, 2, 3, 4, 5, 6, 7 };\n.global .s32 offset[][2] = { {-1, 0}, {0, -1}, {1, 0}, {0, 1} };\n```\n\nArray *index* has eight elements, and array *offset* is a 4x2 array."
+}

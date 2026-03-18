@@ -1,0 +1,7 @@
+{
+  "heading": "10.25.Special Registers:%pm0\u2026%pm7\uf0c1",
+  "instruction": "Special Registers:%pm0\u2026%pm7",
+  "level": 2,
+  "architectures": [],
+  "content": "`%pm0` \u2026 `%pm7`\n\nPerformance monitoring counters.\n\nSyntax (predefined)\n\n```\n.sreg .u32 %pm<8>;\n```\n\nDescription\n\nSpecial registers `%pm0` \u2026 `%pm7` are unsigned 32-bit read-only performance monitor counters. Their\nbehavior is currently undefined.\n\nPTX ISA Notes\n\n`%pm0` \u2026 `%pm3` introduced in PTX ISA version 1.3.\n\n`%pm4` \u2026 `%pm7` introduced in PTX ISA version 3.0.\n\nTarget ISA Notes\n\n`%pm0` \u2026 `%pm3` supported on all target architectures.\n\n`%pm4` \u2026 `%pm7` require `sm_20` or higher.\n\nExamples\n\n```\nmov.u32  r1,%pm0;\nmov.u32  r1,%pm7;\n```"
+}

@@ -1,0 +1,8 @@
+{
+  "heading": "Implicit Conversion",
+  "level": 2,
+  "content": "Tensors originating from frameworks supporting the DLPack protocol can be directly provided to a\nJIT function as a regular parameter. CuTe DSL\u2019s runtime implicitly converts the original tensor to a\nCuTe tensor with a fully dynamic layout except for the stride element corresponding to the leading\ndimension. The example below demonstrates this use case.\n\n```\nimport torch\nimport cutlass.cute as cute\n\n@cute.jit\ndef foo(src):\n    \"\"\"\n    The following lines print\n\n    ptr<f32, generic> o (?,?,?):(?,?,1)\n    <class 'cutlass.cute.core._Tensor'>\n    \"\"\"\n    print(src)\n    print(type(src))\n\na = torch.randn(30, 20, 32, device=\"cpu\")\nfoo(a)\n```",
+  "source_page": "cute_dsl_general/framework_integration.html",
+  "source_url": "https://docs.nvidia.com/cutlass/latest/media/docs/pythonDSL/cute_dsl_general/framework_integration.html",
+  "page_title": "Integration with Frameworks"
+}

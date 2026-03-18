@@ -1,0 +1,5 @@
+{
+  "heading": "9.7.3.10.Floating Point Instructions:neg\uf0c1",
+  "level": 4,
+  "content": "`neg`\n\nArithmetic negate.\n\nSyntax\n\n```\nneg{.ftz}.f32  d, a;\nneg.f64        d, a;\n```\n\nDescription\n\nNegate the sign of `a` and store the result in `d`.\n\nSemantics\n\n```\nd = -a;\n```\n\nNotes\n\nSubnormal numbers:\n\n`sm_20+`\n:   By default, subnormal numbers are supported.\n\n    `neg.ftz.f32` flushes subnormal inputs and results to sign-preserving zero.\n\n`sm_1x`\n:   `neg.f64` supports subnormal numbers.\n\n    `neg.f32` flushes subnormal inputs and results to sign-preserving zero.\n\n`NaN` inputs yield an unspecified `NaN`. Future implementations may comply with the IEEE 754\nstandard by preserving payload and modifying only the sign bit.\n\nPTX ISA Notes\n\nIntroduced in PTX ISA version 1.0.\n\nTarget ISA Notes\n\n`neg.f32` supported on all target architectures.\n\n`neg.f64` requires `sm_13` or higher.\n\nExamples\n\n```\nneg.ftz.f32  x,f0;\n```"
+}

@@ -1,0 +1,9 @@
+{
+  "heading": "9.7.9.23.Data Movement and Conversion Instructions:mapa\uf0c1",
+  "instruction": "Data Movement and Conversion Instructions:mapa",
+  "level": 4,
+  "architectures": [
+    "sm_90"
+  ],
+  "content": "`mapa`\n\nMap the address of the shared variable in the target CTA.\n\nSyntax\n\n```\nmapa{.space}.type          d, a, b;\n\n// Maps shared memory address in register a into CTA b.\nmapa.shared::cluster.type  d, a, b;\n\n// Maps shared memory variable into CTA b.\nmapa.shared::cluster.type  d, sh, b;\n\n// Maps shared memory variable into CTA b.\nmapa.shared::cluster.type  d, sh + imm, b;\n\n// Maps generic address in register a into CTA b.\nmapa.type                  d, a, b;\n\n.space = { .shared::cluster }\n.type  = { .u32, .u64 }\n```\n\nDescription\n\nGet address in the CTA specified by operand `b` which corresponds to the address specified by\noperand `a`.\n\nInstruction type `.type` indicates the type of the destination operand `d` and the source\noperand `a`.\n\nWhen space is `.shared::cluster`, source `a` is either a shared memory variable or a register\ncontaining a valid shared memory address and register `d` contains a shared memory address. When\nthe optional qualifier `.space` is not specified, both `a` and `d` are registers containing\ngeneric addresses pointing to shared memory.\n\n`b` is a 32-bit integer operand representing the rank of the target CTA.\n\nDestination register `d` will hold an address in CTA `b` corresponding to operand `a`.\n\nPTX ISA Notes\n\nIntroduced in PTX ISA version 7.8.\n\nTarget ISA Notes\n\nRequires `sm_90` or higher.\n\nExamples\n\n```\nmapa.shared::cluster.u64 d1, %reg1, cta;\nmapa.shared::cluster.u32 d2, sh, 3;\nmapa.u64                 d3, %reg2, cta;\n```"
+}

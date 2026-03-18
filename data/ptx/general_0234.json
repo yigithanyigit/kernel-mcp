@@ -1,0 +1,5 @@
+{
+  "heading": "9.7.6.3.Comparison and Selection Instructions:selp\uf0c1",
+  "level": 4,
+  "content": "`selp`\n\nSelect between source operands, based on the value of the predicate source operand.\n\nSyntax\n\n```\nselp.type d, a, b, c;\n\n.type = { .b16, .b32, .b64,\n          .u16, .u32, .u64,\n          .s16, .s32, .s64,\n                .f32, .f64 };\n```\n\nDescription\n\nConditional selection. If `c` is `True`, `a` is stored in `d`, `b` otherwise. Operands\n`d`, `a`, and `b` must be of the same type. Operand `c` is a predicate.\n\nSemantics\n\n```\nd = (c == 1) ? a : b;\n```\n\nPTX ISA Notes\n\nIntroduced in PTX ISA version 1.0.\n\nTarget ISA Notes\n\n`selp.f64` requires `sm_13` or higher.\n\nExamples\n\n```\n    selp.s32  r0,r,g,p;\n@q  selp.f32  f0,t,x,xp;\n```"
+}

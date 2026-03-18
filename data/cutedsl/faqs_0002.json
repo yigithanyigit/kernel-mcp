@@ -1,0 +1,8 @@
+{
+  "heading": "Migration",
+  "level": 2,
+  "content": "**Should I port my code from C++ templates to Python?**\n\n> Almost certainly not, unless you need extremely fast JIT times for your kernel and C++ compile times\n> are a blocker for you. The 2.x and 3.x APIs will continue to be supported, and Nvidia\u2019s Hopper and\n> Blackwell architectures 3.x will continue to improve in terms of features\n> and performance.\n\n**Are portability promises different with Python?**\n\n> For the initial release while the DSL is still in beta, we do not promise any portability\n> as we may make changes to the DSL itself. While we do not expect any changes to the CuTe operations,\n> the DSL utilities, decorators, helper classes like pipelines and schedulers may change as we refine them\n> with community feedback. We encourage users to file issues and discussions on GitHub during this\n> beta period with their feedback!\n>\n> In the long term, we plan to continue to treat the OSS community with care.\n> Just like the prior history of CUTLASS, we plan not to break users unless necessary,\n> but we reserve the right to make limited breaking changes in case we believe it is a\n> net benefit to the community and project. These will be announced ahead of time and/or\n> clearly highlighted in the CHANGELOG of each release.",
+  "source_page": "faqs.html",
+  "source_url": "https://docs.nvidia.com/cutlass/latest/media/docs/pythonDSL/faqs.html",
+  "page_title": "FAQs"
+}

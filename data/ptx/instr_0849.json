@@ -1,0 +1,7 @@
+{
+  "heading": "10.10.Special Registers:%gridid\uf0c1",
+  "instruction": "Special Registers:%gridid",
+  "level": 2,
+  "architectures": [],
+  "content": "`%gridid`\n\nGrid identifier.\n\nSyntax (predefined)\n\n```\n.sreg .u64 %gridid;\n```\n\nDescription\n\nA predefined, read-only special register initialized with the per-grid temporal grid identifier. The\n`%gridid` is used by debuggers to distinguish CTAs and clusters within concurrent (small) grids.\n\nDuring execution, repeated launches of programs may occur, where each launch starts a\ngrid-of-CTAs. This variable provides the temporal grid launch number for this context.\n\nFor `sm_1x` targets, `%gridid` is limited to the range [0..216-1]. For `sm_20`,\n`%gridid` is limited to the range [0..232-1]. `sm_30` supports the entire 64-bit range.\n\nPTX ISA Notes\n\nIntroduced in PTX ISA version 1.0 as type `.u16`.\n\nRedefined as type `.u32` in PTX ISA version 1.3.\n\nRedefined as type `.u64` in PTX ISA version 3.0.\n\nFor compatibility with legacy PTX code, 16-bit and 32-bit `mov` and `cvt` instructions may be\nused to read the lower 16-bits or 32-bits of each component of `%gridid`.\n\nTarget ISA Notes\n\nSupported on all target architectures.\n\nExamples\n\n```\nmov.u64  %s, %gridid;  // 64-bit read of %gridid\nmov.u32  %r, %gridid;  // legacy code with 32-bit %gridid\n```"
+}

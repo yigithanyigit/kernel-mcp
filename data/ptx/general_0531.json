@@ -1,0 +1,5 @@
+{
+  "heading": "10.4.Special Registers:%warpid\uf0c1",
+  "level": 2,
+  "content": "`%warpid`\n\nWarp identifier.\n\nSyntax (predefined)\n\n```\n.sreg .u32 %warpid;\n```\n\nDescription\n\nA predefined, read-only special register that returns the thread\u2019s warp identifier. The warp\nidentifier provides a unique warp number within a CTA but not across CTAs within a grid. The warp\nidentifier will be the same for all threads within a single warp.\n\nNote that `%warpid` returns the location of a thread at the moment when read, but\nits value may change during execution, e.g., due to rescheduling of threads following\npreemption. For this reason, `%ctaid` and `%tid` should be used to compute a virtual warp index\nif such a value is needed in kernel code; `%warpid` is intended mainly to enable profiling and\ndiagnostic code to sample and log information such as work place mapping and load distribution.\n\nPTX ISA Notes\n\nIntroduced in PTX ISA version 1.3.\n\nTarget ISA Notes\n\nSupported on all target architectures.\n\nExamples\n\n```\nmov.u32  %r, %warpid;\n```"
+}

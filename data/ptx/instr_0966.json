@@ -1,0 +1,7 @@
+{
+  "heading": "13.29.Changes in PTX ISA Version 4.3\uf0c1",
+  "instruction": "Changes in PTX ISA Version 4.3",
+  "level": 2,
+  "architectures": [],
+  "content": "New Features\n\nPTX ISA version 4.3 introduces the following new features:\n\n* A new `lop3` instruction which allows arbitrary logical operation on 3 inputs.\n* Adds support for 64-bit computations in extended precision arithmetic instructions.\n* Extends `tex.grad` instruction to support `cube` and `acube` geometries.\n* Extends `tld4` instruction to support `a2d`, `cube` and `acube` geometries.\n* Extends `tex` and `tld4` instructions to support optional operands for offset vector and depth\n  compare.\n* Extends `txq` instruction to support querying texture fields from specific LOD.\n\nSemantic Changes and Clarifications\n\nNone."
+}

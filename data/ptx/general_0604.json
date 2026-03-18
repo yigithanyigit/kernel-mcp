@@ -1,0 +1,5 @@
+{
+  "heading": "12.4.Pragma Strings:\"frequency\"\uf0c1",
+  "level": 2,
+  "content": "`\"frequency\"`\n\nSpecify frequency for basic block execution.\n\nSyntax\n\n```\n.pragma \"frequency n\";\n```\n\nDescription\n\nThe `\"frequency\" pragma` is a directive that specifies the number of times a basic block is\nexecuted by an executing thread. The optimizing compiler backend treats this pragma as a hint\nwhich will be used for optimizations.\n\nOperand `n` is a 64-bit non-negative integer constant that specifies the execution frequency.\n\nNote that in order to have the desired effect of this pragma, it should be specified at the start of\nthe basic block. Basic block is defined as a straight-line sequence of instructions with only one\nentry point and one exit point.\n\nPTX ISA Notes\n\nIntroduced in PTX ISA version 9.0.\n\nTarget ISA Notes\n\nSupported on all target architectures.\n\nExamples\n\n```\n.entry foo (...)\n{\n    .pragma \"frequency 32\";\n    ...\n}\n```"
+}

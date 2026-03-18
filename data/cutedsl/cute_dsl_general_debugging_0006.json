@@ -1,0 +1,8 @@
+{
+  "heading": "Dump the generated IR",
+  "level": 3,
+  "content": "For users familiar with MLIR and compilers, CuTe DSL supports dumping the Intermediate Representation (IR).\nThis helps you verify whether the IR is generated as expected.\n\n```\n# Dump Generated CuTe IR (default: False)\nexport CUTE_DSL_PRINT_IR=1\n\n# Keep Generated CuTe IR in a file (default: False)\nexport CUTE_DSL_KEEP_IR=1\n```",
+  "source_page": "cute_dsl_general/debugging.html",
+  "source_url": "https://docs.nvidia.com/cutlass/latest/media/docs/pythonDSL/cute_dsl_general/debugging.html",
+  "page_title": "Debugging"
+}

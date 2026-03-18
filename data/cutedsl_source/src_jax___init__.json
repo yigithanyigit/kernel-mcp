@@ -1,0 +1,11 @@
+{
+  "heading": "Source: cutlass.jax",
+  "module": "cutlass.jax",
+  "file_path": "jax/__init__.py",
+  "content": "# Module: `cutlass.jax`\n\nFile: `jax/__init__.py`\n\n\n---\n\n## `is_available()`\n\n@cache\nReturns true of Jax support is enabled.",
+  "symbols": [
+    "is_available"
+  ],
+  "source_code": "# SPDX-FileCopyrightText: Copyright (c) 2025 - 2026 NVIDIA CORPORATION & AFFILIATES. All rights reserved.\n# SPDX-License-Identifier: LicenseRef-NvidiaProprietary\n#\n# Use of this software is governed by the terms and conditions of the\n# NVIDIA End User License Agreement (EULA), available at:\n# https://docs.nvidia.com/cutlass/media/docs/pythonDSL/license.html\n#\n# Any use, reproduction, disclosure, or distribution of this software\n# and related documentation outside the scope permitted by the EULA\n# is strictly prohibited.\n\nfrom functools import cache\n\n@cache\ndef is_available():\n    \"\"\"Returns true of Jax support is enabled.\"\"\"\n    try:\n        import jax\n\n        _HAVE_JAX = True\n    except ImportError as e:\n        _HAVE_JAX = False\n\n    return _HAVE_JAX\n\n\nif is_available():\n    from .primitive import cutlass_call\n    from .types import (\n        jax_to_cutlass_dtype,\n        cutlass_to_jax_dtype,\n        from_dlpack,\n        JaxArray,\n        TensorSpec,\n    )\n    from .compile import (\n        release_compile_cache,\n    )\n    from .ffi import (\n        get_export_disabled_safety_checks,\n        find_cute_dsl_runtime_library,\n        register_ffi,\n        is_ffi_registered,\n    )\n    from . import testing\n\n    # This is a legacy name for TensorSpec. It will be removed eventually.\n    TensorMode = TensorSpec\n\n    __all__ = [\n        \"cutlass_call\",\n        \"jax_to_cutlass_dtype\",\n        \"cutlass_to_jax_dtype\",\n        \"from_dlpack\",\n        \"JaxArray\",\n        \"TensorSpec\",\n        \"TensorMode\",\n        \"release_compile_cache\",\n        \"get_export_disabled_safety_checks\",\n        \"is_available\",\n        \"testing\",\n    ]\nelse:\n    # export is_available check for callers or tests.\n    __all__ = [\"is_available\"]\n",
+  "type": "source"
+}

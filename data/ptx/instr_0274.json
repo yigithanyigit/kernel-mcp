@@ -1,0 +1,7 @@
+{
+  "heading": "9.7.1.11.Integer Arithmetic Instructions:neg\uf0c1",
+  "instruction": "Integer Arithmetic Instructions:neg",
+  "level": 4,
+  "architectures": [],
+  "content": "`neg`\n\nArithmetic negate.\n\nSyntax\n\n```\nneg.type  d, a;\n\n.type = { .s8x4, .s16, .s32, .s64 };\n```\n\nDescription\n\nNegate the sign of **a** and store the result in **d**.\n\nFor `.s8x4` instruction types, forms input vectors by quarter word values\nfrom source operands. Quarter-word operands are then negated in parallel to\nproduce `.s8x4` result in destination.\n\nOperands `d` and `a` have the same type as the instruction type.\nFor instruction type `.s8x4`, operands `d` and `a` have type `.b32`.\n\nSemantics\n\n```\nif (type == s8x4) {\n    iA[0] = a[0:7];\n    iA[1] = a[8:15];\n    iA[2] = a[16:23];\n    iA[3] = a[24:31];\n    for (i = 0; i < 4; i++) {\n         d[i] = -iA[i];\n    }\n} else {\n    d = -a;\n}\n```\n\nNotes\n\nOnly for signed integers.\n\nPTX ISA Notes\n\nIntroduced in PTX ISA version 1.0.\n\n`neg.s8x4` introduced in PTX ISA version 9.2.\n\nTarget ISA Notes\n\nSupported on all target architectures.\n\n`neg.s8x4` is supported on following family-specific architectures:\n\n* `sm_120f` or higher in the same family\n\nExamples\n\n```\nneg.s32  r0,a;\nneg.s8x4 p, q, r;\n```"
+}

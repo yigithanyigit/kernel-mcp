@@ -1,0 +1,9 @@
+{
+  "heading": "9.7.3.22.Floating Point Instructions:tanh\uf0c1",
+  "instruction": "Floating Point Instructions:tanh",
+  "level": 4,
+  "architectures": [
+    "sm_75"
+  ],
+  "content": "`tanh`\n\nFind the hyperbolic tangent of a value (in radians)\n\nSyntax\n\n```\ntanh.approx.f32 d, a;\n```\n\nDescription\n\nTake hyperbolic tangent value of `a`.\n\nThe operands `d` and `a` are of type `.f32`.\n\nSemantics\n\n```\nd = tanh(a);\n```\n\nNotes\n\n`tanh.approx.f32` implements a fast approximation to FP32 hyperbolic-tangent.\n\nResults of `tanh` for various corner-case inputs are as follows:\n\n| Input | Result |\n| --- | --- |\n| -Inf | -1.0 |\n| -0.0 | -0.0 |\n| +0.0 | +0.0 |\n| +Inf | 1.0 |\n| NaN | NaN |\n\nThe maximum relative error over the entire floating point\nrange is 2-11.\nThe subnormal numbers are supported.\n\nNote\n\nThe subnormal inputs gets passed through to the output since the value of `tanh(x)` for small\nvalues of `x` is approximately the same as `x`.\n\nPTX ISA Notes\n\nIntroduced in PTX ISA version 7.0.\n\nTarget ISA Notes\n\nRequires `sm_75` or higher.\n\nExamples\n\n```\ntanh.approx.f32 ta, a;\n```"
+}

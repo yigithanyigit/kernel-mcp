@@ -1,0 +1,5 @@
+{
+  "heading": "9.7.13.15.2.Contents of the mbarrier object\uf0c1",
+  "level": 5,
+  "content": "An opaque *mbarrier object* keeps track of the following information :\n\n* Current phase of the *mbarrier object*\n* Count of pending arrivals for the current phase of the *mbarrier object*\n* Count of expected arrivals for the next phase of the *mbarrier object*\n* Count of pending asynchronous memory operations (or transactions) tracked by the current phase of\n  the *mbarrier object*. This is also referred to as *tx-count*.\n\nAn *mbarrier object* progresses through a sequence of phases where each phase is defined by threads\nperforming an expected number of\n[arrive-on](#parallel-synchronization-and-communication-instructions-mbarrier-arrive-on)\noperations.\n\nThe valid range of each of the counts is as shown below:\n\n| Count name | Minimum value | Maximum value |\n| --- | --- | --- |\n| Expected arrival count | 1 | 220 - 1 |\n| Pending arrival count | 0 | 220 - 1 |\n| tx-count | -(220 - 1) | 220 - 1 |"
+}

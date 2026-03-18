@@ -1,0 +1,5 @@
+{
+  "heading": "9.7.17.1.Stack Manipulation Instructions:stacksave\uf0c1",
+  "level": 4,
+  "content": "`stacksave`\n\nSave the value of stack pointer into a register.\n\nSyntax\n\n```\nstacksave.type  d;\n\n.type = { .u32, .u64 };\n```\n\nDescription\n\nCopies the current value of stack pointer into the destination register `d`. Pointer returned by\n`stacksave` can be used in a subsequent `stackrestore` instruction to restore the stack\npointer. If `d` is modified prior to use in `stackrestore` instruction, it may corrupt data in\nthe stack.\n\nDestination operand `d` has the same type as the instruction type.\n\nSemantics\n\n```\nd = stackptr;\n```\n\nPTX ISA Notes\n\nIntroduced in PTX ISA version 7.3.\n\nTarget ISA Notes\n\n`stacksave` requires `sm_52` or higher.\n\nExamples\n\n```\n.reg .u32 rd;\nstacksave.u32 rd;\n\n.reg .u64 rd1;\nstacksave.u64 rd1;\n```"
+}

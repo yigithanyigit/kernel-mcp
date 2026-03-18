@@ -1,0 +1,7 @@
+{
+  "heading": "9.7.2.1.Extended-Precision Arithmetic Instructions:add.cc\uf0c1",
+  "instruction": "Extended-Precision Arithmetic Instructions:add.cc",
+  "level": 4,
+  "architectures": [],
+  "content": "`add.cc`\n\nAdd two values with carry-out.\n\nSyntax\n\n```\nadd.cc.type  d, a, b;\n\n.type = { .u32, .s32, .u64, .s64 };\n```\n\nDescription\n\nPerforms integer addition and writes the carry-out value into the condition code register.\n\nSemantics\n\n```\nd = a + b;\n```\n\ncarry-out written to `CC.CF`\n\nNotes\n\nNo integer rounding modifiers.\n\nNo saturation.\n\nBehavior is the same for unsigned and signed integers.\n\nPTX ISA Notes\n\n32-bit `add.cc` introduced in PTX ISA version 1.2.\n\n64-bit `add.cc` introduced in PTX ISA version 4.3.\n\nTarget ISA Notes\n\n32-bit `add.cc` is supported on all target architectures.\n\n64-bit `add.cc` requires `sm_20` or higher.\n\nExamples\n\n```\n@p  add.cc.u32   x1,y1,z1;   // extended-precision addition of\n@p  addc.cc.u32  x2,y2,z2;   // two 128-bit values\n@p  addc.cc.u32  x3,y3,z3;\n@p  addc.u32     x4,y4,z4;\n```"
+}

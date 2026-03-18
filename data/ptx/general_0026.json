@@ -1,0 +1,5 @@
+{
+  "heading": "4.5.3.Predicate Constants\uf0c1",
+  "level": 3,
+  "content": "In PTX, integer constants may be used as predicates. For predicate-type data initializers and\ninstruction operands, integer constants are interpreted as in C, i.e., zero values are `False` and\nnon-zero values are `True`."
+}

@@ -1,0 +1,8 @@
+{
+  "heading": "1.3 The Hybrid Solution",
+  "level": 3,
+  "content": "As shown above, neither technique alone is sufficient\u2014but together they\ncomplement each other perfectly.\n\n**Why this works: GPU kernels are simple at runtime**\n\nHigh-performance GPU kernels are structurally simple at runtime: they avoid\ndeep call hierarchies, complex branching, and dynamic dispatch. However,\n*authoring* such kernels benefits greatly from Python\u2019s abstractions\u2014classes,\nmetaprogramming, and polymorphic patterns improve readability and\nmaintainability.\n\nThe hybrid approach resolves this tension by evaluating Python abstractions at\ncompile time while emitting simple, optimized code for runtime execution.\n\n**How |DSL| divides the work:**\n\n1. **AST rewrite handles structure** \u2014 loops (`for`, `while`) and branches\n   (`if`/`else`) are converted to structured intermediate representation (IR) *before* execution.\n   This solves tracing\u2019s control-flow problem.\n2. **Tracing handles arithmetic** \u2014 inside each structured region, the tracer\n   records tensor operations exactly as they execute. No need to model Python\u2019s\n   complex semantics\u2014just run Python and record what happens. This solves AST\n   rewriting\u2019s complexity problem.\n\nThe result:\n\n* Loops compile to real loops, not unrolled traces.\n* All branches are preserved, even if not taken during tracing.\n* Dynamic shapes, metaprogramming, and Python idioms work naturally.\n* The rewriter only needs to understand control flow, not all of Python.",
+  "source_page": "cute_dsl_general/dsl_code_generation.html",
+  "source_url": "https://docs.nvidia.com/cutlass/latest/media/docs/pythonDSL/cute_dsl_general/dsl_code_generation.html",
+  "page_title": "End"
+}

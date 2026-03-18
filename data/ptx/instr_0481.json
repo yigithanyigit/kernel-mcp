@@ -1,0 +1,7 @@
+{
+  "heading": "9.7.12.3.Control Flow Instructions:bra\uf0c1",
+  "instruction": "Control Flow Instructions:bra",
+  "level": 4,
+  "architectures": [],
+  "content": "`bra`\n\nBranch to a target and continue execution there.\n\nSyntax\n\n```\n@p   bra{.uni}  tgt;           // tgt is a label\n     bra{.uni}  tgt;           // unconditional branch\n```\n\nDescription\n\nContinue execution at the target. Conditional branches are specified by using a guard predicate. The\nbranch target must be a label.\n\n`bra.uni` is guaranteed to be non-divergent, i.e. all active threads in a warp that are currently\nexecuting this instruction have identical values for the guard predicate and branch target.\n\nSemantics\n\n```\nif (p) {\n    pc = tgt;\n}\n```\n\nPTX ISA Notes\n\nIntroduced in PTX ISA version 1.0.\n\nUnimplemented indirect branch introduced in PTX ISA version 2.1 has been removed from the spec.\n\nTarget ISA Notes\n\nSupported on all target architectures.\n\nExamples\n\n```\nbra.uni  L_exit;    // uniform unconditional jump\n@q  bra      L23;   // conditional branch\n```"
+}

@@ -1,0 +1,5 @@
+{
+  "heading": "8.2.3.Multimem Addresses\uf0c1",
+  "level": 3,
+  "content": "A multimem address is a virtual address which points to multiple distinct memory locations across\ndevices.\n\nOnly *multimem.*\\* operations are valid on multimem addresses. That is, the behavior of accessing\na multimem address in any other memory operation is undefined."
+}

@@ -1,0 +1,9 @@
+{
+  "heading": "12.2.Pragma Strings:\"used_bytes_mask\"\uf0c1",
+  "instruction": "Pragma Strings:\"used_bytes_mask\"",
+  "level": 2,
+  "architectures": [
+    "sm_50"
+  ],
+  "content": "`\"used_bytes_mask\"`\n\nMask for indicating used bytes in data of ld operation.\n\nSyntax\n\n```\n.pragma \"used_bytes_mask mask\";\n```\n\nDescription\n\nThe `\"used_bytes_mask\" pragma` is a directive that specifies used bytes in a load\noperation based on the mask provided.\n\n`\"used_bytes_mask\" pragma` needs to be specified prior to a load instruction for which\ninformation about bytes used from the load operation is needed.\nPragma is ignored if instruction following it is not a load instruction.\n\nFor a load instruction without this pragma, all bytes from the load operation are assumed\nto be used.\n\nOperand `mask` is a 32-bit integer with set bits indicating the used bytes in data of\nload operation.\n\nSemantics\n\n```\nEach bit in mask operand corresponds to a byte data where each set bit represents the used byte.\nMost-significant bit corresponds to most-significant byte of data.\n\n// For 4 bytes load with only lower 3 bytes used\n.pragma \"used_bytes_mask 0x7\";\nld.global.u32 %r0, [gbl];     // Higher 1 byte from %r0 is unused\n\n// For vector load of 16 bytes with lower 12 bytes used\n.pragma \"used_bytes_mask 0xfff\";\nld.global.v4.u32 {%r0, %r1, %r2, %r3}, [gbl];  // %r3 unused\n```\n\nPTX ISA Notes\n\nIntroduced in PTX ISA version 8.3.\n\nTarget ISA Notes\n\nRequires `sm_50` or higher.\n\nExamples\n\n```\n.pragma \"used_bytes_mask 0xfff\";\nld.global.v4.u32 {%r0, %r1, %r2, %r3}, [gbl]; // Only lower 12 bytes used\n```"
+}

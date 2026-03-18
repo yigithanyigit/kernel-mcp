@@ -1,0 +1,8 @@
+{
+  "heading": "Notable unsupported features",
+  "level": 2,
+  "content": "* convolutions\n* preferred clusters\n* Windows support",
+  "source_page": "limitations.html",
+  "source_url": "https://docs.nvidia.com/cutlass/latest/media/docs/pythonDSL/limitations.html",
+  "page_title": "Limitations"
+}

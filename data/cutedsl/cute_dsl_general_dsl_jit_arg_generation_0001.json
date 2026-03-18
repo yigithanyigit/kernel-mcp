@@ -1,0 +1,8 @@
+{
+  "heading": "JIT Function Argument Generation (part 2)",
+  "level": 1,
+  "content": "In this example, the `MyFrameworkObjectAdapter` implements an adaptor class which bridges the CuTe DSL and the 3rd party framework type `MyFrameworkObject`.\nThe registration is done by just decorating the adaptor with `cutlass.register_jit_arg_adapter` for the customized type. With the registered adaptor,\nCuTe DSL will automatically use the adaptor to generate the JIT function arguments for `MyFrameworkObject` typed arguments.",
+  "source_page": "cute_dsl_general/dsl_jit_arg_generation.html",
+  "source_url": "https://docs.nvidia.com/cutlass/latest/media/docs/pythonDSL/cute_dsl_general/dsl_jit_arg_generation.html",
+  "page_title": "JIT Function Argument Generation"
+}

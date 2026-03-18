@@ -1,0 +1,7 @@
+{
+  "heading": "9.7.1.8.Integer Arithmetic Instructions:div\uf0c1",
+  "instruction": "Integer Arithmetic Instructions:div",
+  "level": 4,
+  "architectures": [],
+  "content": "`div`\n\nDivide one value by another.\n\nSyntax\n\n```\ndiv.type  d, a, b;\n\n.type = { .u16, .u32, .u64,\n          .s16, .s32, .s64 };\n```\n\nDescription\n\nDivides `a` by `b`, stores result in `d`.\n\nSemantics\n\n```\nd = a / b;\n```\n\nNotes\n\nDivision by zero yields an unspecified, machine-specific value.\n\nPTX ISA Notes\n\nIntroduced in PTX ISA version 1.0.\n\nTarget ISA Notes\n\nSupported on all target architectures.\n\nExamples\n\n```\ndiv.s32  b,n,i;\n```"
+}

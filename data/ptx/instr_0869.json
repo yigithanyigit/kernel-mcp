@@ -1,0 +1,7 @@
+{
+  "heading": "10.30.Special Registers:%total_smem_size\uf0c1",
+  "instruction": "Special Registers:%total_smem_size",
+  "level": 2,
+  "architectures": [],
+  "content": "`%total_smem_size`\n\nTotal size of shared memory used by a CTA of a kernel.\n\nSyntax (predefined)\n\n```\n.sreg .u32 %total_smem_size;\n```\n\nDescription\n\nA predefined, read-only special register initialized with total size of shared memory allocated\n(statically and dynamically, excluding the shared memory reserved for the NVIDIA system software\nuse) for the CTA of a kernel at launch time.\n\nSize is returned in multiples of shared memory allocation unit size supported by target\narchitecture.\n\nAllocation unit values are as follows:\n\n| Target architecture | Shared memory allocation unit size |\n| --- | --- |\n| `sm_2x` | 128 bytes |\n| `sm_3x`, `sm_5x`, `sm_6x`, `sm_7x` | 256 bytes |\n| `sm_8x`, `sm_9x`, `sm_10x`, `sm_12x` | 128 bytes |\n\nPTX ISA Notes\n\nIntroduced in PTX ISA version 4.1.\n\nTarget ISA Notes\n\nRequires `sm_20` or higher.\n\nExamples\n\n```\nmov.u32  %r, %total_smem_size;\n```"
+}

@@ -1,0 +1,8 @@
+{
+  "heading": "JIT Compilation Options Overview",
+  "level": 2,
+  "content": "When compiling a JIT function using CuTe DSL, you may want to control various aspects of the compilation process, such as optimization level, or debugging flags. CuTe DSL provides a flexible interface for specifying these compilation options when invoking `cute.compile`.\n\nCompilation options allow you to customize how your JIT-compiled functions are built and executed. This can be useful for:\n\n* Enabling or disabling specific compiler optimizations\n* Generating debug information for troubleshooting\n\nThese options can be passed as keyword arguments to `cute.compile` or set globally for all JIT compilations. The available options and their effects are described in the following sections, along with usage examples to help you get started.\n\nThe CuTe DSL provides multiple ways to specify compilation options - either by specifying additional arguments to `cute.compile` or by using a more Pythonic approach with separate Python types for `cute.compile`.",
+  "source_page": "cute_dsl_general/dsl_jit_compilation_options.html",
+  "source_url": "https://docs.nvidia.com/cutlass/latest/media/docs/pythonDSL/cute_dsl_general/dsl_jit_compilation_options.html",
+  "page_title": "JIT Compilation Options"
+}

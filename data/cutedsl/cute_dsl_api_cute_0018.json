@@ -1,0 +1,8 @@
+{
+  "heading": "cutlass.cute (part 19)",
+  "level": 1,
+  "content": "        Returns:\n        :   A list of MLIR types.\n\n        Return type:\n        :   list\n\n    *static* _type_check(*callee*, *exec_types*, *returns_types*)\n    :   Helper method to check if the function prototype types match the expected types.\n\n        This method compares the input and output types of the function prototype with the provided expected types.\n        :param callee: The function prototype operation to check.\n        :type callee: func.FuncOp\n        :param exec_types: The expected input types.\n        :type exec_types: list\n        :param returns_types: The expected output types.\n        :type returns_types: list\n\n    _create_prototype_in_region(*op*, *region*, *exec_args*)\n    :   Helper method to create or retrieve a function prototype in the current module.\n\n        This method checks if a function prototype with the given name already exists in the symbol table of the current module.\n        If it does, it checks if the prototype\u2019s types match the expected types. If it does not, it raises an error.\n        If it does not exist, it creates a new function prototype and inserts it into the current region.\n        :param op: The module operation to check.\n        :type op: Operation\n        :param region: The region to insert the function prototype into.\n        :type region: Region\n        :param exec_args: The arguments to pass to the function prototype.\n        :type exec_args: list",
+  "source_page": "cute_dsl_api/cute.html",
+  "source_url": "https://docs.nvidia.com/cutlass/latest/media/docs/pythonDSL/cute_dsl_api/cute.html",
+  "page_title": "cutlass.cute"
+}

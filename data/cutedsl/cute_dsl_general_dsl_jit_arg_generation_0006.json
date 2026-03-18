@@ -1,0 +1,8 @@
+{
+  "heading": "1. Direct protocol implementation in customized types",
+  "level": 3,
+  "content": "One way is to implement the protocol methods directly in the customized types to enable the protocol based JIT function argument generation.\n\n```\nimport cutlass\nimport cutlass.cute as cute\n\n# Customized type that implements the DynamicExpression protocol\nclass MyDynamicExpression:\n    def __init__(self, tensor, offset):\n        self._tensor = tensor # Dynamic argument\n        self._offset = offset # Dynamic argument\n\n    def __extract_mlir_values__(self):\n        return [self._tensor.__extract_mlir_values__(), self._offset.__extract_mlir_values__()]\n\n    def __new_from_mlir_values__(self, values):\n        return MyDynamicExpression(values[0], values[1])\n\n@cute.kernel\ndef my_kernel(x: MyDynamicExpression):\n    ...\n```\n\nIn the example above, the `MyDynamicExpression` implements the `DynamicExpression` protocol and CuTe DSL will generate the JIT function arguments for the JIT kernel `my_kernel` based on the protocol methods.",
+  "source_page": "cute_dsl_general/dsl_jit_arg_generation.html",
+  "source_url": "https://docs.nvidia.com/cutlass/latest/media/docs/pythonDSL/cute_dsl_general/dsl_jit_arg_generation.html",
+  "page_title": "JIT Function Argument Generation"
+}

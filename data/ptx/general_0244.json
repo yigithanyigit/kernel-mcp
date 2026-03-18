@@ -1,0 +1,5 @@
+{
+  "heading": "9.7.8.5.Logic and Shift Instructions:cnot\uf0c1",
+  "level": 4,
+  "content": "`cnot`\n\nC/C++ style logical negation.\n\nSyntax\n\n```\ncnot.type d, a;\n\n.type = { .b16, .b32, .b64 };\n```\n\nDescription\n\nCompute the logical negation using C/C++ semantics.\n\nSemantics\n\n```\nd = (a==0) ? 1 : 0;\n```\n\nNotes\n\nThe size of the operands must match, but not necessarily the type.\n\nPTX ISA Notes\n\nIntroduced in PTX ISA version 1.0.\n\nTarget ISA Notes\n\nSupported on all target architectures.\n\nExamples\n\n```\ncnot.b32 d,a;\n```"
+}

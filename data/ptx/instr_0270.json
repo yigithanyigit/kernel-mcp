@@ -1,0 +1,7 @@
+{
+  "heading": "9.7.1.7.Integer Arithmetic Instructions:sad\uf0c1",
+  "instruction": "Integer Arithmetic Instructions:sad",
+  "level": 4,
+  "architectures": [],
+  "content": "`sad`\n\nSum of absolute differences.\n\nSyntax\n\n```\nsad.type  d, a, b, c;\n\n.type = { .u16, .u32, .u64,\n          .s16, .s32, .s64 };\n```\n\nDescription\n\nAdds the absolute value of `a-b` to `c` and writes the resulting value into `d`.\n\nSemantics\n\n```\nd = c + ((a<b) ? b-a : a-b);\n```\n\nPTX ISA Notes\n\nIntroduced in PTX ISA version 1.0.\n\nTarget ISA Notes\n\nSupported on all target architectures.\n\nExamples\n\n```\nsad.s32  d,a,b,c;\nsad.u32  d,a,b,d;  // running sum\n```"
+}

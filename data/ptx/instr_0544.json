@@ -1,0 +1,9 @@
+{
+  "heading": "9.7.13.15.17.Parallel Synchronization and Communication Instructions:mbarrier.pending_count\uf0c1",
+  "instruction": "Parallel Synchronization and Communication Instructions:mbarrier.pending_count",
+  "level": 5,
+  "architectures": [
+    "sm_80"
+  ],
+  "content": "`mbarrier.pending_count`\n\nQuery the pending arrival count from the opaque mbarrier state.\n\nSyntax\n\n```\nmbarrier.pending_count.b64 count, state;\n```\n\nDescription\n\nThe pending count can be queried from the opaque mbarrier state using `mbarrier.pending_count`.\n\nThe `state` operand is a 64-bit register that must be the result of a prior\n`mbarrier.arrive.noComplete` or `mbarrier.arrive_drop.noComplete` instruction. Otherwise, the\nbehavior is undefined.\n\nThe destination register `count` is a 32-bit unsigned integer representing the pending count of\nthe *mbarrier object* prior to the [arrive-on operation](#parallel-synchronization-and-communication-instructions-mbarrier-arrive-on) from\nwhich the `state` register was obtained.\n\nPTX ISA Notes\n\nIntroduced in PTX ISA version 7.0.\n\nTarget ISA Notes\n\nRequires `sm_80` or higher.\n\nExamples\n\n```\n.reg .b32 %r1;\n.reg .b64 state;\n.shared .b64 shMem;\n\nmbarrier.arrive.noComplete.b64 state, [shMem], 1;\nmbarrier.pending_count.b64 %r1, state;\n```"
+}

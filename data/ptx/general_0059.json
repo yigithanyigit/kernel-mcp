@@ -1,0 +1,5 @@
+{
+  "heading": "5.4.1.Variable Declarations\uf0c1",
+  "level": 3,
+  "content": "All storage for data is specified with variable declarations. Every variable must reside in one of\nthe state spaces enumerated in the previous section.\n\nA variable declaration names the space in which the variable resides, its type and size, its name,\nan optional array size, an optional initializer, and an optional fixed address for the variable.\n\nPredicate variables may only be declared in the register state space.\n\nExamples\n\n```\n.global .u32 loc;\n.reg    .s32 i;\n.const  .f32 bias[] = {-1.0, 1.0};\n.global .u8  bg[4] = {0, 0, 0, 0};\n.reg    .v4 .f32 accel;\n.reg    .pred p, q, r;\n```"
+}

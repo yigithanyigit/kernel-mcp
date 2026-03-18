@@ -1,0 +1,9 @@
+{
+  "heading": "9.7.17.2.Stack Manipulation Instructions:stackrestore\uf0c1",
+  "instruction": "Stack Manipulation Instructions:stackrestore",
+  "level": 4,
+  "architectures": [
+    "sm_52"
+  ],
+  "content": "`stackrestore`\n\nUpdate the stack pointer with a new value.\n\nSyntax\n\n```\nstackrestore.type  a;\n\n.type = { .u32, .u64 };\n```\n\nDescription\n\nSets the current stack pointer to source register `a`.\n\nWhen `stackrestore` is used with operand `a` written by a prior `stacksave` instruction, it\nwill effectively restore the state of stack as it was before `stacksave` was executed. Note that\nif `stackrestore` is used with an arbitrary value of `a`, it may cause corruption of stack\npointer. This implies that the correct use of this feature requires that `stackrestore.type a` is\nused after `stacksave.type a` without redefining the value of `a` between them.\n\nOperand `a` has the same type as the instruction type.\n\nSemantics\n\n```\nstackptr = a;\n```\n\nPTX ISA Notes\n\nIntroduced in PTX ISA version 7.3.\n\nTarget ISA Notes\n\n`stackrestore` requires `sm_52` or higher.\n\nExamples\n\n```\n.reg .u32 ra;\nstacksave.u32 ra;\n// Code that may modify stack pointer\n...\nstackrestore.u32 ra;\n```"
+}

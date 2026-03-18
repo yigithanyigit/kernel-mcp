@@ -1,0 +1,7 @@
+{
+  "heading": "9.7.1.14.Integer Arithmetic Instructions:popc\uf0c1",
+  "instruction": "Integer Arithmetic Instructions:popc",
+  "level": 4,
+  "architectures": [],
+  "content": "`popc`\n\nPopulation count.\n\nSyntax\n\n```\npopc.type  d, a;\n\n.type = { .b32, .b64 };\n```\n\nDescription\n\nCount the number of one bits in `a` and place the resulting *population count* in 32-bit\ndestination register `d`. Operand `a` has the instruction type and destination `d` has type\n`.u32`.\n\nSemantics\n\n```\n.u32  d = 0;\nwhile (a != 0) {\n   if (a & 0x1)  d++;\n   a = a >> 1;\n}\n```\n\nPTX ISA Notes\n\nIntroduced in PTX ISA version 2.0.\n\nTarget ISA Notes\n\n`popc` requires `sm_20` or higher.\n\nExamples\n\n```\npopc.b32  d, a;\npopc.b64  cnt, X;  // cnt is .u32\n```"
+}

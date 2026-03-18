@@ -1,0 +1,5 @@
+{
+  "heading": "8.1.Scope and applicability of the model\uf0c1",
+  "level": 2,
+  "content": "The constraints specified under this model apply to PTX programs with any PTX ISA version number,\nrunning on `sm_70` or later architectures.\n\nThe memory consistency model does not apply to texture (including `ld.global.nc`) and surface\naccesses.\n\n### 8.1.1. [Limitations on atomicity at system scope](#limitations-system-scope-atomicity)\n\nWhen communicating with the host CPU, certain strong operations with system scope may not be\nperformed atomically on some systems. For more details on atomicity guarantees to host memory, see\nthe *CUDA Atomicity Requirements*."
+}

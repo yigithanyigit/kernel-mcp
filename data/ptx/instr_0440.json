@@ -1,0 +1,12 @@
+{
+  "heading": "9.7.9.25.4.1.Data Movement and Conversion Instructions:cp.async.bulk\uf0c1 (part 2)",
+  "instruction": "Data Movement and Conversion Instructions:cp.async.bulk",
+  "level": 6,
+  "architectures": [
+    "sm_100",
+    "sm_100a",
+    "sm_90",
+    "sm_90a"
+  ],
+  "content": "cp.async.bulk.shared::cluster.global.mbarrier::complete_tx::bytes.L2::cache_hint\n                                             [dstMem], [srcMem], size, [mbar], cache-policy;\n\n// .shared::cta -> .shared::cluster (strictly remote):\ncp.async.bulk.shared::cluster.shared::cta.mbarrier::complete_tx::bytes [dstMem], [srcMem], size, [mbar];\n\n// .shared::cta -> .global:\ncp.async.bulk.global.shared::cta.bulk_group [dstMem], [srcMem], size;\n\ncp.async.bulk.global.shared::cta.bulk_group.L2::cache_hint} [dstMem], [srcMem], size, cache-policy;\n\n// .shared::cta -> .global with .cp_mask:\ncp.async.bulk.global.shared::cta.bulk_group.L2::cache_hint.cp_mask [dstMem], [srcMem], size, cache-policy, byteMask;\n\n// ignore_oob\ncp.async.bulk.shared::cta.global.mbarrier::complete_tx::bytes.ignore_oob [dstMem], [srcMem], size, ignoreBytesLeft, ignoreBytesRight, [mbar];\n```"
+}

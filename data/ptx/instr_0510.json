@@ -1,0 +1,12 @@
+{
+  "heading": "9.7.13.6.Parallel Synchronization and Communication Instructions:red\uf0c1 (part 2)",
+  "instruction": "Parallel Synchronization and Communication Instructions:red",
+  "level": 4,
+  "architectures": [
+    "sm_60",
+    "sm_70",
+    "sm_80",
+    "sm_90"
+  ],
+  "content": "```\nred.global.add.s32  [a],1;\nred.shared::cluster.max.u32  [x+4],0;\n@p  red.global.and.b32  [p],my_val;\nred.global.sys.add.u32 [a], 1;\nred.global.acquire.sys.add.u32 [gbl], 1;\nred.add.noftz.f16x2 [a], b;\nred.add.noftz.bf16   [a], hb;\nred.add.noftz.bf16x2 [b], bb;\nred.global.cluster.relaxed.add.u32 [a], 1;\nred.shared::cta.min.u32  [x+4],0;\n\ncreatepolicy.fractional.L2::evict_last.b64 cache-policy, 0.25;\nred.global.and.L2::cache_hint.b32 [a], 1, cache-policy;\n\nred.global.v8.f16.add.noftz  [gbl], {%h0, %h1, %h2, %h3, %h4, %h5, %h6, %h7};\nred.global.v8.bf16.min.noftz [gbl], {%h0, %h1, %h2, %h3, %h4, %h5, %h6, %h7};\nred.global.v2.f16.add.noftz [gbl], {%h0, %h1};\nred.global.v2.bf16.add.noftz [gbl], {%h0, %h1};\nred.global.v4.f16x2.max.noftz [gbl], {%h0, %h1, %h2, %h3};\nred.global.v4.f32.add  [gbl], {%f0, %f1, %f2, %f3};\nred.global.v2.f16x2.max.noftz {%bd0, %bd1}, [g], {%b0, %b1};\nred.global.v2.bf16x2.add.noftz {%bd0, %bd1}, [g], {%b0, %b1};\nred.global.v2.f32.add  {%f0, %f1}, [g], {%f0, %f1};\n```"
+}

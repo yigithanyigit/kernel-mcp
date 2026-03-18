@@ -1,0 +1,5 @@
+{
+  "heading": "4.1.Source Format\uf0c1",
+  "level": 2,
+  "content": "Source modules are ASCII text. Lines are separated by the newline character (`\\n`).\n\nAll whitespace characters are equivalent; whitespace is ignored except for its use in separating\ntokens in the language.\n\nThe C preprocessor cpp may be used to process PTX source modules. Lines beginning with `#` are\npreprocessor directives. The following are common preprocessor directives:\n\n`#include`, `#define`, `#if`, `#ifdef`, `#else`, `#endif`, `#line`, `#file`\n\n*C: A Reference Manual* by Harbison and Steele provides a good description of the C preprocessor.\n\nPTX is case sensitive and uses lowercase for keywords.\n\nEach PTX module must begin with a `.version` directive specifying the PTX language version,\nfollowed by a `.target` directive specifying the target architecture assumed. See\n[PTX Module Directives](#ptx-module-directives) for a more information on these directives."
+}

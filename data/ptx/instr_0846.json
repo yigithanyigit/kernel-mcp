@@ -1,0 +1,7 @@
+{
+  "heading": "10.7.Special Registers:%nctaid\uf0c1",
+  "instruction": "Special Registers:%nctaid",
+  "level": 2,
+  "architectures": [],
+  "content": "`%nctaid`\n\nNumber of CTA ids per grid.\n\nSyntax (predefined)\n\n```\n.sreg .v4 .u32 %nctaid                      // Grid shape vector\n.sreg .u32 %nctaid.x,%nctaid.y,%nctaid.z;   // Grid dimensions\n```\n\nDescription\n\nA predefined, read-only special register initialized with the number of CTAs in each grid\ndimension. The `%nctaid` special register contains a 3D grid shape vector, with each element\nhaving a value of at least `1`. The fourth element is unused and always returns zero.\n\nMaximum values of %nctaid.{x,y,z} are as follows:\n\n| .target architecture | %nctaid.x | %nctaid.y | %nctaid.z |\n| --- | --- | --- | --- |\n| `sm_1x`, `sm_20` | 65535 | 65535 | 65535 |\n| `sm_3x`, `sm_5x`, `sm_6x`, `sm_7x`, `sm_8x`, `sm_9x`, `sm_10x`, `sm_12x` | 231 -1 | 65535 | 65535 |\n\nPTX ISA Notes\n\nIntroduced in PTX ISA version 1.0 with type `.v4.u16`.\n\nRedefined as type `.v4.u32` in PTX ISA version 2.0. For compatibility with legacy PTX code, 16-bit\n`mov` and `cvt` instructions may be used to read the lower 16-bits of each component of\n`%nctaid`.\n\nTarget ISA Notes\n\nSupported on all target architectures.\n\nExamples\n\n```\nmov.u32  %r0,%nctaid.x;\nmov.u16  %rh,%nctaid.x;     // legacy code\n```"
+}

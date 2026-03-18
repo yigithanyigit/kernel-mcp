@@ -1,0 +1,5 @@
+{
+  "heading": "8.2.2.Aliases\uf0c1",
+  "level": 3,
+  "content": "Two distinct virtual addresses are said to be aliases if they map to the same memory location."
+}

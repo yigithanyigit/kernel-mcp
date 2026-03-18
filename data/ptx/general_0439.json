@@ -1,0 +1,5 @@
+{
+  "heading": "9.7.16.5.1.CTA Pair\uf0c1",
+  "level": 5,
+  "content": "Any 2 CTAs within the cluster whose `%cluster_ctarank` differs by the last bit only\nis said to form a CTA pair.\n\nWithin a CTA pair, the CTA whose last bit in the `%cluster_ctarank` is:\n\n* 0 is termed the even numbered CTA within the CTA pair.\n* 1 is termed as the odd numbered CTA within the CTA pair.\n\nMost of the `tcgen05` operations can either execute at a single CTA level granularity OR\nat a CTA pair level granularity. When a `tcgen05` operation is performed at CTA pair\ngranularity, the Tensor Memory of both the CTAs within the CTA pair are accessed. The set\nof threads that need to issue the `tcgen05` operation is listed in the\n[Issue Granularity](#tcgen05-issue-granularity)."
+}

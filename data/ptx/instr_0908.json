@@ -1,0 +1,7 @@
+{
+  "heading": "11.5.Debugging Directives\uf0c1 (part 2)",
+  "instruction": "Debugging Directives",
+  "level": 2,
+  "architectures": [],
+  "content": "    info_string1:\n     .b8 95  // _\n     .b8 90  // z\n     .b8 51  // 3\n     .b8 98  // b\n     .b8 97  // a\n     .b8 114 // r\n     .b8 118 // v\n     .b8 0\n     .b8 95  // _\n     .b8 90  // z\n     .b8 51  // 3\n     .b8 99  // c\n     .b8 97  // a\n     .b8 114 // r\n     .b8 118 // v\n     .b8 0\n    }\n```"
+}

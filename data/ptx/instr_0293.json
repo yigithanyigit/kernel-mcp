@@ -1,0 +1,7 @@
+{
+  "heading": "9.7.2.5.Extended-Precision Arithmetic Instructions:mad.cc\uf0c1",
+  "instruction": "Extended-Precision Arithmetic Instructions:mad.cc",
+  "level": 4,
+  "architectures": [],
+  "content": "`mad.cc`\n\nMultiply two values, extract high or low half of result, and add a third value with carry-out.\n\nSyntax\n\n```\nmad{.hi,.lo}.cc.type  d, a, b, c;\n\n.type = { .u32, .s32, .u64, .s64 };\n```\n\nDescription\n\nMultiplies two values, extracts either the high or low part of the result, and adds a third\nvalue. Writes the result to the destination register and the carry-out from the addition into the\ncondition code register.\n\nSemantics\n\n```\nt = a * b;\nd = t<63..32> + c;    // for .hi variant\nd = t<31..0> + c;     // for .lo variant\n```\n\ncarry-out from addition is written to `CC.CF`\n\nNotes\n\nGenerally used in combination with `madc` and `addc` to implement extended-precision multi-word\nmultiplication. See `madc` for an example.\n\nPTX ISA Notes\n\n32-bit `mad.cc` introduced in PTX ISA version 3.0.\n\n64-bit `mad.cc` introduced in PTX ISA version 4.3.\n\nTarget ISA Notes\n\nRequires target `sm_20` or higher.\n\nExamples\n\n```\n@p  mad.lo.cc.u32 d,a,b,c;\n    mad.lo.cc.u32 r,p,q,r;\n```"
+}

@@ -1,0 +1,5 @@
+{
+  "heading": "9.7.15.1.Warpgroup\uf0c1",
+  "level": 4,
+  "content": "A warpgroup is a set of four contiguous warps such that the *warp-rank* of the first warp is a\nmultiple of 4.\n\nwarp-rank of a warp is defined as:\n\n```\n(%tid.x + %tid.y * %ntid.x  + %tid.z * %ntid.x * %ntid.y) / 32\n```"
+}

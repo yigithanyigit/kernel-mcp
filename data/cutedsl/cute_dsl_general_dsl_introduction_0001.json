@@ -1,0 +1,8 @@
+{
+  "heading": "Overview",
+  "level": 2,
+  "content": "CuTe DSL is a Python-based domain-specific language (DSL) designed for dynamic compilation of\nhigh-performance GPU kernels. It evolved from the C++ CUTLASS library and is\nnow available as a decorator-based DSL.\n\nIts primary goals are:\n\n* **Zero-cost abstraction**, DSL is a zero-cost abstraction thanks to Hybrid DSL approach.\n* **Consistent with CuTe C++**, allowing users to express GPU kernels with full\n  control of the hardware.\n* **JIT compilation** for both host and GPU execution.\n* [DLPack](https://github.com/dmlc/dlpack) **integration**, enabling seamless\n  interop with frameworks (e.g., PyTorch, JAX).\n* **JIT caching**, so that repeated calls to the same function benefit from\n  cached IR modules.\n* **Native types and type inference** to reduce boilerplate and improve\n  performance.\n* **Optional lower-level control**, offering direct access to GPU backends or\n  specialized IR dialects.",
+  "source_page": "cute_dsl_general/dsl_introduction.html",
+  "source_url": "https://docs.nvidia.com/cutlass/latest/media/docs/pythonDSL/cute_dsl_general/dsl_introduction.html",
+  "page_title": "Introduction"
+}

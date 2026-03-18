@@ -1,0 +1,8 @@
+{
+  "heading": "Calling Conventions",
+  "level": 2,
+  "content": "| **Caller** | **Callee** | **Allowed** | **Compilation/Runtime** |\n| --- | --- | --- | --- |\n| Python function | `@jit` | \u2705 | DSL runtime |\n| Python function | `@kernel` | \u274c | N/A (error raised) |\n| `@jit` | `@jit` | \u2705 | Compile-time call, inlined |\n| `@jit` | Python function | \u2705 | Compile-time call, inlined |\n| `@jit` | `@kernel` | \u2705 | Dynamic call via GPU driver or runtime |\n| `@kernel` | `@jit` | \u2705 | Compile-time call, inlined |\n| `@kernel` | Python function | \u2705 | Compile-time call, inlined |\n| `@kernel` | `@kernel` | \u274c | N/A (error raised) |",
+  "source_page": "cute_dsl_general/dsl_introduction.html",
+  "source_url": "https://docs.nvidia.com/cutlass/latest/media/docs/pythonDSL/cute_dsl_general/dsl_introduction.html",
+  "page_title": "Introduction"
+}

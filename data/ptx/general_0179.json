@@ -1,0 +1,5 @@
+{
+  "heading": "9.7.1.18.Integer Arithmetic Instructions:brev\uf0c1",
+  "level": 4,
+  "content": "`brev`\n\nBit reverse.\n\nSyntax\n\n```\nbrev.type  d, a;\n\n.type = { .b32, .b64 };\n```\n\nDescription\n\nPerform bitwise reversal of input.\n\nSemantics\n\n```\nmsb = (.type==.b32) ? 31 : 63;\n\nfor (i=0; i<=msb; i++) {\n    d[i] = a[msb-i];\n}\n```\n\nPTX ISA Notes\n\nIntroduced in PTX ISA version 2.0.\n\nTarget ISA Notes\n\n`brev` requires `sm_20` or higher.\n\nExamples\n\n```\nbrev.b32  d, a;\n```"
+}

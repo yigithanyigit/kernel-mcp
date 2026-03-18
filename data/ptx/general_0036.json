@@ -1,0 +1,5 @@
+{
+  "heading": "5.1.4.Global State Space\uf0c1",
+  "level": 3,
+  "content": "The global (`.global`) state space is memory that is accessible by all threads in a context. It is\nthe mechanism by which threads in different CTAs, clusters, and grids can communicate. Use\n`ld.global`, `st.global`, and `atom.global` to access global variables.\n\nGlobal variables have an optional variable initializer; global variables with no explicit\ninitializer are initialized to zero by default."
+}

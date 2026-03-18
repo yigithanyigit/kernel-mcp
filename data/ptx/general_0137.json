@@ -1,0 +1,5 @@
+{
+  "heading": "8.9.7.Communication Order\uf0c1",
+  "level": 3,
+  "content": "The *communication order* is a non-transitive order, determined at runtime, that relates write\noperations to other *overlapping* memory operations.\n\n1. A write W precedes an *overlapping* read R in *communication order* if R returns the value of any\n   byte that was written by W.\n2. A write W precedes a write W\u2019 in *communication order* if W precedes W\u2019 in *coherence order*.\n3. A read R precedes an *overlapping* write W in *communication order* if, for any byte accessed by\n   both R and W, R returns the value written by a write W\u2019 that precedes W in *coherence order*.\n\n*Communication order* captures the visibility of memory operations \u2014 when a memory operation X1\nprecedes a memory operation X2 in *communication order*, X1 is said to be visible to X2."
+}

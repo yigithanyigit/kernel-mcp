@@ -1,0 +1,5 @@
+{
+  "heading": "10.18.Special Registers:%lanemask_eq\uf0c1",
+  "level": 2,
+  "content": "`%lanemask_eq`\n\n32-bit mask with bit set in position equal to the thread\u2019s lane number in the warp.\n\nSyntax (predefined)\n\n```\n.sreg .u32 %lanemask_eq;\n```\n\nDescription\n\nA predefined, read-only special register initialized with a 32-bit mask with a bit set in the\nposition equal to the thread\u2019s lane number in the warp.\n\nPTX ISA Notes\n\nIntroduced in PTX ISA version 2.0.\n\nTarget ISA Notes\n\n`%lanemask_eq` requires `sm_20` or higher.\n\nExamples\n\n```\nmov.u32     %r, %lanemask_eq;\n```"
+}

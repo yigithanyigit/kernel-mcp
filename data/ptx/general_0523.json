@@ -1,0 +1,5 @@
+{
+  "heading": "9.7.19.2.Miscellaneous Instructions:nanosleep\uf0c1",
+  "level": 4,
+  "content": "`nanosleep`\n\nSuspend the thread for an approximate delay given in nanoseconds.\n\nSyntax\n\n```\nnanosleep.u32 t;\n```\n\nDescription\n\nSuspends the thread for a sleep duration approximately close to the delay `t`, specified in\nnanoseconds. `t` may be a register or an immediate value.\n\nThe sleep duration is approximated, but guaranteed to be in the interval `[0, 2*t]`. The maximum\nsleep duration is 1 millisecond. The implementation may reduce the sleep duration for individual\nthreads within a warp such that all sleeping threads in the warp wake up together.\n\nPTX ISA Notes\n\n`nanosleep` introduced in PTX ISA 6.3.\n\nTarget ISA Notes\n\n`nanosleep` requires `sm_70` or higher.\n\nExamples\n\n```\n.reg .b32 r;\n.reg .pred p;\n\nnanosleep.u32 r;\nnanosleep.u32 42;\n@p nanosleep.u32 r;\n```"
+}

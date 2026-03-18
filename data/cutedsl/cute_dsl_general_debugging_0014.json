@@ -1,0 +1,8 @@
+{
+  "heading": "Set function name prefix",
+  "level": 3,
+  "content": "By default, the function name (host function or kernel function) is automatically generated based on the function name and its parameters.\nSometimes you may want to attach some runtime information to the function name to make performance profiling and debugging easier,\ne.g., the kernel configs or the rank ids. You can assign a name prefix to the name by calling the `set_name_prefix`\nmethod on the host function or kernel function.\n\n```\n@cute.kernel\ndef kernel(arg1, arg2, ...):\n    ...\n@cute.jit\ndef launch_kernel():\n    kernel.set_name_prefix(\"your_custom_name_prefix\")\n    kernel(arg1, arg2, ...).launch(grid=[1, 1, 1], block=[1, 1, 1], ...)\n```\n\nFor above example, the generated kernel name will be \u201cyour_custom_name_prefix_xxx\u201d.",
+  "source_page": "cute_dsl_general/debugging.html",
+  "source_url": "https://docs.nvidia.com/cutlass/latest/media/docs/pythonDSL/cute_dsl_general/debugging.html",
+  "page_title": "Debugging"
+}

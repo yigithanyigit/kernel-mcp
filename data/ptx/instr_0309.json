@@ -1,0 +1,7 @@
+{
+  "heading": "9.7.3.9.Floating Point Instructions:abs\uf0c1",
+  "instruction": "Floating Point Instructions:abs",
+  "level": 4,
+  "architectures": [],
+  "content": "`abs`\n\nAbsolute value.\n\nSyntax\n\n```\nabs{.ftz}.f32  d, a;\nabs.f64        d, a;\n```\n\nDescription\n\nTake the absolute value of `a` and store the result in `d`.\n\nSemantics\n\n```\nd = |a|;\n```\n\nNotes\n\nSubnormal numbers:\n\n`sm_20+`\n:   By default, subnormal numbers are supported.\n\n    `abs.ftz.f32` flushes subnormal inputs and results to sign-preserving zero.\n\n`sm_1x`\n:   `abs.f64` supports subnormal numbers.\n\n    `abs.f32` flushes subnormal inputs and results to sign-preserving zero.\n\nFor `abs.f32`, `NaN` input yields unspecified `NaN`. For `abs.f64`, `NaN` input is passed\nthrough unchanged. Future implementations may comply with the IEEE 754 standard by preserving\npayload and modifying only the sign bit.\n\nPTX ISA Notes\n\nIntroduced in PTX ISA version 1.0.\n\nTarget ISA Notes\n\n`abs.f32` supported on all target architectures.\n\n`abs.f64` requires `sm_13` or higher.\n\nExamples\n\n```\nabs.ftz.f32  x,f0;\n```"
+}

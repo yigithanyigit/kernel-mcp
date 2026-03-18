@@ -1,0 +1,5 @@
+{
+  "heading": "9.7.16.6.1.Asynchronous Operations\uf0c1",
+  "level": 5,
+  "content": "The tcgen05 family of instructions are divided into 2 categories:\n\n1. Asynchronous instructions:\n\n   These `tcgen05` operations are not inherently ordered with respect to\n   other `tcgen05` operations in the same thread (unless pipelined as mentioned below).\n2. Synchronous instructions:\n\n   These `tcgen05` operations are inherently ordered with respect to other `tcgen05`\n   operations in the same order.\n\n   The Tensor Memory allocation related instructions that access shared memory maintain\n   same-address ordering with respect to non-`tcgen05` instructions.\n\nThe following table lists the category of each of the `tcgen05` instruction:\n\n| tcgen05.\\* operation | Category |\n| --- | --- |\n| `.alloc` | Synchronous  instructions |\n| `.dealloc` |\n| `.relinquish_alloc_permit` |\n| `.fence::*` |\n| `.wait::*` |\n| `.commit` |\n| `.mma` | Asynchronous  instructions |\n| `.cp` |\n| `.shift` |\n| `.ld` |\n| `.st` |"
+}

@@ -1,0 +1,5 @@
+{
+  "heading": "10.12.Special Registers:%clusterid\uf0c1",
+  "level": 2,
+  "content": "`%clusterid`\n\nCluster identifier within a grid.\n\nSyntax (predefined)\n\n```\n.sreg .v4 .u32 %clusterid;\n.sreg .u32 %clusterid.x, %clusterid.y, %clusterid.z;\n```\n\nDescription\n\nA predefined, read-only special register initialized with the cluster identifier in a grid in each\ndimension. Each cluster in a grid has a unique identifier.\n\nThe `%clusterid` special register contains a 1D, 2D, or 3D vector, depending upon the shape and\nrank of the cluster. The fourth element is unused and always returns zero.\n\nIt is guaranteed that:\n\n```\n0  <=  %clusterid.x <  %nclusterid.x\n0  <=  %clusterid.y <  %nclusterid.y\n0  <=  %clusterid.z <  %nclusterid.z\n```\n\nPTX ISA Notes\n\nIntroduced in PTX ISA version 7.8.\n\nTarget ISA Notes\n\nRequires `sm_90` or higher.\n\nExamples\n\n```\n.reg .b32 %r<2>;\n.reg .v4 .b32 %rx;\n\nmov.u32     %r0, %clusterid.x;\nmov.u32     %r1, %clusterid.z;\nmov.v4.u32  %rx, %clusterid;\n```"
+}

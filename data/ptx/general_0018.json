@@ -1,0 +1,5 @@
+{
+  "heading": "4.2.Comments\uf0c1",
+  "level": 2,
+  "content": "Comments in PTX follow C/C++ syntax, using non-nested `/*` and `*/` for comments that may span\nmultiple lines, and using `//` to begin a comment that extends up to the next newline character,\nwhich terminates the current line. Comments cannot occur within character constants, string\nliterals, or within other comments.\n\nComments in PTX are treated as whitespace."
+}

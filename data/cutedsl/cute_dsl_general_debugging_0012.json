@@ -1,0 +1,8 @@
+{
+  "heading": "Handling Unresponsive/Hung Kernels",
+  "level": 3,
+  "content": "When a kernel becomes unresponsive and `SIGINT` (`CTRL+C`) fails to terminate it,\nyou can follow these steps to forcefully terminate the process:\n\n1. Use `CTRL+Z` to suspend the unresponsive kernel\n2. Execute the following command to terminate the suspended process:\n\n```\n# Terminate the most recently suspended process\nkill -9 $(jobs -p | tail -1)\n```\n\nCuTe DSL can also be debugged using standard NVIDIA CUDA tools.",
+  "source_page": "cute_dsl_general/debugging.html",
+  "source_url": "https://docs.nvidia.com/cutlass/latest/media/docs/pythonDSL/cute_dsl_general/debugging.html",
+  "page_title": "Debugging"
+}

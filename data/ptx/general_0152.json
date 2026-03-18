@@ -1,0 +1,5 @@
+{
+  "heading": "9.3.1.1.Integer and Bit-Size Comparisons\uf0c1",
+  "level": 4,
+  "content": "The signed integer comparisons are the traditional `eq` (equal), `ne` (not-equal), `lt`\n(less-than), `le` (less-than-or-equal), `gt` (greater-than), and `ge`\n(greater-than-or-equal). The unsigned comparisons are `eq`, `ne`, `lo` (lower), `ls`\n(lower-or-same), `hi` (higher), and `hs` (higher-or-same). The bit-size comparisons are `eq`\nand `ne`; ordering comparisons are not defined for bit-size types.\n\n[Table 22](#integer-and-bit-size-comparisons-operators-for-signed-integer-unsigned-integer-and-bit-size-types)\nshows the operators for signed integer, unsigned integer, and bit-size types.\n\nTable 22 Operators for Signed Integer, Unsigned Integer, and Bit-Size Types\n\n| Meaning | Signed Operator | Unsigned Operator | Bit-Size Operator |\n| --- | --- | --- | --- |\n| `a == b` | `eq` | `eq` | `eq` |\n| `a != b` | `ne` | `ne` | `ne` |\n| `a < b` | `lt` | `lo` | n/a |\n| `a <= b` | `le` | `ls` | n/a |\n| `a > b` | `gt` | `hi` | n/a |\n| `a >= b` | `ge` | `hs` | n/a |"
+}

@@ -1,0 +1,11 @@
+{
+  "heading": "13.28.Changes in PTX ISA Version 5.0\uf0c1",
+  "instruction": "Changes in PTX ISA Version 5.0",
+  "level": 2,
+  "architectures": [
+    "sm_60",
+    "sm_61",
+    "sm_62"
+  ],
+  "content": "New Features\n\nPTX ISA version 5.0 introduces the following new features:\n\n* Support for `sm_60`, `sm_61`, `sm_62` target architecture.\n* Extends atomic and reduction instructions to perform double-precision add operation.\n* Extends atomic and reduction instructions to specify `scope` modifier.\n* A new `.common` directive to permit linking multiple object files containing declarations of the\n  same symbol with different size.\n* A new `dp4a` instruction which allows 4-way dot product with accumulate operation.\n* A new `dp2a` instruction which allows 2-way dot product with accumulate operation.\n* Support for special register `%clock_hi`.\n\nSemantic Changes and Clarifications\n\nSemantics of cache modifiers on `ld` and `st` instructions were clarified to reflect cache\noperations are treated as performance hint only and do not change memory consistency behavior of the\nprogram.\n\nSemantics of `volatile` operations on `ld` and `st` instructions were clarified to reflect how\n`volatile` operations are handled by optimizing compiler."
+}

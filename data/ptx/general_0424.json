@@ -1,0 +1,5 @@
+{
+  "heading": "9.7.16.2.2.Specifying Matrix Shape\uf0c1",
+  "level": 5,
+  "content": "*M* and *N* can be specified in the [Instruction descriptor](#tcgen05-instruction-descriptor).\n\n*K* can be specified explicitly if there are multiple values of *K* supported for a given MMA variant.\nOtherwise, if *K* can be uniquely determined as per the [Table 39](#tcgen05-kind-shapes), then *K* cannot\nbe explicitly specified."
+}

@@ -1,0 +1,7 @@
+{
+  "heading": "11.6.1.Linking Directives:.extern\uf0c1",
+  "instruction": "Linking Directives:.extern",
+  "level": 3,
+  "architectures": [],
+  "content": "`.extern`\n\nExternal symbol declaration.\n\nSyntax\n\n```\n.extern identifier\n```\n\nDescription\n\nDeclares identifier to be defined external to the current module. The module defining such\nidentifier must define it as `.weak` or `.visible` only once in a single object file. Extern\ndeclaration of symbol may appear multiple times and references to that get resolved against the\nsingle definition of that symbol.\n\nPTX ISA Notes\n\nIntroduced in PTX ISA version 1.0.\n\nTarget ISA Notes\n\nSupported on all target architectures.\n\nExamples\n\n```\n.extern .global .b32 foo;  // foo is defined in another module\n```"
+}

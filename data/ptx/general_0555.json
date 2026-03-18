@@ -1,0 +1,5 @@
+{
+  "heading": "10.28.Special Registers:%globaltimer,%globaltimer_lo,%globaltimer_hi\uf0c1",
+  "level": 2,
+  "content": "`%globaltimer`, `%globaltimer_lo`, `%globaltimer_hi`\n\n`%globaltimer`\n:   A predefined, 64-bit global nanosecond timer.\n\n`%globaltimer_lo`\n:   The lower 32-bits of %globaltimer.\n\n`%globaltimer_hi`\n:   The upper 32-bits of %globaltimer.\n\nSyntax (predefined)\n\n```\n.sreg .u64 %globaltimer;\n.sreg .u32 %globaltimer_lo, %globaltimer_hi;\n```\n\nDescription\n\nSpecial registers intended for use by NVIDIA tools. The behavior is target-specific and may change\nor be removed in future GPUs. When JIT-compiled to other targets, the value of these registers is\nunspecified.\n\nPTX ISA Notes\n\nIntroduced in PTX ISA version 3.1.\n\nTarget ISA Notes\n\nRequires target `sm_30` or higher.\n\nExamples\n\n```\nmov.u64  r1,%globaltimer;\n```"
+}

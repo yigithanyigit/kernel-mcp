@@ -1,0 +1,7 @@
+{
+  "heading": "13.19.Changes in PTX ISA Version 7.2\uf0c1",
+  "instruction": "Changes in PTX ISA Version 7.2",
+  "level": 2,
+  "architectures": [],
+  "content": "New Features\n\nPTX ISA version 7.2 introduces the following new features:\n\n* Enhances `.loc` directive to represent inline function information.\n* Adds support to define labels inside the debug sections.\n* Extends `min` and `max` instructions to support `.xorsign` and `.abs` modifiers.\n\nSemantic Changes and Clarifications\n\nNone."
+}

@@ -1,0 +1,9 @@
+{
+  "heading": "10.26.Special Registers:%pm0_64\u2026%pm7_64\uf0c1",
+  "instruction": "Special Registers:%pm0_64\u2026%pm7_64",
+  "level": 2,
+  "architectures": [
+    "sm_50"
+  ],
+  "content": "`%pm0_64` \u2026 `%pm7_64`\n\n64 bit Performance monitoring counters.\n\nSyntax (predefined)\n\n```\n.sreg .u64 %pm0_64;\n.sreg .u64 %pm1_64;\n.sreg .u64 %pm2_64;\n.sreg .u64 %pm3_64;\n.sreg .u64 %pm4_64;\n.sreg .u64 %pm5_64;\n.sreg .u64 %pm6_64;\n.sreg .u64 %pm7_64;\n```\n\nDescription\n\nSpecial registers `%pm0_64` \u2026 `%pm7_64` are unsigned 64-bit read-only performance monitor\ncounters. Their behavior is currently undefined.\n\nNotes\n\nThe lower 32bits of `%pm0_64` \u2026 `%pm7_64` are identical to `%pm0` \u2026 `%pm7`.\n\nPTX ISA Notes\n\n`%pm0_64` \u2026 `%pm7_64` introduced in PTX ISA version 4.0.\n\nTarget ISA Notes\n\n`%pm0_64` \u2026 `%pm7_64` require `sm_50` or higher.\n\nExamples\n\n```\nmov.u32  r1,%pm0_64;\nmov.u32  r1,%pm7_64;\n```"
+}

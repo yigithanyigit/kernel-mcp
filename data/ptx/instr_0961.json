@@ -1,0 +1,9 @@
+{
+  "heading": "13.24.Changes in PTX ISA Version 6.3\uf0c1",
+  "instruction": "Changes in PTX ISA Version 6.3",
+  "level": 2,
+  "architectures": [
+    "sm_75"
+  ],
+  "content": "New Features\n\nPTX ISA version 6.3 introduces the following new features:\n\n* Support for `sm_75` target architecture.\n* Adds support for a new instruction `nanosleep` that suspends a thread for a specified duration.\n* Adds support for `.alias` directive which allows definining alias to function symbol.\n* Extends `atom` instruction to perform `.f16` addition operation and `.cas.b16` operation.\n* Extends `red` instruction to perform `.f16` addition operation.\n* The `wmma` instructions are extended to support multiplicand matrices of type `.s8`, `.u8`,\n  `.s4`, `.u4`, `.b1` and accumulator matrices of type `.s32`.\n\nSemantic Changes and Clarifications\n\n* Introduced the mandatory `.aligned` qualifier for all `wmma` instructions.\n* Specified the alignment required for the base address and stride parameters passed to\n  `wmma.load` and `wmma.store`.\n* Clarified that layout of fragment returned by `wmma` operation is architecture dependent and\n  passing `wmma` fragments around functions compiled for different link compatible SM\n  architectures may not work as expected.\n* Clarified that atomicity for `{atom/red}.f16x2}` operations is guranteed separately for each of\n  the two `.f16` elements but not guranteed to be atomic as single 32-bit access."
+}

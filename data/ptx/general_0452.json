@@ -1,0 +1,5 @@
+{
+  "heading": "9.7.16.6.5.Shared Memory Accesses\uf0c1",
+  "level": 5,
+  "content": "The shared memory accesses by `tcgen05.mma` and `tcgen05.cp` operations are performed\nin the asynchronous proxy (async proxy).\n\nAccessing the same memory location across miltiple proxies needs a cross-proxy fence.\nFor the async proxy, `fence.proxy.async` should be used to synchronize memory between\ngeneric proxy and the async proxy."
+}

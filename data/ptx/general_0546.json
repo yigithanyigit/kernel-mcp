@@ -1,0 +1,5 @@
+{
+  "heading": "10.19.Special Registers:%lanemask_le\uf0c1",
+  "level": 2,
+  "content": "`%lanemask_le`\n\n32-bit mask with bits set in positions less than or equal to the thread\u2019s lane number in the warp.\n\nSyntax (predefined)\n\n```\n.sreg .u32 %lanemask_le;\n```\n\nDescription\n\nA predefined, read-only special register initialized with a 32-bit mask with bits set in positions\nless than or equal to the thread\u2019s lane number in the warp.\n\nPTX ISA Notes\n\nIntroduced in PTX ISA version 2.0.\n\nTarget ISA Notes\n\n`%lanemask_le` requires `sm_20` or higher.\n\nExamples\n\n```\nmov.u32     %r, %lanemask_le\n```"
+}

@@ -1,0 +1,5 @@
+{
+  "heading": "8.2.4.Memory Operations on Vector Data Types\uf0c1",
+  "level": 3,
+  "content": "The memory consistency model relates operations executed on memory locations with scalar data types,\nwhich have a maximum size and alignment of 64 bits. Memory operations with a vector data type are\nmodelled as a set of equivalent memory operations with a scalar data type, executed in an\nunspecified order on the elements in the vector."
+}

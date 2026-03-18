@@ -1,0 +1,8 @@
+{
+  "heading": "When to Use Explicit Conversion?",
+  "level": 3,
+  "content": "The DLPack protocol is a widely used protocol for interoperability between different frameworks.\nHowever, there is some associated overhead. Based on our benchmark, it usually takes between 2 to 3\nus per call to `from_dlpack`.\n\nExplicit conversion allows for caching the converted CuTe tensors in order to avoid the overhead of\nrepeated calls to `from_dlpack`.\n\n```\nx = torch.randn(30, 20, device=\"cpu\")\nif key not in cached_tensors:\n    # Do the conversion only for cache misses\n    cached_tensors[key] = cute.runtime.from_dlpack(x)\nfoo(cached_tensors[key])\n```\n\nAnother use case for explicit conversion is to gain fine-grain control over which modes of a tensor\nare considered dynamic from the perspective of the generated program.",
+  "source_page": "cute_dsl_general/framework_integration.html",
+  "source_url": "https://docs.nvidia.com/cutlass/latest/media/docs/pythonDSL/cute_dsl_general/framework_integration.html",
+  "page_title": "Integration with Frameworks"
+}

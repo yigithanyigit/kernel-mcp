@@ -1,0 +1,5 @@
+{
+  "heading": "10.32.Special Registers:%dynamic_smem_size\uf0c1",
+  "level": 2,
+  "content": "`%dynamic_smem_size`\n\nSize of shared memory allocated dynamically at kernel launch.\n\nSyntax (predefined)\n\n```\n.sreg .u32 %dynamic_smem_size;\n```\n\nDescription\n\nSize of shared memory allocated dynamically at kernel launch.\n\nA predefined, read-only special register initialized with size of shared memory allocated dynamically for the CTA of a kernel at launch time.\n\nPTX ISA Notes\n\nIntroduced in PTX ISA version 4.1.\n\nTarget ISA Notes\n\nRequires `sm_20` or higher.\n\nExamples\n\n```\nmov.u32  %r, %dynamic_smem_size;\n```"
+}

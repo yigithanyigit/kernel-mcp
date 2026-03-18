@@ -1,0 +1,5 @@
+{
+  "heading": "9.7.16.10.8.5.Alignment restriction\uf0c1",
+  "level": 6,
+  "content": "The layouts which utilize only half the datapath lanes as specified in\n[Data Path Layout Organization](#tcgen05-data-path-layout-organization),\ni.e. [Layout F](#tcgen05-data-path-layout-f) and\n[Layout C](#tcgen05-data-path-layout-c), must use the same alignment\nacross matrices A, D and the sparsity metadata matrix."
+}

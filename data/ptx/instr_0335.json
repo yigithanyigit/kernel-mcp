@@ -1,0 +1,10 @@
+{
+  "heading": "9.7.4.9.Half Precision Floating Point Instructions:tanh\uf0c1",
+  "instruction": "Half Precision Floating Point Instructions:tanh",
+  "level": 4,
+  "architectures": [
+    "sm_75",
+    "sm_90"
+  ],
+  "content": "`tanh`\n\nFind the hyperbolic tangent of a value (in radians)\n\nSyntax\n\n```\ntanh.approx.type d, a;\n\n.type = {.f16, .f16x2, .bf16, .bf16x2}\n```\n\nDescription\n\nTake hyperbolic tangent value of `a`.\n\nThe type of operands `d` and `a` are as specified by `.type`.\n\nFor `.f16x2` or `.bf16x2` instruction type, each of the half-word operands are operated in\nparallel and the results are packed appropriately into a `.f16x2` or `.bf16x2`.\n\nSemantics\n\n```\nif (.type == .f16 || .type == .bf16) {\n  d = tanh(a)\n} else if (.type == .f16x2 || .type == .bf16x2) {\n  fA[0] = a[0:15];\n  fA[1] = a[16:31];\n  d[0] = tanh(fA[0])\n  d[1] = tanh(fA[1])\n}\n```\n\nNotes\n\n`tanh.approx.{f16, f16x2, bf16, bf16x2}` implements an approximate hyperbolic tangent in the\ntarget format.\n\nResults of `tanh` for various corner-case inputs are as follows:\n\n| Input | Result |\n| --- | --- |\n| -Inf | -1.0 |\n| -0.0 | -0.0 |\n| +0.0 | +0.0 |\n| +Inf | 1.0 |\n| NaN | NaN |\n\nThe maximum absolute error for `.f16` type is 2-10.987. The maximum absolute error for `.bf16`\ntype is 2-8.\n\nThe subnormal numbers are supported.\n\nPTX ISA Notes\n\nIntroduced in PTX ISA version 7.0.\n\n`tanh.approx.{bf16/bf16x2}` introduced in PTX ISA version 7.8.\n\nTarget ISA Notes\n\nRequires `sm_75` or higher.\n\n`tanh.approx.{bf16/bf16x2}` requires `sm_90` or higher.\n\nExamples\n\n```\ntanh.approx.f16    h1, h0;\ntanh.approx.f16x2  hd1, hd0;\ntanh.approx.bf16   b1, b0;\ntanh.approx.bf16x2 hb1, hb0;\n```"
+}

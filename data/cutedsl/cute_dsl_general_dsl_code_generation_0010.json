@@ -1,0 +1,8 @@
+{
+  "heading": "4. CuTe DSL Code-Generation Modes",
+  "level": 2,
+  "content": "CuTe\u2019s Python front-end combines the techniques above into **two mutually\nexclusive modes** (see [Left: tracing mode records only the path that executed.\nRight: preprocessor mode emits structured intermediate representation (IR) for every branch and loop\nbefore tracing the arithmetic.](#fig-dsl-modes)), selectable with the `preprocessor` flag of the\n`@jit` decorator:\n\n1. Tracing mode `@jit(preprocess=False)` \u2013 tracing only.\nThis results in the fastest compilation path and is recommended only for kernels that are guaranteed to be\nstraight-line arithmetic. It suffers from all tracing limitations listed in the previous section.\n\n2. Preprocessor mode (**default**) `@jit(preprocess=True)` \u2013 **AST rewrite + tracing**.\nThe AST pass captures every loop and branch, eliminating the correctness and\noptimisation problems of pure tracing; tracing then fills in the arithmetic.\nThis hybrid \u201cpreprocessor\u201d pipeline is unique to CuTe DSL and was designed\nspecifically to overcome the disadvantages identified above.",
+  "source_page": "cute_dsl_general/dsl_code_generation.html",
+  "source_url": "https://docs.nvidia.com/cutlass/latest/media/docs/pythonDSL/cute_dsl_general/dsl_code_generation.html",
+  "page_title": "End"
+}

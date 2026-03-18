@@ -1,0 +1,5 @@
+{
+  "heading": "9.7.1.23.Integer Arithmetic Instructions:dp4a\uf0c1",
+  "level": 4,
+  "content": "`dp4a`\n\nFour-way byte dot product-accumulate.\n\nSyntax\n\n```\ndp4a.atype.btype  d, a, b, c;\n\n.atype = .btype = { .u32, .s32 };\n```\n\nDescription\n\nFour-way byte dot product which is accumulated in 32-bit result.\n\nOperand `a` and `b` are 32-bit inputs which hold 4 byte inputs in packed form for dot product.\n\nOperand `c` has type `.u32` if both `.atype` and `.btype` are `.u32` else operand `c`\nhas type `.s32`.\n\nSemantics\n\n```\nd = c;\n\n// Extract 4 bytes from a 32bit input and sign or zero extend\n// based on input type.\nVa = extractAndSignOrZeroExt_4(a, .atype);\nVb = extractAndSignOrZeroExt_4(b, .btype);\n\nfor (i = 0; i < 4; ++i) {\n    d += Va[i] * Vb[i];\n}\n```\n\nPTX ISA Notes\n\nIntroduced in PTX ISA version 5.0.\n\nTarget ISA Notes\n\nRequires `sm_61` or higher.\n\nExamples\n\n```\ndp4a.u32.u32           d0, a0, b0, c0;\ndp4a.u32.s32           d1, a1, b1, c1;\n```"
+}

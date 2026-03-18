@@ -1,0 +1,5 @@
+{
+  "heading": "9.7.8.2.Logic and Shift Instructions:or\uf0c1",
+  "level": 4,
+  "content": "`or`\n\nBiwise OR.\n\nSyntax\n\n```\nor.type d, a, b;\n\n.type = { .pred, .b16, .b32, .b64 };\n```\n\nDescription\n\nCompute the bit-wise or operation for the bits in `a` and `b`.\n\nSemantics\n\n```\nd = a | b;\n```\n\nNotes\n\nThe size of the operands must match, but not necessarily the type.\n\nAllowed types include predicate registers.\n\nPTX ISA Notes\n\nIntroduced in PTX ISA version 1.0.\n\nTarget ISA Notes\n\nSupported on all target architectures.\n\nExamples\n\n```\nor.b32  mask mask,0x00010001\nor.pred  p,q,r;\n```"
+}

@@ -1,0 +1,8 @@
+{
+  "heading": "Overview",
+  "level": 2,
+  "content": "CuTe DSL walks Python\u2019s AST and converts each control-flow construct it finds into\nstructured intermediate representation (IR). You can therefore write ordinary Python loops and branches\nwhile the compiler decides\u2014statement by statement\u2014whether to\n\n* **evaluate at compile time** if it\u2019s a native Python control flow, or\n* **emit intermediate representation (IR)** when the control flow is marked as dynamic.\n\nPassing intermediate representation (IR) values to a native Python control flow will result in an error.\n\nFor a high-level discussion of the overall pipeline, see\n[the code-generation overview](dsl_code_generation.html).",
+  "source_page": "cute_dsl_general/dsl_control_flow.html",
+  "source_url": "https://docs.nvidia.com/cutlass/latest/media/docs/pythonDSL/cute_dsl_general/dsl_control_flow.html",
+  "page_title": "Control Flow"
+}

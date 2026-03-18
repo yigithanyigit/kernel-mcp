@@ -1,0 +1,7 @@
+{
+  "heading": "13.38.Changes in PTX ISA Version 2.1\uf0c1",
+  "instruction": "Changes in PTX ISA Version 2.1",
+  "level": 2,
+  "architectures": [],
+  "content": "New Features\n\nThe underlying, stack-based ABI is supported in PTX ISA version 2.1 for `sm_2x` targets.\n\nSupport for indirect calls has been implemented for `sm_2x` targets.\n\nNew directives, `.branchtargets` and `.calltargets`, have been added for specifying potential\ntargets for indirect branches and indirect function calls. A `.callprototype` directive has been\nadded for declaring the type signatures for indirect function calls.\n\nThe names of `.global` and `.const` variables can now be specified in variable initializers to\nrepresent their addresses.\n\nA set of thirty-two driver-specific execution environment special registers has been added. These\nare named `%envreg0..%envreg31`.\n\nTextures and surfaces have new fields for channel data type and channel order, and the `txq` and\n`suq` instructions support queries for these fields.\n\nDirective `.minnctapersm` has replaced the `.maxnctapersm` directive.\n\nDirective `.reqntid` has been added to allow specification of exact CTA dimensions.\n\nA new instruction, `rcp.approx.ftz.f64`, has been added to compute a fast, gross approximate\nreciprocal.\n\nSemantic Changes and Clarifications\n\nA warning is emitted if `.minnctapersm` is specified without also specifying `.maxntid`."
+}

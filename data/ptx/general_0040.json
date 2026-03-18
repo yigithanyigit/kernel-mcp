@@ -1,0 +1,5 @@
+{
+  "heading": "5.1.6.2.Kernel Function Parameter Attributes\uf0c1",
+  "level": 4,
+  "content": "Kernel function parameters may be declared with an optional .ptr attribute to indicate that a\nparameter is a pointer to memory, and also indicate the state space and alignment of the memory\nbeing pointed to. [Kernel Parameter Attribute: .ptr](#kernel-parameter-attribute-ptr)\ndescribes the `.ptr` kernel parameter attribute."
+}

@@ -1,0 +1,11 @@
+{
+  "heading": "9.7.16.10.TensorCore 5th Generation Matrix Multiply and accumulate Operations\uf0c1 (part 11)",
+  "instruction": "TensorCore 5th Generation Matrix Multiply and accumulate Operations",
+  "level": 4,
+  "architectures": [
+    "sm_100",
+    "sm_100a",
+    "sm_101a"
+  ],
+  "content": "```\ntcgen05.mma.ws.sp.cta_group::1.kind::tf32.collector::b1::fill  [taddr1], [taddr0], bdesc,\n                                                               [tmem_spmeta0], idesc, p;\n\ntcgen05.commit.cta_group::1.mbarrier::arrive::one.b64 [mbarObj0];\n\nloop:\nmbarrier.try_wait.parity.b64 p, [mbarObj0], 0;\n@!p bra loop;\n```"
+}

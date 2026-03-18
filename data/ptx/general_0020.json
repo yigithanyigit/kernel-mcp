@@ -1,0 +1,5 @@
+{
+  "heading": "4.3.1.Directive Statements\uf0c1",
+  "level": 3,
+  "content": "Directive keywords begin with a dot, so no conflict is possible with user-defined identifiers. The\ndirectives in PTX are listed in [Table 1](#directive-statements-ptx-directives) and\ndescribed in [State Spaces, Types, and Variables](#state-spaces-types-and-variables)\nand [Directives](#directives).\n\nTable 1 PTX Directives\n\n|  |  |  |  |\n| --- | --- | --- | --- |\n| `.address_size` | `.explicitcluster` | `.maxnreg` | `.section` |\n| `.alias` | `.extern` | `.maxntid` | `.shared` |\n| `.align` | `.file` | `.minnctapersm` | `.sreg` |\n| `.branchtargets` | `.func` | `.noreturn` | `.target` |\n| `.callprototype` | `.global` | `.param` | `.tex` |\n| `.calltargets` | `.loc` | `.pragma` | `.version` |\n| `.common` | `.local` | `.reg` | `.visible` |\n| `.const` | `.maxclusterrank` | `.reqnctapercluster` | `.weak` |\n| `.entry` | `.maxnctapersm` | `.reqntid` |  |"
+}

@@ -1,0 +1,5 @@
+{
+  "heading": "10.24.Special Registers:%clock64\uf0c1",
+  "level": 2,
+  "content": "`%clock64`\n\nA predefined, read-only 64-bit unsigned cycle counter.\n\nSyntax (predefined)\n\n```\n.sreg .u64 %clock64;\n```\n\nDescription\n\nSpecial register `%clock64` is an unsigned 64-bit read-only cycle counter that wraps silently.\n\nNotes\n\nThe lower 32-bits of `%clock64` are identical to `%clock`.\n\nThe upper 32-bits of `%clock64` are identical to `%clock_hi`.\n\nPTX ISA Notes\n\nIntroduced in PTX ISA version 2.0.\n\nTarget ISA Notes\n\n`%clock64` requires `sm_20` or higher.\n\nExamples\n\n```\nmov.u64  r1,%clock64;\n```"
+}

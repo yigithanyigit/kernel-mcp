@@ -1,0 +1,5 @@
+{
+  "heading": "5.4.6.Parameterized Variable Names\uf0c1",
+  "level": 3,
+  "content": "Since PTX supports virtual registers, it is quite common for a compiler frontend to generate a large\nnumber of register names. Rather than require explicit declaration of every name, PTX supports a\nsyntax for creating a set of variables having a common prefix string appended with integer suffixes.\n\nFor example, suppose a program uses a large number, say one hundred, of `.b32` variables, named\n`%r0`, `%r1`, \u2026, `%r99`. These 100 register variables can be declared as follows:\n\n```\n.reg .b32 %r<100>;    // declare %r0, %r1, ..., %r99\n```\n\nThis shorthand syntax may be used with any of the fundamental types and with any state space, and\nmay be preceded by an alignment specifier. Array variables cannot be declared this way, nor are\ninitializers permitted."
+}

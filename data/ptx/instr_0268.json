@@ -1,0 +1,7 @@
+{
+  "heading": "9.7.1.5.Integer Arithmetic Instructions:mul24\uf0c1",
+  "instruction": "Integer Arithmetic Instructions:mul24",
+  "level": 4,
+  "architectures": [],
+  "content": "`mul24`\n\nMultiply two 24-bit integer values.\n\nSyntax\n\n```\nmul24.mode.type  d, a, b;\n\n.mode = { .hi, .lo };\n.type = { .u32, .s32 };\n```\n\nDescription\n\nCompute the product of two 24-bit integer values held in 32-bit source registers, and return either\nthe high or low 32-bits of the 48-bit result.\n\nSemantics\n\n```\nt = a * b;\nd = t<47..16>;    // for .hi variant\nd = t<31..0>;     // for .lo variant\n```\n\nNotes\n\nInteger multiplication yields a result that is twice the size of the input operands, i.e., 48-bits.\n\n`mul24.hi` performs a 24x24-bit multiply and returns the high 32 bits of the 48-bit result.\n\n`mul24.lo` performs a 24x24-bit multiply and returns the low 32 bits of the 48-bit result.\n\nAll operands are of the same type and size.\n\n`mul24.hi` may be less efficient on machines without hardware support for 24-bit multiply.\n\nPTX ISA Notes\n\nIntroduced in PTX ISA version 1.0.\n\nTarget ISA Notes\n\nSupported on all target architectures.\n\nExamples\n\n```\nmul24.lo.s32 d,a,b;   // low 32-bits of 24x24-bit signed multiply.\n```"
+}

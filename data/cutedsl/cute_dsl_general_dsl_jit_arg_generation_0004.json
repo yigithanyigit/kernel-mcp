@@ -1,0 +1,8 @@
+{
+  "heading": "Type safety",
+  "level": 2,
+  "content": "CuTe DSL makes good use of type annotation in JIT function signature and validates the JIT function argument types at compile time for **type safety**.\n\n```\nimport cutlass\nimport cutlass.cute as cute\nimport numpy as np\n\n@cute.jit\ndef foo(x: cute.Tensor, y: cutlass.Float16):\n    ...\n\na = np.random.randn(10, 10).astype(np.float16)\nb = 32\n\nfoo(a, b)\nfoo(b, a)  # This will fail at compile time due to type mismatch\n```\n\nThe type safety check helps catch the type mismatch issue early at the compile time with clear error message to avoid tricky runtime errors which is usually more expensive to debug.\nIn the example above, the second call to `foo` will fail at compile time due to the type mismatch with a clear error message:\n\n```\ncutlass.base_dsl.common.DSLRuntimeError: DSLRuntimeError: expects argument #1 (a) to be <class 'cutlass.cute.typing.Tensor'>, but got <class 'int'>\n```",
+  "source_page": "cute_dsl_general/dsl_jit_arg_generation.html",
+  "source_url": "https://docs.nvidia.com/cutlass/latest/media/docs/pythonDSL/cute_dsl_general/dsl_jit_arg_generation.html",
+  "page_title": "JIT Function Argument Generation"
+}

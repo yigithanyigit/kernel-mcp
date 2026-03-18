@@ -1,0 +1,8 @@
+{
+  "heading": "cutlass.cute.nvgpu",
+  "level": 1,
+  "content": "The `cute.nvgpu` module contains MMA and Copy Operations as well as Operation-specific helper\nfunctions. The arch-agnostic Operations are exposed at the top-level while arch-specific Operations\nare grouped into submodules like `tcgen05`.",
+  "source_page": "cute_dsl_api/cute_nvgpu.html",
+  "source_url": "https://docs.nvidia.com/cutlass/latest/media/docs/pythonDSL/cute_dsl_api/cute_nvgpu.html",
+  "page_title": "cutlass.cute.nvgpu"
+}

@@ -1,0 +1,5 @@
+{
+  "heading": "9.7.16.6.4.5.Register dependencies, same thread\uf0c1",
+  "level": 6,
+  "content": "For `tcgen05.ld`, an intra-thread ordering through true register dependency will be respected\nregardless of the presence or absence of other forms of synchronization. This form of register\ndependency does not imply any other form of ordering. For example, a register dependency does\nnot imply that a dependee instruction\u2019s memory accesses will be performed before a dependent\ninstruction\u2019s memory accesses. To enforce such memory orderings and avoiding anti-dependency\nhazards around `tcgen05.ld`, `tcgen05.wait::ld` must be used.\n\nExample:\n\n```\ntcgen05.ld %r1, ...;\ntcgen05.mma ..., %r1, ...;\n```"
+}

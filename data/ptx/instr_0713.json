@@ -1,0 +1,7 @@
+{
+  "heading": "9.7.16.3.1.2.Absolute address mode for K dimension being 48B\uf0c1",
+  "instruction": "Absolute address mode for K dimension being 48B",
+  "level": 6,
+  "architectures": [],
+  "content": "The `tcgen05.mma` instruction with *K-dimension* of 48B would overflow the 128B\nshared memory boundary if the data is packed contiguously.\n\nIn this case, the absolute address mode can be used to break up the data in the\nshared memory into two chunks such that both these chunks are laid out within\nthe aligned 128-byte address boundary.\nThe leading dimension absolute address can point to the second data chunk in the shared memory.\n\n###### 9.7.16.3.1.2.1. [Restrictions on the Leading Dimension Absolute Address Stride](#tcgen05-leading-dimension-byte-offset-absolute-address-restriction)\n\nFollowing are the restrictions on the absolute address stride mode:\n\n1. Only 128B swizzle (with 16B atomicity) is supported.\n2. Only K-Major mode is supported. That is, the transpose bits(bits #15 and #16) in\n   [Instruction descriptor](#tcgen05-instruction-descriptor) must be 0.\n3. The matrix base offset must be 0."
+}

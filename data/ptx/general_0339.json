@@ -1,0 +1,5 @@
+{
+  "heading": "9.7.13.15.5.1.expect-tx operation\uf0c1",
+  "level": 6,
+  "content": "The *expect-tx* operation, with an `expectCount` argument, increases the *tx-count* of an\n*mbarrier object* by the value specified by `expectCount`. This sets the current phase of the\n*mbarrier object* to expect and track the completion of additional asynchronous transactions."
+}

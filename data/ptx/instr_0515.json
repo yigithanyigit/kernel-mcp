@@ -1,0 +1,7 @@
+{
+  "heading": "9.7.13.11.Parallel Synchronization and Communication Instructions:activemask\uf0c1",
+  "instruction": "Parallel Synchronization and Communication Instructions:activemask",
+  "level": 4,
+  "architectures": [],
+  "content": "`activemask`\n\nQueries the active threads within a warp.\n\nSyntax\n\n```\nactivemask.b32 d;\n```\n\nDescription\n\n`activemask` queries predicated-on active threads from the executing warp and sets the destination\n`d` with 32-bit integer mask where bit position in the mask corresponds to the thread\u2019s\n`laneid`.\n\nDestination `d` is a 32-bit destination register.\n\nAn active thread will contribute 1 for its entry in the result and exited or inactive or\npredicated-off thread will contribute 0 for its entry in the result.\n\nPTX ISA Notes\n\nIntroduced in PTX ISA version 6.2.\n\nTarget ISA Notes\n\nRequires `sm_30` or higher.\n\nExamples\n\n```\nactivemask.b32  %r1;\n```"
+}

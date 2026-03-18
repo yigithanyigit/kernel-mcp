@@ -1,0 +1,9 @@
+{
+  "heading": "13.11.Changes in PTX ISA Version 8.1\uf0c1",
+  "instruction": "Changes in PTX ISA Version 8.1",
+  "level": 2,
+  "architectures": [
+    "sm_89"
+  ],
+  "content": "New Features\n\nPTX ISA version 8.1 introduces the following new features:\n\n* Adds support for `st.async` and `red.async` instructions for asynchronous store and\n  asynchronous reduction operations respectively on shared memory.\n* Adds support for `.oob` modifier on half-precision `fma` instruction.\n* Adds support for `.satfinite` saturation modifer on `cvt` instruction for `.f16`, `.bf16`\n  and `.tf32` formats.\n* Extends support for `cvt` with `.e4m3`/`.e5m2` to `sm_89`.\n* Extends `atom` and `red` instructions to support vector types.\n* Adds support for special register `%aggr_smem_size`.\n* Extends `sured` instruction with 64-bit `min`/`max` operations.\n* Adds support for increased kernel parameter size of 32764 bytes.\n* Adds support for multimem addresses in memory consistency model.\n* Adds support for `multimem.ld_reduce`, `multimem.st` and `multimem.red` instructions to\n  perform memory operations on multimem addresses.\n\nSemantic Changes and Clarifications\n\nNone."
+}

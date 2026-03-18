@@ -1,0 +1,7 @@
+{
+  "heading": "10.3.Special Registers:%laneid\uf0c1",
+  "instruction": "Special Registers:%laneid",
+  "level": 2,
+  "architectures": [],
+  "content": "`%laneid`\n\nLane Identifier.\n\nSyntax (predefined)\n\n```\n.sreg .u32 %laneid;\n```\n\nDescription\n\nA predefined, read-only special register that returns the thread\u2019s lane within the warp. The lane\nidentifier ranges from zero to `WARP_SZ-1`.\n\nPTX ISA Notes\n\nIntroduced in PTX ISA version 1.3.\n\nTarget ISA Notes\n\nSupported on all target architectures.\n\nExamples\n\n```\nmov.u32  %r, %laneid;\n```"
+}

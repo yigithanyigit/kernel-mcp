@@ -1,0 +1,9 @@
+{
+  "heading": "9.7.9.25.4.3.Data Movement and Conversion Instructions:cp.async.bulk.prefetch\uf0c1",
+  "instruction": "Data Movement and Conversion Instructions:cp.async.bulk.prefetch",
+  "level": 6,
+  "architectures": [
+    "sm_90"
+  ],
+  "content": "`cp.async.bulk.prefetch`\n\nProvides a hint to the system to initiate the asynchronous prefetch of data to the cache.\n\nSyntax\n\n```\ncp.async.bulk.prefetch.L2.src{.level::cache_hint}   [srcMem], size {, cache-policy};\n\n.src =                { .global }\n.level::cache_hint =  { .L2::cache_hint }\n```\n\nDescription\n\n`cp.async.bulk.prefetch` is a non-blocking instruction which may initiate an asynchronous prefetch\nof data from the location specified by source address operand `srcMem`, in `.src` statespace, to\nthe L2 cache.\n\nThe 32-bit operand `size` specifies the amount of memory to be prefetched in terms of number of\nbytes. `size` must be a multiple of 16. If the value is not a multiple of 16, then the behavior is\nundefined. The address `srcMem` must be aligned to 16 bytes.\n\nWhen the optional argument `cache-policy` is specified, the qualifier `.level::cache_hint` is\nrequired. The 64-bit operand `cache-policy` specifies the cache eviction policy that may be used\nduring the memory access.\n\n`cache-policy` is a hint to the cache subsystem and may not always be respected. It is treated as\na performance hint only, and does not change the memory consistency behavior of the program.\n\n`cp.async.bulk.prefetch` is treated as a weak memory operation in the\n[Memory Consistency Model](#memory-consistency-model).\n\nPTX ISA Notes\n\nIntroduced in PTX ISA version 8.0.\n\nTarget ISA Notes\n\nRequires `sm_90` or higher.\n\nExamples\n\n```\ncp.async.bulk.prefetch.L2.global                 [srcMem], size;\n\ncp.async.bulk.prefetch.L2.global.L2::cache_hint  [srcMem], size, policy;\n```"
+}

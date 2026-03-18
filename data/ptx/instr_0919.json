@@ -1,0 +1,9 @@
+{
+  "heading": "11.7.1.Cluster Dimension Directives:.reqnctapercluster\uf0c1",
+  "instruction": "Cluster Dimension Directives:.reqnctapercluster",
+  "level": 3,
+  "architectures": [
+    "sm_90"
+  ],
+  "content": "`.reqnctapercluster`\n\nDeclare the number of CTAs in the cluster.\n\nSyntax\n\n```\n.reqnctapercluster nx\n.reqnctapercluster nx, ny\n.reqnctapercluster nx, ny, nz\n```\n\nDescription\n\nSet the number of thread blocks (CTAs) in the cluster by specifying the extent of each dimension of\nthe 1D, 2D, or 3D cluster. The total number of CTAs is the product of the number of CTAs in each\ndimension. For kernels with `.reqnctapercluster` directive specified, runtime will use the\nspecified values for configuring the launch if the same are not specified at launch time.\n\nSemantics\n\nIf cluster dimension is explicitly specified at launch time, it should be equal to the values\nspecified in this directive. Specifying a different cluster dimension at launch will result in a\nruntime error or kernel launch failure.\n\nPTX ISA Notes\n\nIntroduced in PTX ISA version 7.8.\n\nTarget ISA Notes\n\nRequires `sm_90` or higher.\n\nExamples\n\n```\n.entry foo .reqnctapercluster 2         { . . . }\n.entry bar .reqnctapercluster 2, 2, 1   { . . . }\n.entry ker .reqnctapercluster 3, 2      { . . . }\n```"
+}

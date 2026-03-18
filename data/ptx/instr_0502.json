@@ -1,0 +1,7 @@
+{
+  "heading": "9.7.13.1.Parallel Synchronization and Communication Instructions:bar,barrier\uf0c1 (part 2)",
+  "instruction": "Parallel Synchronization and Communication Instructions:bar,barrier",
+  "level": 4,
+  "architectures": [],
+  "content": "/* Producer/consumer model. The producer deposits a value in\n * shared memory, signals that it is complete but does not wait\n * using bar.arrive, and begins fetching more data from memory.\n * Once the data returns from memory, the producer must wait\n * until the consumer signals that it has read the value from\n * the shared memory location. In the meantime, a consumer\n * thread waits until the data is stored by the producer, reads\n * it, and then signals that it is done (without waiting).\n */\n    // Producer code places produced value in shared memory.\n    st.shared   [r0],r1;\n    bar.arrive  0,64;\n    ld.global   r1,[r2];\n    bar.sync    1,64;\n    ...\n\n    // Consumer code, reads value from shared memory\n    bar.sync   0,64;\n    ld.shared  r1,[r0];\n    bar.arrive 1,64;\n    ...\n```"
+}

@@ -1,0 +1,13 @@
+{
+  "heading": "Source: cutlass.cute.export.export",
+  "module": "cutlass.cute.export.export",
+  "file_path": "cute/export/export.py",
+  "content": "# Module: `cutlass.cute.export.export`\n\nFile: `cute/export/export.py`\n\n\n---\n\n## class `CuteArgsSpecProcessor`\n\n\n\n---\n\n## `dumps(self, args_spec: FullArgSpec) -> bytes`\n\n\n\n---\n\n## `loads(self, args_spec_bytes: bytes) -> FullArgSpec`\n\n",
+  "symbols": [
+    "CuteArgsSpecProcessor",
+    "dumps",
+    "loads"
+  ],
+  "source_code": "# SPDX-FileCopyrightText: Copyright (c) 2025 - 2026 NVIDIA CORPORATION & AFFILIATES. All rights reserved.\n# SPDX-License-Identifier: LicenseRef-NvidiaProprietary\n#\n# Use of this software is governed by the terms and conditions of the\n# NVIDIA End User License Agreement (EULA), available at:\n# https://docs.nvidia.com/cutlass/media/docs/pythonDSL/license.html\n#\n# Any use, reproduction, disclosure, or distribution of this software\n# and related documentation outside the scope permitted by the EULA\n# is strictly prohibited.\n\nimport os\nimport pickle\nimport copy\nfrom ..typing import IntTuple, Shape, Stride, Coord, Tile\nfrom inspect import FullArgSpec\n\nfrom cutlass.base_dsl.export import (\n    ArgsSpecProcessor,\n)\n\ncute_algebra_types_dump = {\n    IntTuple: \"IntTuple\",\n    Shape: \"Shape\",\n    Stride: \"Stride\",\n    Coord: \"Coord\",\n    Tile: \"Tile\",\n}\ncute_algebra_types_load = {\n    \"IntTuple\": IntTuple,\n    \"Shape\": Shape,\n    \"Stride\": Stride,\n    \"Coord\": Coord,\n    \"Tile\": Tile,\n}\n\n\nclass CuteArgsSpecProcessor(ArgsSpecProcessor):\n    def dumps(self, args_spec: FullArgSpec) -> bytes:\n        new_args_spec = copy.deepcopy(args_spec)\n        for arg, arg_type in new_args_spec.annotations.items():\n            if arg_type in cute_algebra_types_dump.keys():\n                new_args_spec.annotations[arg] = cute_algebra_types_dump[arg_type]\n        return pickle.dumps(new_args_spec)\n\n    def loads(self, args_spec_bytes: bytes) -> FullArgSpec:\n        args_spec = pickle.loads(args_spec_bytes)\n        for arg, arg_type in args_spec.annotations.items():\n            if arg_type in cute_algebra_types_load.keys():\n                args_spec.annotations[arg] = cute_algebra_types_load[arg_type]\n        return args_spec\n\n\n# This is the version of the object file. It is used to check the version of the object file is compatible with the current dsl version or not.\nobject_file_version = \"1.1\"\n",
+  "type": "source"
+}

@@ -1,0 +1,7 @@
+{
+  "heading": "9.7.13.15.5.2.complete-tx operation\uf0c1",
+  "instruction": "complete-tx operation",
+  "level": 6,
+  "architectures": [],
+  "content": "The *complete-tx* operation, with an `completeCount` argument, on an *mbarrier object* consists of the following:\n\nmbarrier signaling\n:   Signals the completion of asynchronous transactions that were tracked by the current phase. As a\n    result of this, *tx-count* is decremented by `completeCount`.\n\nmbarrier potentially completing the current phase\n:   If the current phase has been completed then the mbarrier transitions to the next phase. Refer to\n    [Phase Completion of the mbarrier object](#parallel-synchronization-and-communication-instructions-mbarrier-phase-completion)\n    for details on phase completion requirements and phase transition process."
+}

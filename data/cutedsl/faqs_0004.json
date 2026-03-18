@@ -1,0 +1,8 @@
+{
+  "heading": "License",
+  "level": 2,
+  "content": "**What is the license for CuTe DSL and the associated GitHub samples?**\n\n> CuTe DSL components available [on Github](https://github.com/NVIDIA/cutlass/tree/main/python/CuTeDSL) and via the nvidia-cutlass-dsl Python pip wheel\n> are released under the [\u201cNVIDIA Software End User License Agreement (EULA)\u201d](https://github.com/NVIDIA/cutlass/tree/main/EULA.txt).\n> Because the pip package includes a compiler that shares several components with the CUDA Toolkit,\n> it is subject to usage terms and restrictions similar to those of the CUDA SDK. Please refer to the EULA for specific terms of use.\n>\n> CuTe DSL samples and Jupyter notbooks, released [on GitHub](https://github.com/NVIDIA/cutlass/tree/main/examples/python/CuTeDSL) are provided under\n> the BSD 3-Clause License and may be used and redistributed under those terms. This distinction ensures that developers have flexibility\n> when using or modifying the code samples, independent of the compiler and runtime components governed by the EULA.\n>\n> If you have any questions or need clarification, feel free to contact us.",
+  "source_page": "faqs.html",
+  "source_url": "https://docs.nvidia.com/cutlass/latest/media/docs/pythonDSL/faqs.html",
+  "page_title": "FAQs"
+}

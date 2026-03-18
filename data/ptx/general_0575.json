@@ -1,0 +1,5 @@
+{
+  "heading": "11.4.1.Performance-Tuning Directives:.maxnreg\uf0c1",
+  "level": 3,
+  "content": "`.maxnreg`\n\nMaximum number of registers that can be allocated per thread.\n\nSyntax\n\n```\n.maxnreg n\n```\n\nDescription\n\nDeclare the maximum number of registers per thread in a CTA.\n\nSemantics\n\nThe compiler guarantees that this limit will not be exceeded. The actual number of registers used\nmay be less; for example, the backend may be able to compile to fewer registers, or the maximum\nnumber of registers may be further constrained by `.maxntid` and `.maxctapersm`.\n\nPTX ISA Notes\n\nIntroduced in PTX ISA version 1.3.\n\nTarget ISA Notes\n\nSupported on all target architectures.\n\nExamples\n\n```\n.entry foo .maxnreg 16 { ... }  // max regs per thread = 16\n```"
+}

@@ -1,0 +1,5 @@
+{
+  "heading": "9.1.Format and Semantics of Instruction Descriptions\uf0c1",
+  "level": 2,
+  "content": "This section describes each PTX instruction. In addition to the name and the format of the\ninstruction, the semantics are described, followed by some examples that attempt to show several\npossible instantiations of the instruction."
+}

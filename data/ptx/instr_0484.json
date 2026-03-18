@@ -1,0 +1,7 @@
+{
+  "heading": "9.7.12.6.Control Flow Instructions:ret\uf0c1",
+  "instruction": "Control Flow Instructions:ret",
+  "level": 4,
+  "architectures": [],
+  "content": "`ret`\n\nReturn from function to instruction after call.\n\nSyntax\n\n```\nret{.uni};\n```\n\nDescription\n\nReturn execution to caller\u2019s environment. A divergent return suspends threads until all threads are\nready to return to the caller. This allows multiple divergent `ret` instructions.\n\nA `ret` is assumed to be divergent unless the `.uni` suffix is present, indicating that the\nreturn is guaranteed to be non-divergent.\n\nAny values returned from a function should be moved into the return parameter variables prior to\nexecuting the `ret` instruction.\n\nA return instruction executed in a top-level entry routine will terminate thread execution.\n\nPTX ISA Notes\n\nIntroduced in PTX ISA version 1.0.\n\nTarget ISA Notes\n\nSupported on all target architectures.\n\nExamples\n\n```\n    ret;\n@p  ret;\n```"
+}

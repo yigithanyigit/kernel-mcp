@@ -1,0 +1,8 @@
+{
+  "heading": "warp submodule - API Reference (part 2)",
+  "level": 2,
+  "content": "### `classcutlass.cute.nvgpu.warp.StMatrix8x8x16bOp(transpose:bool=False,num_matrices:int=1,unpack_bits:cutlass.cute.typing.Optional.<class'int'>|None=None,)#`\n\n8x8 `stmatrix` Operation.\n\n    See the [PTX documentation](https://docs.nvidia.com/cuda/parallel-thread-execution/#warp-level-matrix-instructions-stmatrix).\n    This operation corresponds to the `m8n8` qualifier.\n\n    __init__( : *transpose: bool = False*, : *num_matrices: int = 1*, : *unpack_bits: cutlass.cute.typing.Optional.<class 'int'> | None = None*, ) \u2192 None\n\n---\n\n### `__init__(transpose:bool=False,num_matrices:int=1,unpack_bits:cutlass.cute.typing.Optional.<class'int'>|None=None,)\u2192None#`\n\n\n\n---\n\n### `classcutlass.cute.nvgpu.warp.StMatrix16x8x8bOp(transpose:bool=False,num_matrices:int=1,unpack_bits:cutlass.cute.typing.Optional.<class'int'>|None=None,)#`\n\n16x8 `stmatrix` Operation.\n\n    See the [PTX documentation](https://docs.nvidia.com/cuda/parallel-thread-execution/#warp-level-matrix-instructions-stmatrix).\n    This operation corresponds to the `m16n8` qualifier.\n\n    __init__( : *transpose: bool = False*, : *num_matrices: int = 1*, : *unpack_bits: cutlass.cute.typing.Optional.<class 'int'> | None = None*, ) \u2192 None\n\n---\n\n### `__init__(transpose:bool=False,num_matrices:int=1,unpack_bits:cutlass.cute.typing.Optional.<class'int'>|None=None,)\u2192None#`\n\n",
+  "source_page": "cute_dsl_api/cute_nvgpu_warp.html",
+  "source_url": "https://docs.nvidia.com/cutlass/latest/media/docs/pythonDSL/cute_dsl_api/cute_nvgpu_warp.html",
+  "page_title": "warp submodule"
+}

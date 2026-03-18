@@ -1,0 +1,5 @@
+{
+  "heading": "5.5.8.Tensor-map\uf0c1",
+  "level": 3,
+  "content": "The tensor-map is a 128-byte opaque object either in `.const` space or `.param` (kernel function\nparameter) space or `.global` space which describes the tensor properties and the access properties\nof the tensor data described in previous sections.\n\nTensor-Map can be created using CUDA APIs. Refer to *CUDA programming guide* for more details."
+}

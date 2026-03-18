@@ -1,0 +1,8 @@
+{
+  "heading": "Log Categories and Levels",
+  "level": 3,
+  "content": "Similar to standard Python logging, different log levels provide varying degrees of detail:\n\n| Level | Description |\n| --- | --- |\n| 0 | Disabled |\n| 10 | Debug |\n| 20 | Info |\n| 30 | Warning |\n| 40 | Error |\n| 50 | Critical |",
+  "source_page": "cute_dsl_general/debugging.html",
+  "source_url": "https://docs.nvidia.com/cutlass/latest/media/docs/pythonDSL/cute_dsl_general/debugging.html",
+  "page_title": "Debugging"
+}

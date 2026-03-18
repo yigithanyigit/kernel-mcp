@@ -1,0 +1,8 @@
+{
+  "heading": "Future Improvements",
+  "level": 2,
+  "content": "The CuTe DSL development team is actively addressing these limitations.\nUpcoming releases will aim to:\n\n* Implement support for return values from JIT compiled functions\n* Improve support for built-in operators to handle more cases without dependent types\n* Enhance debugging capabilities and tools\n* Improve error messages with precise diagnostic information\n* Extend support for additional numeric data types\n* Improve performance of converting framework tensor to `cute.Tensor` with native support\n  for different frameworks\n* Offer more user friendly benchmarking methodology",
+  "source_page": "limitations.html",
+  "source_url": "https://docs.nvidia.com/cutlass/latest/media/docs/pythonDSL/limitations.html",
+  "page_title": "Limitations"
+}

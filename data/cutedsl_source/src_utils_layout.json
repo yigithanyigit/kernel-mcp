@@ -1,0 +1,20 @@
+{
+  "heading": "Source: cutlass.utils.layout",
+  "module": "cutlass.utils.layout",
+  "file_path": "utils/layout.py",
+  "content": "# Module: `cutlass.utils.layout`\n\nFile: `utils/layout.py`\n\n\n---\n\n## class `LayoutEnum`\n\n\n\n---\n\n## `mma_major_mode(self)`\n\n\n\n---\n\n## `sm90_mma_major_mode(self)`\n\n\n\n---\n\n## `is_k_major_a(self)`\n\n\n\n---\n\n## `is_m_major_a(self)`\n\n\n\n---\n\n## `is_n_major_b(self)`\n\n\n\n---\n\n## `is_k_major_b(self)`\n\n\n\n---\n\n## `is_n_major_c(self)`\n\n\n\n---\n\n## `is_m_major_c(self)`\n\n\n\n---\n\n## `from_tensor(tensor: cute.Tensor) -> 'LayoutEnum'`\n\n@staticmethod\n",
+  "symbols": [
+    "LayoutEnum",
+    "mma_major_mode",
+    "sm90_mma_major_mode",
+    "is_k_major_a",
+    "is_m_major_a",
+    "is_n_major_b",
+    "is_k_major_b",
+    "is_n_major_c",
+    "is_m_major_c",
+    "from_tensor"
+  ],
+  "source_code": "# SPDX-FileCopyrightText: Copyright (c) 2025 - 2026 NVIDIA CORPORATION & AFFILIATES. All rights reserved.\n# SPDX-License-Identifier: LicenseRef-NvidiaProprietary\n#\n# Use of this software is governed by the terms and conditions of the\n# NVIDIA End User License Agreement (EULA), available at:\n# https://docs.nvidia.com/cutlass/media/docs/pythonDSL/license.html\n#\n# Any use, reproduction, disclosure, or distribution of this software\n# and related documentation outside the scope permitted by the EULA\n# is strictly prohibited.\n\nfrom enum import Enum\n\nimport cutlass.cute as cute\nfrom cutlass.cute.nvgpu import warpgroup\nfrom cutlass.cute.nvgpu import tcgen05\n\n\nclass LayoutEnum(Enum):\n    ROW_MAJOR = \"row_major\"\n    COL_MAJOR = \"col_major\"\n\n    def mma_major_mode(self):\n        return (\n            tcgen05.OperandMajorMode.K\n            if self == LayoutEnum.ROW_MAJOR\n            else tcgen05.OperandMajorMode.MN\n        )\n\n    def sm90_mma_major_mode(self):\n        return (\n            warpgroup.OperandMajorMode.K\n            if self == LayoutEnum.ROW_MAJOR\n            else warpgroup.OperandMajorMode.MN\n        )\n\n    def is_k_major_a(self):\n        return self == LayoutEnum.ROW_MAJOR\n\n    def is_m_major_a(self):\n        return self == LayoutEnum.COL_MAJOR\n\n    def is_n_major_b(self):\n        return self == LayoutEnum.COL_MAJOR\n\n    def is_k_major_b(self):\n        return self == LayoutEnum.ROW_MAJOR\n\n    def is_n_major_c(self):\n        return self == LayoutEnum.ROW_MAJOR\n\n    def is_m_major_c(self):\n        return self == LayoutEnum.COL_MAJOR\n\n    @staticmethod\n    def from_tensor(tensor: cute.Tensor) -> \"LayoutEnum\":\n        ret = None\n        if isinstance(tensor.leading_dim, tuple):\n            if tensor.leading_dim[0] == 1:\n                ret = LayoutEnum.ROW_MAJOR\n            elif tensor.leading_dim[0] == 0:\n                ret = LayoutEnum.COL_MAJOR\n            else:\n                raise ValueError(f\"Invalid leading dimension: {tensor.leading_dim}\")\n        elif tensor.leading_dim == 1:\n            ret = LayoutEnum.ROW_MAJOR\n        elif tensor.leading_dim == 0:\n            ret = LayoutEnum.COL_MAJOR\n        else:\n            raise ValueError(f\"Invalid leading dimension: {tensor.leading_dim}\")\n\n        return ret\n\n\n__all__ = [\"LayoutEnum\"]\n",
+  "type": "source"
+}

@@ -1,0 +1,5 @@
+{
+  "heading": "13.20.Changes in PTX ISA Version 7.1\uf0c1",
+  "level": 2,
+  "content": "New Features\n\nPTX ISA version 7.1 introduces the following new features:\n\n* Support for `sm_86` target architecture.\n* Adds a new operator, `mask()`, to extract a specific byte from variable\u2019s address used in\n  initializers.\n* Extends `tex` and `tld4` instructions to return an optional predicate that indicates if data\n  at specified coordinates is resident in memory.\n* Extends single-bit `wmma` and `mma` instructions to support `.and` operation.\n* Extends `mma` instruction to support `.sp` modifier that allows matrix multiply-accumulate\n  operation when input matrix A is sparse.\n* Extends `mbarrier.test_wait` instruction to test the completion of specific phase parity.\n\nSemantic Changes and Clarifications\n\nNone."
+}

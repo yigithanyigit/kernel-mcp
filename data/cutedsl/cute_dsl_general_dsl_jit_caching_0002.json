@@ -1,0 +1,8 @@
+{
+  "heading": "Custom Caching withcute.compile",
+  "level": 3,
+  "content": "`cute.compile` bypasses caching in CuTe DSL and always performs compilation, returning a fixed JIT Executor instance.\nThis allows implementing custom caching strategies as shown below:\n\n```\n@cute.jit\ndef add(b):\n   return a + b\n\n# Define a custom cache\ncustom_cache = {}\n\na = 1\ncompiled_add_1 = cute.compile(add, 2)\ncustom_cache[1] = compiled_add_1\ncompiled_add_1(2) # result = 3\n\na = 2\ncompiled_add_2 = cute.compile(add, 2)\ncustom_cache[2] = compiled_add_2\ncompiled_add_2(2) # result = 4\n\n# Use the custom cache\ncustom_cache[1](2) # result = 3\ncustom_cache[2](2) # result = 4\n```",
+  "source_page": "cute_dsl_general/dsl_jit_caching.html",
+  "source_url": "https://docs.nvidia.com/cutlass/latest/media/docs/pythonDSL/cute_dsl_general/dsl_jit_caching.html",
+  "page_title": "JIT Caching"
+}

@@ -1,0 +1,10 @@
+{
+  "heading": "9.7.15.6.Asynchronous Warpgroup Level Multiply-and-Accumulate Operation usingwgmma.mma_async.spinstruction\uf0c1 (part 4)",
+  "instruction": "Asynchronous Warpgroup Level Multiply-and-Accumulate Operation usingwgmma.mma_async.spinstruction",
+  "level": 4,
+  "architectures": [
+    "sm_90",
+    "sm_90a"
+  ],
+  "content": "Introduced in PTX ISA version 8.2.\n\nSupport for `.u8.s8` and `.s8.u8` as .atype.btype introduced in PTX ISA version 8.4.\n\nTarget ISA Notes\n\nRequires `sm_90a`.\n\nExamples of integer type\n\n```\nwgmma.fence.sync.aligned;\nwgmma.mma_async.sp.sync.aligned.m64n8k64.s32.u8.u8  {s32d0, s32d1, s32d2, s32d3},\n                                                    descA, descB, spMeta, 0, scaleD;\nwgmma.mma_async.sp.sync.aligned.m64n8k64.s32.s8.u8  {s32d0, s32d1, s32d2, s32d3},\n                                                    descA, descB, spMeta, 0, scaleD;\nwgmma.commit_group.sync.aligned;\nwgmma.wait_group.sync.aligned 0;\n```"
+}

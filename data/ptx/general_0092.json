@@ -1,0 +1,5 @@
+{
+  "heading": "6.2.Source Operands\uf0c1",
+  "level": 2,
+  "content": "The source operands are denoted in the instruction descriptions by the names `a`, `b`, and\n`c`. PTX describes a load-store machine, so operands for ALU instructions must all be in variables\ndeclared in the `.reg` register state space. For most operations, the sizes of the operands must\nbe consistent.\n\nThe `cvt` (convert) instruction takes a variety of operand types and sizes, as its job is to\nconvert from nearly any data type to any other data type (and size).\n\nThe `ld`, `st`, `mov`, and `cvt` instructions copy data from one location to\nanother. Instructions `ld` and `st` move data from/to addressable state spaces to/from\nregisters. The `mov` instruction copies data between registers.\n\nMost instructions have an optional predicate guard that controls conditional execution, and a few\ninstructions have additional predicate source operands. Predicate operands are denoted by the names\n`p`, `q`, `r`, `s`."
+}

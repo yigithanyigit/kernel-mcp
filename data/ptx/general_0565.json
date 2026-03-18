@@ -1,0 +1,5 @@
+{
+  "heading": "11.1.3.PTX Module Directives:.address_size\uf0c1",
+  "level": 3,
+  "content": "`.address_size`\n\nAddress size used throughout PTX module.\n\nSyntax\n\n```\n.address_size  address-size\naddress-size = { 32, 64 };\n```\n\nDescription\n\nSpecifies the address size assumed throughout the module by the PTX code and the binary DWARF\ninformation in PTX.\n\nRedefinition of this directive within a module is not allowed. In the presence of separate\ncompilation all modules must specify (or default to) the same address size.\n\nThe `.address_size` directive is optional, but it must immediately follow the `.target`directive if present within a module.\n\nSemantics\n\nIf the `.address_size` directive is omitted, the address size defaults to 32.\n\nPTX ISA Notes\n\nIntroduced in PTX ISA version 2.3.\n\nTarget ISA Notes\n\nSupported on all target architectures.\n\nExamples\n\n```\n// example directives\n   .address_size 32       // addresses are 32 bit\n   .address_size 64       // addresses are 64 bit\n\n// example of directive placement within a module\n   .version 2.3\n   .target sm_20\n   .address_size 64\n...\n.entry foo () {\n...\n}\n```"
+}

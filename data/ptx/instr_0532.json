@@ -1,0 +1,7 @@
+{
+  "heading": "9.7.13.15.6.Phase Completion of the mbarrier object\uf0c1",
+  "instruction": "Phase Completion of the mbarrier object",
+  "level": 5,
+  "architectures": [],
+  "content": "The requirements for completion of the current phase are described below. Upon completion of the\ncurrent phase, the phase transitions to the subsequent phase as described below.\n\nCurrent phase completion requirements\n:   An *mbarrier object* completes the current phase when all of the following conditions are met:\n\n    * The count of the pending arrivals has reached zero.\n    * The *tx-count* has reached zero.\n\nPhase transition\n:   When an *mbarrier* object completes the current phase, the following actions are performed\n    atomically:\n\n    * The *mbarrier object* transitions to the next phase.\n    * The pending arrival count is reinitialized to the expected arrival count."
+}

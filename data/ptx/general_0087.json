@@ -1,0 +1,5 @@
+{
+  "heading": "5.5.6.Interleave layout\uf0c1",
+  "level": 3,
+  "content": "Tensor can be interleaved and the following interleave layouts are supported:\n\n* No interleave (NDHWC)\n* 8 byte interleave (NC/8DHWC8) : C8 utilizes 16 bytes in memory assuming 2B per channel.\n* 16 byte interleave (NC/16HWC16) : C16 utilizes 32 bytes in memory assuming 4B per channel.\n\nThe *C* information is organized in slices where sequential C elements are grouped in 16 byte or 32\nbyte quantities.\n\nIf the total number of channels is not a multiple of the number of channels per slice, then the last\nslice must be padded with zeros to make it complete 16B or 32B slice.\n\nInterleaved layouts are supported only for the dimensionalities : 3D, 4D and 5D.\n\nThe interleave layout is not supported for `.im2col::w` and `.im2col::w::128` modes."
+}

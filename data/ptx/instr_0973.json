@@ -1,0 +1,7 @@
+{
+  "heading": "13.36.Changes in PTX ISA Version 2.3\uf0c1",
+  "instruction": "Changes in PTX ISA Version 2.3",
+  "level": 2,
+  "architectures": [],
+  "content": "New Features\n\nPTX 2.3 adds support for texture arrays. The texture array feature supports access to an array of 1D\nor 2D textures, where an integer indexes into the array of textures, and then one or two\nsingle-precision floating point coordinates are used to address within the selected 1D or 2D\ntexture.\n\nPTX 2.3 adds a new directive, `.address_size`, for specifying the size of addresses.\n\nVariables in `.const` and `.global` state spaces are initialized to zero by default.\n\nSemantic Changes and Clarifications\n\nThe semantics of the `.maxntid` directive have been updated to match the current\nimplementation. Specifically, `.maxntid` only guarantees that the total number of threads in a\nthread block does not exceed the maximum. Previously, the semantics indicated that the maximum was\nenforced separately in each dimension, which is not the case.\n\nBit field extract and insert instructions BFE and BFI now indicate that the `len` and `pos`\noperands are restricted to the value range `0..255`.\n\nUnimplemented instructions `{atom,red}.{min,max}.f32` have been removed."
+}

@@ -1,0 +1,7 @@
+{
+  "heading": "11.3.1.Control Flow Directives:.branchtargets\uf0c1",
+  "instruction": "Control Flow Directives:.branchtargets",
+  "level": 3,
+  "architectures": [],
+  "content": "`.branchtargets`\n\nDeclare a list of potential branch targets.\n\nSyntax\n\n```\nLabel:   .branchtargets  list-of-labels ;\n```\n\nDescription\n\nDeclares a list of potential branch targets for a subsequent `brx.idx`, and associates the list\nwith the label at the start of the line.\n\nAll control flow labels in the list must occur within the same function as the declaration.\n\nThe list of labels may use the compact, shorthand syntax for enumerating a range of labels having a\ncommon prefix, similar to the syntax described in [Parameterized Variable Names](#parameterized-variable-names).\n\nPTX ISA Notes\n\nIntroduced in PTX ISA version 2.1.\n\nTarget ISA Notes\n\nRequires `sm_20` or higher.\n\nExamples\n\n```\n  .function foo () {\n      .reg .u32 %r0;\n      ...\n      L1:\n      ...\n      L2:\n      ...\n      L3:\n      ...\n      ts: .branchtargets L1, L2, L3;\n      @p brx.idx %r0, ts;\n      ...\n\n.function bar() {\n      .reg .u32 %r0;\n      ...\n      N0:\n      ...\n      N1:\n      ...\n      N2:\n      ...\n      N3:\n      ...\n      N4:\n      ...\n      ts: .branchtargets N<5>;\n      @p brx.idx %r0, ts;\n      ...\n```"
+}

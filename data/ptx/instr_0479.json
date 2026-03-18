@@ -1,0 +1,7 @@
+{
+  "heading": "9.7.12.1.Control Flow Instructions:{}\uf0c1",
+  "instruction": "Control Flow Instructions:{}",
+  "level": 4,
+  "architectures": [],
+  "content": "`{}`\n\nInstruction grouping.\n\nSyntax\n\n```\n{ instructionList }\n```\n\nDescription\n\nThe curly braces create a group of instructions, used primarily for defining a function body. The\ncurly braces also provide a mechanism for determining the scope of a variable: any variable declared\nwithin a scope is not available outside the scope.\n\nPTX ISA Notes\n\nIntroduced in PTX ISA version 1.0.\n\nTarget ISA Notes\n\nSupported on all target architectures.\n\nExamples\n\n```\n{ add.s32  a,b,c; mov.s32  d,a; }\n```"
+}

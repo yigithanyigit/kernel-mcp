@@ -1,0 +1,7 @@
+{
+  "heading": "9.7.16.10.2.Matrix Layout Organization\uf0c1",
+  "instruction": "Matrix Layout Organization",
+  "level": 5,
+  "architectures": [],
+  "content": "[Table 53](#tcgen05-matrices-majorness) describes the major-ness used for different matrices.\n\nTable 53 Major-ness for different matrices\n\n| Matrix | Residing in Memory | Default Major-ness |\n| --- | --- | --- |\n| D | Tensor Memory | Row-Major |\n| A | Tensor Memory |\n| Shared Memory | Depends on swizzling mode. Refer [Shared Memory Layout and Swizzling](#tcgen05-shared-memory-layout-swizzling) |\n| B | Shared Memory |"
+}

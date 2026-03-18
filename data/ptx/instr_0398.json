@@ -1,0 +1,12 @@
+{
+  "heading": "9.7.9.11.Data Movement and Conversion Instructions:st\uf0c1 (part 2)",
+  "instruction": "Data Movement and Conversion Instructions:st",
+  "level": 4,
+  "architectures": [
+    "sm_100",
+    "sm_70",
+    "sm_80",
+    "sm_90"
+  ],
+  "content": "Support for `.level1::eviction_priority` qualifier requires `sm_70` or higher.\n\nSupport for `.level::cache_hint` qualifier requires `sm_80` or higher.\n\nSupport for `.cluster` scope qualifier requires `sm_90` or higher.\n\nSub-qualifier `::cta` requires `sm_30` or higher.\n\nSub-qualifier `::cluster` requires `sm_90` or higher.\n\nSupport for `.mmio` qualifier requires `sm_70` or higher.\n\nSupport for `.b128` type requires `sm_70` or higher.\n\nSupport for `.level2::eviction_priority` qualifier and `.v8.b32`/`.v4.b64` require `sm_100` or higher.\n\nExamples\n\n```\nst.global.f32    [a],b;\nst.local.b32     [q+4],a;\nst.global.v4.s32 [p],Q;\nst.local.b32     [q+-8],a; // negative offset\nst.local.s32     [100],r7; // immediate address\n\ncvt.f16.f32      %r,%r;    // %r is 32-bit register\nst.b16           [fs],%r;  // store lower\nst.global.relaxed.sys.u32 [gbl], %r0;\nst.shared.release.cta.u32 [sh], %r1;\nst.global.relaxed.cluster.u32 [gbl], %r2;\nst.shared::cta.release.cta.u32 [sh + 4], %r1;\nst.shared::cluster.u32 [sh + 8], %r1;\nst.global.mmio.relaxed.sys.u32 [gbl], %r1;\nst.local.volatile.u32 [lcl], %r2;\n\nst.global.L1::no_allocate.f32 [p], a;\n\ncreatepolicy.fractional.L2::evict_last.b64 cache-policy, 0.25;\nst.global.L2::cache_hint.b32  [a], b, cache-policy;\n\nst.param::func.b64 [param1], %rp1;\n\nst.global.b128  [a], b;  // 128-bit store\n\n// 256-bit store\nst.global.L2::evict_last.v8.f32 [addr], { %reg0, _, %reg2, %reg3, %reg4, %reg5, %reg6, %reg7};\n```"
+}

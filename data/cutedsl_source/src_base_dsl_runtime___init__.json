@@ -1,0 +1,9 @@
+{
+  "heading": "Source: cutlass.base_dsl.runtime",
+  "module": "cutlass.base_dsl.runtime",
+  "file_path": "base_dsl/runtime/__init__.py",
+  "content": "# Module: `cutlass.base_dsl.runtime`\n\nFile: `base_dsl/runtime/__init__.py`\n",
+  "symbols": [],
+  "source_code": "# SPDX-FileCopyrightText: Copyright (c) 2025 - 2026 NVIDIA CORPORATION & AFFILIATES. All rights reserved.\n# SPDX-License-Identifier: LicenseRef-NvidiaProprietary\n#\n# Use of this software is governed by the terms and conditions of the\n# NVIDIA End User License Agreement (EULA), available at:\n# https://docs.nvidia.com/cutlass/media/docs/pythonDSL/license.html\n#\n# Any use, reproduction, disclosure, or distribution of this software\n# and related documentation outside the scope permitted by the EULA\n# is strictly prohibited.\n\n\"\"\"\nThis module provides a runtime utility functions that are needed for\nthe DSL.\n\"\"\"\n\nfrom . import dlpack_types\nfrom . import cuda\nfrom . import jit_arg_adapters\n\n__all__ = [\n    \"dlpack_types\",\n    \"cuda\",\n    \"jit_arg_adapters\",\n]\n",
+  "type": "source"
+}

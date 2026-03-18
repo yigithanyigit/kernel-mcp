@@ -1,0 +1,5 @@
+{
+  "heading": "6.4.2.Arrays as Operands\uf0c1",
+  "level": 3,
+  "content": "Arrays of all types can be declared, and the identifier becomes an address constant in the space\nwhere the array is declared. The size of the array is a constant in the program.\n\nArray elements can be accessed using an explicitly calculated byte address, or by indexing into the\narray using square-bracket notation. The expression within square brackets is either a constant\ninteger, a register variable, or a simple *register with constant offset* expression, where the\noffset is a constant expression that is either added or subtracted from a register variable. If more\ncomplicated indexing is desired, it must be written as an address calculation prior to use. Examples\nare:\n\n```\nld.global.u32  s, a[0];\nld.global.u32  s, a[N-1];\nmov.u32        s, a[1];  // move address of a[1] into s\n```"
+}

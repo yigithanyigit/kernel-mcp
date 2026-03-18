@@ -1,0 +1,7 @@
+{
+  "heading": "11.1.1.PTX Module Directives:.version\uf0c1",
+  "instruction": "PTX Module Directives:.version",
+  "level": 3,
+  "architectures": [],
+  "content": "`.version`\n\nPTX ISA version number.\n\nSyntax\n\n```\n.version  major.minor    // major, minor are integers\n```\n\nDescription\n\nSpecifies the PTX language version number.\n\nThe *major* number is incremented when there are incompatible changes to the PTX language, such as\nchanges to the syntax or semantics. The version major number is used by the PTX compiler to ensure\ncorrect execution of legacy PTX code.\n\nThe *minor* number is incremented when new features are added to PTX.\n\nSemantics\n\nIndicates that this module must be compiled with tools that support an equal or greater version\nnumber.\n\nEach PTX module must begin with a `.version` directive, and no other `.version` directive is\nallowed anywhere else within the module.\n\nPTX ISA Notes\n\nIntroduced in PTX ISA version 1.0.\n\nTarget ISA Notes\n\nSupported on all target architectures.\n\nExamples\n\n```\n.version 3.1\n.version 3.0\n.version 2.3\n```"
+}

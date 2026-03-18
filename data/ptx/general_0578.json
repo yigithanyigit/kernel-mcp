@@ -1,0 +1,5 @@
+{
+  "heading": "11.4.4.Performance-Tuning Directives:.minnctapersm\uf0c1",
+  "level": 3,
+  "content": "`.minnctapersm`\n\nMinimum number of CTAs per SM.\n\nSyntax\n\n```\n.minnctapersm ncta\n```\n\nDescription\n\nDeclare the minimum number of CTAs from the kernel\u2019s grid to be mapped to a single multiprocessor\n(SM).\n\nNotes\n\nOptimizations based on `.minnctapersm` need either `.maxntid` or `.reqntid` to be specified as\nwell.\n\nIf the total number of threads on a single SM resulting from `.minnctapersm` and `.maxntid` /\n`.reqntid` exceed maximum number of threads supported by an SM then directive `.minnctapersm`\nwill be ignored.\n\nIn PTX ISA version 2.1 or higher, a warning is generated if `.minnctapersm` is specified without\nspecifying either `.maxntid` or `.reqntid`.\n\nPTX ISA Notes\n\nIntroduced in PTX ISA version 2.0 as a replacement for `.maxnctapersm`.\n\nTarget ISA Notes\n\nSupported on all target architectures.\n\nExamples\n\n```\n.entry foo .maxntid 256 .minnctapersm 4 { ... }\n```"
+}

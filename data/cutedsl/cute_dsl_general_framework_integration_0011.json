@@ -1,0 +1,8 @@
+{
+  "heading": "Leveraging TVM FFI for Faster PyTorch Interop",
+  "level": 2,
+  "content": "The latest version of CuTe DSL supports TVM FFI to improve interoperability with PyTorch\nand other machine learning frameworks. Using TVM FFI provides the following features:\n\n* Faster JIT function invocation.\n* Direct acceptance of `torch.Tensor` objects as function arguments.\n* Enhanced error handling and kernel validation.\n* Seamless integration with multiple programming languages.\n\nFor more details, see [Compile with TVM FFI](compile_with_tvm_ffi.html).",
+  "source_page": "cute_dsl_general/framework_integration.html",
+  "source_url": "https://docs.nvidia.com/cutlass/latest/media/docs/pythonDSL/cute_dsl_general/framework_integration.html",
+  "page_title": "Integration with Frameworks"
+}

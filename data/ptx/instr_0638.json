@@ -1,0 +1,10 @@
+{
+  "heading": "9.7.14.6.3.Multiply-and-Accumulate Instruction:mma.sp/mma.sp::ordered_metadata\uf0c1 (part 3)",
+  "instruction": "Multiply-and-Accumulate Instruction:mma.sp/mma.sp::ordered_metadata",
+  "level": 5,
+  "architectures": [
+    "sm_80",
+    "sm_89"
+  ],
+  "content": ".reg .b32 %Ra<4>, %Rb<4>;\n.reg .f32 %Rc<4>, %Rd<4>;\n.reg .b32 scaleAData, scaleBData;\n.reg .b32 %Re;\nmma.sp::ordered_metadata.sync.aligned.m16n8k64.row.col.kind::mxf8f6f4.block_scale.scale_vec::1X.f32.e4m3.e5m2.f32.ue8m0\n  {%Rd0, %Rd1, %Rd2, %Rd3},\n  {%Ra0, %Ra1, %Ra2,  %Ra3},\n  {%Rb0, %Rb1, %Rb2, %Rb3},\n  {%Rc0, %Rc1, %Rc2, %Rc3},\n  %Re, 0,\n  scaleAData, {0, 1}, scaleBData, {0, 0};\n```"
+}

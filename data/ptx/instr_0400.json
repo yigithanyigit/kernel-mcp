@@ -1,0 +1,9 @@
+{
+  "heading": "9.7.9.13.Data Movement and Conversion Instructions:st.bulk\uf0c1",
+  "instruction": "Data Movement and Conversion Instructions:st.bulk",
+  "level": 4,
+  "architectures": [
+    "sm_100"
+  ],
+  "content": "`st.bulk`\n\nInitializes a region of memory as specified by state space.\n\nSyntax\n\n```\nst.bulk{.weak}{.shared::cta}  [a], size, initval; // initval must be zero\n```\n\nDescription\n\n`st.bulk` instruction initializes a region of shared memory starting from the location specified\nby destination address operand `a`.\n\nThe 32-bit or 64-bit integer operand `size` specifies the amount of memory to be initialized in terms of\nnumber of bytes. `size` must be a multiple of 8. If the value is not a multiple of 8, then the\nbehavior is undefined. The maximum value of `size` operand can be 16777216.\n\nThe integer immediate operand `initval` specifies the initialization value for the memory\nlocations. The only numeric value allowed for operand `initval` is 0.\n\nIf no state space is specified then [Generic Addressing](#generic-addressing) is used. If the\naddress specified by `a` does not fall within the address window of `.shared` state space then\nthe behavior is undefined.\n\nThe optional qualifier `.weak` specify the memory synchronizing effect of the `st.bulk`\ninstruction as described in the [Memory Consistency Model](#memory-consistency-model).\n\nPTX ISA Notes\n\nIntroduced in PTX ISA version 8.6.\n\nSupport for `size` operand with 32-bit length is introduced in PTX ISA version 9.0.\n\nTarget ISA Notes\n\nRequires `sm_100` or higher.\n\nExamples\n\n```\nst.bulk.weak.shared::cta  [dst], n, 0;\n\nst.bulk                   [gdst], 4096, 0;\n```"
+}

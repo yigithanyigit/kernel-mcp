@@ -1,0 +1,16 @@
+{
+  "heading": "Source: cutlass.cutlass_dsl.cuda_stream_adapter",
+  "module": "cutlass.cutlass_dsl.cuda_stream_adapter",
+  "file_path": "cutlass_dsl/cuda_stream_adapter.py",
+  "content": "# Module: `cutlass.cutlass_dsl.cuda_stream_adapter`\n\nFile: `cutlass_dsl/cuda_stream_adapter.py`\n\n\n---\n\n## class `CudaDialectStreamAdapter`\n\n@JitArgAdapterRegistry.register_jit_arg_adapter(cuda_driver.CUstream)\nConvert a CUDA stream to a stream representation for JIT arg generation.\n\n---\n\n## `__init__(self, arg)`\n\n\n\n---\n\n## `__new_from_mlir_values__(self, values)`\n\n\n\n---\n\n## `__c_pointers__(self)`\n\n\n\n---\n\n## `__get_mlir_types__(self)`\n\n\n\n---\n\n## `__cuda_stream__(self)`\n\n",
+  "symbols": [
+    "CudaDialectStreamAdapter",
+    "__init__",
+    "__new_from_mlir_values__",
+    "__c_pointers__",
+    "__get_mlir_types__",
+    "__cuda_stream__"
+  ],
+  "source_code": "# SPDX-FileCopyrightText: Copyright (c) 2025 - 2026 NVIDIA CORPORATION & AFFILIATES. All rights reserved.\n# SPDX-License-Identifier: LicenseRef-NvidiaProprietary\n#\n# Use of this software is governed by the terms and conditions of the\n# NVIDIA End User License Agreement (EULA), available at:\n# https://docs.nvidia.com/cutlass/media/docs/pythonDSL/license.html\n#\n# Any use, reproduction, disclosure, or distribution of this software\n# and related documentation outside the scope permitted by the EULA\n# is strictly prohibited.\n\n\"\"\"\nThis module provides CUDA Python helper functions\n\"\"\"\n\nimport cuda.bindings.driver as cuda_driver\n\n# MLIR imports\nfrom .._mlir import ir\nfrom .._mlir.dialects import cuda\n\n# Local module imports\nfrom ..base_dsl.runtime.jit_arg_adapters import JitArgAdapterRegistry\n\n\n@JitArgAdapterRegistry.register_jit_arg_adapter(cuda_driver.CUstream)\nclass CudaDialectStreamAdapter:\n    \"\"\"\n    Convert a CUDA stream to a stream representation for JIT arg generation.\n    \"\"\"\n\n    def __init__(self, arg):\n        self._arg = arg\n        self._c_pointer = self._arg.getPtr()\n\n    def __new_from_mlir_values__(self, values):\n        assert len(values) == 1\n        return values[0]\n\n    def __c_pointers__(self):\n        return [self._c_pointer]\n\n    def __get_mlir_types__(self):\n        return [cuda.StreamType.get()]\n\n    def __cuda_stream__(self):\n        # support cuda stream protocol\n        return (0, int(self._arg))\n",
+  "type": "source"
+}

@@ -1,0 +1,9 @@
+{
+  "heading": "9.7.9.25.6.1.Data Movement and Conversion Instructions:cp.async.bulk.commit_group\uf0c1",
+  "instruction": "Data Movement and Conversion Instructions:cp.async.bulk.commit_group",
+  "level": 6,
+  "architectures": [
+    "sm_90"
+  ],
+  "content": "`cp.async.bulk.commit_group`\n\nCommits all prior initiated but uncommitted `cp.async.bulk` instructions into a\n*cp.async.bulk-group*.\n\nSyntax\n\n```\ncp.async.bulk.commit_group;\n```\n\nDescription\n\n`cp.async.bulk.commit_group` instruction creates a new per-thread *bulk async-group* and batches\nall prior `cp{.reduce}.async.bulk{.prefetch}{.tensor}` instructions satisfying the following\nconditions into the new *bulk async-group*:\n\n* The prior `cp{.reduce}.async.bulk{.prefetch}{.tensor}` instructions use *bulk_group* based\n  completion mechanism, and\n* They are initiated by the executing thread but not committed to any *bulk async-group*.\n\nIf there are no uncommitted `cp{.reduce}.async.bulk{.prefetch}{.tensor}` instructions then\n`cp.async.bulk.commit_group` results in an empty *bulk async-group*.\n\nAn executing thread can wait for the completion of all\n`cp{.reduce}.async.bulk{.prefetch}{.tensor}` operations in a *bulk async-group* using\n`cp.async.bulk.wait_group`.\n\nThere is no memory ordering guarantee provided between any two\n`cp{.reduce}.async.bulk{.prefetch}{.tensor}` operations within the same *bulk async-group*.\n\nPTX ISA Notes\n\nIntroduced in PTX ISA version 8.0.\n\nTarget ISA Notes\n\nRequires `sm_90` or higher.\n\nExamples\n\n```\ncp.async.bulk.commit_group;\n```"
+}

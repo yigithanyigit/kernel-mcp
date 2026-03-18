@@ -1,0 +1,5 @@
+{
+  "heading": "13.22.Changes in PTX ISA Version 6.5\uf0c1",
+  "level": 2,
+  "content": "New Features\n\nPTX ISA version 6.5 introduces the following new features:\n\n* Adds support for integer destination types for half precision comparison instruction `set`.\n* Extends `abs` instruction to support `.f16` and `.f16x2` types.\n* Adds support for `cvt.pack` instruction which allows converting two integer values and packing\n  the results together.\n* Adds new shapes `.m16n8k8`, `.m8n8k16` and `.m8n8k32` on the `mma` instruction.\n* Adds support for `ldmatrix` instruction which loads one or more matrices from shared memory for\n  `mma` instruction.\n\nRemoved Features\n\nPTX ISA version 6.5 removes the following features:\n\n* Support for `.satfinite` qualifier on floating point `wmma.mma` instruction has been\n  removed. This support was deprecated since PTX ISA version 6.4.\n\nSemantic Changes and Clarifications\n\nNone."
+}

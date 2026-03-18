@@ -1,0 +1,7 @@
+{
+  "heading": "10.27.Special Registers:%envreg<32>\uf0c1",
+  "instruction": "Special Registers:%envreg<32>",
+  "level": 2,
+  "architectures": [],
+  "content": "`%envreg<32>`\n\nDriver-defined read-only registers.\n\nSyntax (predefined)\n\n```\n.sreg .b32 %envreg<32>;\n```\n\nDescription\n\nA set of 32 pre-defined read-only registers used to capture execution environment of PTX program\noutside of PTX virtual machine. These registers are initialized by the driver prior to kernel launch\nand can contain cta-wide or grid-wide values.\n\nPrecise semantics of these registers is defined in the driver documentation.\n\nPTX ISA Notes\n\nIntroduced in PTX ISA version 2.1.\n\nTarget ISA Notes\n\nSupported on all target architectures.\n\nExamples\n\n```\nmov.b32      %r1,%envreg0;  // move envreg0 to %r1\n```"
+}

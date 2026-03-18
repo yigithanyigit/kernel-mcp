@@ -1,0 +1,5 @@
+{
+  "heading": "9.7.16.3.1.1.Relative offset mode\uf0c1",
+  "level": 6,
+  "content": "In this mode, the leading dimension stride is specified as a relative byte offset between the\ncolumns as explained in the below table.\nThe leading dimension stride can either be specified as a relative offset between the columns\nor as an absolute byte address of next buffer. The leading dimension stride is defined\ndifferently for transposed and non-transposed matrices. The leading dimension stride is defined\nas follows for matrices whose element types are normalized to 128-bits:\n\n| Major-ness | Definition |\n| --- | --- |\n| K-Major | * No-Swizzling: the stride from the first column to the second column   of the 8x2 tile in the 128-bit element type normalized matrix. * Swizzled layouts: not used, assumed to be 1. |\n| MN-Major | * Interleave: stride from the first 8 columns to the next 8 columns. * Swizzled layouts: stride from the first (swizzle-byte-size/16) rows   to the next (swizzle-byte-size/16) rows. |"
+}

@@ -1,0 +1,9 @@
+{
+  "heading": "9.7.9.24.Data Movement and Conversion Instructions:getctarank\uf0c1",
+  "instruction": "Data Movement and Conversion Instructions:getctarank",
+  "level": 4,
+  "architectures": [
+    "sm_90"
+  ],
+  "content": "`getctarank`\n\nGenerate the CTA rank of the address.\n\nSyntax\n\n```\ngetctarank{.space}.type d, a;\n\n// Get cta rank from source shared memory address in register a.\ngetctarank.shared::cluster.type d, a;\n\n// Get cta rank from shared memory variable.\ngetctarank.shared::cluster.type d, var;\n\n// Get cta rank from shared memory variable+offset.\ngetctarank.shared::cluster.type d, var + imm;\n\n// Get cta rank from generic address of shared memory variable in register a.\ngetctarank.type d, a;\n\n.space = { .shared::cluster }\n.type  = { .u32, .u64 }\n```\n\nDescription\n\nWrite the destination register `d` with the rank of the CTA which contains the address specified\nin operand `a`.\n\nInstruction type `.type` indicates the type of source operand `a`.\n\nWhen space is `.shared::cluster`, source `a` is either a shared memory variable or a register\ncontaining a valid shared memory address. When the optional qualifier `.space` is not specified,\n`a` is a register containing a generic addresses pointing to shared memory. Destination `d` is\nalways a 32-bit register which holds the rank of the CTA.\n\nPTX ISA Notes\n\nIntroduced in PTX ISA version 7.8.\n\nTarget ISA Notes\n\nRequires `sm_90` or higher.\n\nExamples\n\n```\ngetctarank.shared::cluster.u32 d1, addr;\ngetctarank.shared::cluster.u64 d2, sh + 4;\ngetctarank.u64                 d3, src;\n```"
+}

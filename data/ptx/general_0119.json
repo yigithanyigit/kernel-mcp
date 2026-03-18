@@ -1,0 +1,5 @@
+{
+  "heading": "8.3.State spaces\uf0c1",
+  "level": 2,
+  "content": "The relations defined in the memory consistency model are independent of state spaces. In\nparticular, causality order closes over all memory operations across all the state spaces. But the\nside-effect of a memory operation in one state space can be observed directly only by operations\nthat also have access to the same state space. This further constrains the synchronizing effect of a\nmemory operation in addition to scope. For example, the synchronizing effect of the PTX instruction\n`ld.relaxed.shared.sys` is identical to that of `ld.relaxed.shared.cluster`, since no thread\noutside the same cluster can execute an operation that accesses the same memory location."
+}

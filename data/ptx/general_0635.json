@@ -1,0 +1,5 @@
+{
+  "heading": "13.30.Changes in PTX ISA Version 4.2\uf0c1",
+  "level": 2,
+  "content": "New Features\n\nPTX ISA version 4.2 introduces the following new features:\n\n* Support for `sm_53` target architecture.\n* Support for arithmetic, comparsion and texture instructions for `.f16` and `.f16x2` types.\n* Support for `memory_layout` field for surfaces and `suq` instruction support for querying this\n  field.\n\nSemantic Changes and Clarifications\n\nSemantics for parameter passing under ABI were updated to indicate `ld.param` and `st.param`\ninstructions used for argument passing cannot be predicated.\n\nSemantics of `{atom/red}.add.f32` were updated to indicate subnormal inputs and results are\nflushed to sign-preserving zero for atomic operations on global memory; whereas atomic operations on\nshared memory preserve subnormal inputs and results and don\u2019t flush them to zero."
+}

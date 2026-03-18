@@ -1,0 +1,7 @@
+{
+  "heading": "9.7.14.6.1.Sparse matrix storage\uf0c1 (part 2)",
+  "instruction": "Sparse matrix storage",
+  "level": 5,
+  "architectures": [],
+  "content": "Figure 117 Sparse MMA metadata example for `.e2m1` type with `.kind::mxf4` or `.kind::mxf4nvf4`\n\nThe sparsity selector indicates the threads which contribute metadata as listed below:\n\n* `m16n8k128`: All threads within a group of four consecutive threads contribute the sparsity metadata.\n  Hence, the sparsity selector in this case must be 0. Any other value of sparsity selector results in\n  an undefined behavior."
+}

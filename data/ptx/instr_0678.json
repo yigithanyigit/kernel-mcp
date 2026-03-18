@@ -1,0 +1,10 @@
+{
+  "heading": "9.7.15.7.2.Asynchronous Multiply-and-Accumulate Instruction:wgmma.commit_group\uf0c1",
+  "instruction": "Asynchronous Multiply-and-Accumulate Instruction:wgmma.commit_group",
+  "level": 5,
+  "architectures": [
+    "sm_90",
+    "sm_90a"
+  ],
+  "content": "`wgmma.commit_group`\n\nCommits all prior uncommitted `wgmma.mma_async` operations into a *wgmma-group*.\n\nSyntax\n\n```\nwgmma.commit_group.sync.aligned;\n```\n\nDescription\n\n`wgmma.commit_group` instruction creates a new wgmma-group per warpgroup and batches all prior\n`wgmma.mma_async` instructions initiated by the executing warp but not committed to any\nwgmma-group into the new wgmma-group. If there are no uncommitted `wgmma.mma_async` instructions\nthen `wgmma.commit_group` results in an empty wgmma-group.\n\nAn executing thread can wait for the completion of all `wgmma.mma_async` operations in a\nwgmma-group by using `wgmma.wait_group`.\n\nThe mandatory `.sync` qualifier indicates that `wgmma.commit_group` instruction causes the\nexecuting thread to wait until all threads in the warp execute the same `wgmma.commit_group`\ninstruction before resuming execution.\n\nThe mandatory `.aligned` qualifier indicates that all threads in the warpgroup must execute the\nsame `wgmma.commit_group` instruction. In conditionally executed code, an `wgmma.commit_group`\ninstruction should only be used if it is known that all threads in the warpgroup evaluate the\ncondition identically, otherwise the behavior is undefined.\n\nPTX ISA Notes\n\nIntroduced in PTX ISA version 8.0.\n\nTarget ISA Notes\n\nRequires `sm_90a`.\n\nExamples\n\n```\nwgmma.commit_group.sync.aligned;\n```"
+}

@@ -1,0 +1,5 @@
+{
+  "heading": "13.16.Changes in PTX ISA Version 7.5\uf0c1",
+  "level": 2,
+  "content": "New Features\n\nPTX ISA version 7.5 introduces the following new features:\n\n* Debug information enhancements to support label difference and negative values in the `.section`\n  debugging directive.\n* Support for `ignore-src` operand on `cp.async` instruction.\n* Extensions to the memory consistency model to introduce the following new concepts:\n\n  > + A *memory proxy* as an abstract label for different methods of memory access.\n  > + Virtual aliases as distinct memory addresses accessing the same physical memory location.\n* Support for new `fence.proxy` and `membar.proxy` instructions to allow synchronization of\n  memory accesses performed via virtual aliases.\n\nSemantic Changes and Clarifications\n\nNone."
+}

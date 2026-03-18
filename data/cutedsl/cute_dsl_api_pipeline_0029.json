@@ -1,0 +1,8 @@
+{
+  "heading": "cutlass.pipeline - API Reference (part 21)",
+  "level": 2,
+  "content": "### `cutlass.pipeline.arrive_and_wait(barrier_id:int,num_threads:int,*,loc=None,ip=None,)#`\n\n\n\n---\n\n### `cutlass.pipeline.sync(barrier_id:int=0,*,loc=None,ip=None)#`\n\n",
+  "source_page": "cute_dsl_api/pipeline.html",
+  "source_url": "https://docs.nvidia.com/cutlass/latest/media/docs/pythonDSL/cute_dsl_api/pipeline.html",
+  "page_title": "cutlass.pipeline"
+}

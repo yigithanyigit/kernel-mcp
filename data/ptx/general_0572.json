@@ -1,0 +1,5 @@
+{
+  "heading": "11.3.2.Control Flow Directives:.calltargets\uf0c1",
+  "level": 3,
+  "content": "`.calltargets`\n\nDeclare a list of potential call targets.\n\nSyntax\n\n```\nLabel:   .calltargets  list-of-functions ;\n```\n\nDescription\n\nDeclares a list of potential call targets for a subsequent indirect call, and associates the list\nwith the label at the start of the line.\n\nAll functions named in the list must be declared prior to the `.calltargets` directive, and all\nfunctions must have the same type signature.\n\nPTX ISA Notes\n\nIntroduced in PTX ISA version 2.1.\n\nTarget ISA Notes\n\nRequires `sm_20` or higher.\n\nExamples\n\n```\ncalltgt:  .calltargets  fastsin, fastcos;\n...\n@p   call  (%f1), %r0, (%x), calltgt;\n...\n```"
+}

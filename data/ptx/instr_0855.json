@@ -1,0 +1,9 @@
+{
+  "heading": "10.16.Special Registers:%cluster_ctarank\uf0c1",
+  "instruction": "Special Registers:%cluster_ctarank",
+  "level": 2,
+  "architectures": [
+    "sm_90"
+  ],
+  "content": "`%cluster_ctarank`\n\nCTA identifier in a cluster across all dimensions.\n\nSyntax (predefined)\n\n```\n.sreg .u32 %cluster_ctarank;\n```\n\nDescription\n\nA predefined, read-only special register initialized with the CTA rank within a cluster across all\ndimensions.\n\nIt is guaranteed that:\n\n```\n0  <=  %cluster_ctarank <  %cluster_nctarank\n```\n\nPTX ISA Notes\n\nIntroduced in PTX ISA version 7.8.\n\nTarget ISA Notes\n\nRequires `sm_90` or higher.\n\nExamples\n\n```\n.reg .b32 %r;\n\nmov.u32  %r, %cluster_ctarank;\n```"
+}

@@ -1,0 +1,7 @@
+{
+  "heading": "9.7.16.6.4.2.Non-pipelined instructions, same thread\uf0c1",
+  "instruction": "Non-pipelined instructions, same thread",
+  "level": 6,
+  "architectures": [],
+  "content": "In this pattern, explicit waiting mechanisms are used to wait for the completion of the\nasynchronous `tcgen05` operations.\n\nExample 1:\n\n```\ntcgen05.st\ntcgen05.wait::st\ntcgen05.ld\n```\n\n`tcgen05.wait::st` is used to wait for the completion of the prior asynchronous\ninstruction `tcgen05.st`.\n\nExample 2:\n\n```\ntcgen05.mma [d], ...\ntcgen05.commit.mbarrier::arrive::one\nmbarrier.try_wait.relaxed.cluster (loop until successful)\ntcgen05.fence::after_thread_sync\ntcgen05.ld [d], ...\n```\n\nFor the completion of the asynchronous `tcgen05.mma`, `tcgen05.commit` is used.\n\nAs `tcgen05.ld` is an asynchronous operation, the instruction `tcgen05.fence::after_thread_sync`\nis needed.\n\nNo explicit `tcgen05.fence::before_thread_sync` is needed as this is implicitly performed by\n`tcgen05.commit`. The combination of `tcgen05.mma` and `tcgen05.commit` forms a\nconceptual asynchronous pipeline and establishes execution ordering.\n\n```\ntcgen05.mma [d], ...\ntcgen05.fence::before_thread_sync\nmbarrier::arrive\n```"
+}

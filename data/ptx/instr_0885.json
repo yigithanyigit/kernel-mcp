@@ -1,0 +1,25 @@
+{
+  "heading": "11.1.2.PTX Module Directives:.target\uf0c1 (part 2)",
+  "instruction": "PTX Module Directives:.target",
+  "level": 3,
+  "architectures": [
+    "sm_100",
+    "sm_100a",
+    "sm_101a",
+    "sm_50",
+    "sm_52",
+    "sm_53",
+    "sm_60",
+    "sm_61",
+    "sm_62",
+    "sm_70",
+    "sm_72",
+    "sm_75",
+    "sm_80",
+    "sm_86",
+    "sm_89",
+    "sm_90",
+    "sm_90a"
+  ],
+  "content": "The `.target` debug option declares that the PTX file contains DWARF debug information, and\nsubsequent compilation of PTX will retain information needed for source-level debugging. If the\ndebug option is declared, an error message is generated if no DWARF information is found in the\nfile. The debug option requires PTX ISA version 3.0 or later.\n\n`map_f64_to_f32` indicates that all double-precision instructions map to single-precision\nregardless of the target architecture. This enables high-level language compilers to compile\nprograms containing type double to target device that do not support double-precision\noperations. Note that `.f64` storage remains as 64-bits, with only half being used by instructions\nconverted from `.f64` to `.f32`.\n\nNotes\n\nTargets of the form `compute_xx` are also accepted as synonyms for `sm_xx` targets.\n\nTargets `sm_{101,101f,101a}` are renamed to targets `sm_{110,110f,110a}` from PTX ISA version 9.0.\n\nPTX ISA Notes\n\nIntroduced in PTX ISA version 1.0.\n\nTarget strings `sm_10` and `sm_11` introduced in PTX ISA version 1.0.\n\nTarget strings `sm_12` and `sm_13` introduced in PTX ISA version 1.2.\n\nTexturing mode introduced in PTX ISA version 1.5.\n\nTarget string `sm_20` introduced in PTX ISA version 2.0.\n\nTarget string `sm_30` introduced in PTX ISA version 3.0.\n\nPlatform option `debug` introduced in PTX ISA version 3.0.\n\nTarget string `sm_35` introduced in PTX ISA version 3.1.\n\nTarget strings `sm_32` and `sm_50` introduced in PTX ISA version 4.0.\n\nTarget strings `sm_37` and `sm_52` introduced in PTX ISA version 4.1.\n\nTarget string `sm_53` introduced in PTX ISA version 4.2.\n\nTarget string `sm_60`, `sm_61`, `sm_62` introduced in PTX ISA version 5.0.\n\nTarget string `sm_70` introduced in PTX ISA version 6.0.\n\nTarget string `sm_72` introduced in PTX ISA version 6.1.\n\nTarget string `sm_75` introduced in PTX ISA version 6.3.\n\nTarget string `sm_80` introduced in PTX ISA version 7.0.\n\nTarget string `sm_86` introduced in PTX ISA version 7.1.\n\nTarget string `sm_87` introduced in PTX ISA version 7.4.\n\nTarget string `sm_88` introduced in PTX ISA version 9.0.\n\nTarget string `sm_89` introduced in PTX ISA version 7.8.\n\nTarget string `sm_90` introduced in PTX ISA version 7.8.\n\nTarget string `sm_90a` introduced in PTX ISA version 8.0.\n\nTarget string `sm_100` introduced in PTX ISA version 8.6.\n\nTarget string `sm_100f` introduced in PTX ISA version 8.8.\n\nTarget string `sm_100a` introduced in PTX ISA version 8.6.\n\nTarget string `sm_101` introduced in PTX ISA version 8.6. (Renamed to `sm_110`)\n\nTarget string `sm_101f` introduced in PTX ISA version 8.8. (Renamed to `sm_110f`)\n\nTarget string `sm_101a` introduced in PTX ISA version 8.6. (Renamed to `sm_110a`)\n\nTarget string `sm_103` introduced in PTX ISA version 8.8.\n\nTarget string `sm_103f` introduced in PTX ISA version 8.8.\n\nTarget string `sm_103a` introduced in PTX ISA version 8.8.\n\nTarget string `sm_110` introduced in PTX ISA version 9.0.\n\nTarget string `sm_110f` introduced in PTX ISA version 9.0.\n\nTarget string `sm_110a` introduced in PTX ISA version 9.0.\n\nTarget string `sm_120` introduced in PTX ISA version 8.7.\n\nTarget string `sm_120f` introduced in PTX ISA version 8.8.\n\nTarget string `sm_120a` introduced in PTX ISA version 8.7.\n\nTarget string `sm_121` introduced in PTX ISA version 8.8.\n\nTarget string `sm_121f` introduced in PTX ISA version 8.8.\n\nTarget string `sm_121a` introduced in PTX ISA version 8.8.\n\nTarget ISA Notes\n\nThe `.target` directive is supported on all target architectures.\n\nExamples\n\n```\n.target sm_10       // baseline target architecture\n.target sm_13       // supports double-precision\n.target sm_20, texmode_independent\n.target sm_90       // baseline target architecture\n.target sm_90a      // PTX using architecture-specific features\n.target sm_100f     // PTX using family-specific features\n```"
+}

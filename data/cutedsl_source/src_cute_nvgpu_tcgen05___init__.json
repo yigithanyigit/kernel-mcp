@@ -1,0 +1,9 @@
+{
+  "heading": "Source: cutlass.cute.nvgpu.tcgen05",
+  "module": "cutlass.cute.nvgpu.tcgen05",
+  "file_path": "cute/nvgpu/tcgen05/__init__.py",
+  "content": "# Module: `cutlass.cute.nvgpu.tcgen05`\n\nFile: `cute/nvgpu/tcgen05/__init__.py`\n",
+  "symbols": [],
+  "source_code": "# SPDX-FileCopyrightText: Copyright (c) 2025 - 2026 NVIDIA CORPORATION & AFFILIATES. All rights reserved.\n# SPDX-License-Identifier: LicenseRef-NvidiaProprietary\n#\n# Use of this software is governed by the terms and conditions of the\n# NVIDIA End User License Agreement (EULA), available at:\n# https://docs.nvidia.com/cutlass/media/docs/pythonDSL/license.html\n#\n# Any use, reproduction, disclosure, or distribution of this software\n# and related documentation outside the scope permitted by the EULA\n# is strictly prohibited.\n\nfrom .copy import *\nfrom .mma import *\nfrom .helpers import *\n\n# __all__ is required here for documentation generation\n__all__ = [\n    #\n    # copy.py\n    #\n    \"Repetition\",\n    \"TmemLoadRedOp\",\n    \"Pack\",\n    \"Unpack\",\n    \"Ld16x64bOp\",\n    \"Ld16x128bOp\",\n    \"Ld16x256bOp\",\n    \"Ld16x32bx2Op\",\n    \"Ld32x32bOp\",\n    \"St16x64bOp\",\n    \"St16x128bOp\",\n    \"St16x256bOp\",\n    \"St16x32bx2Op\",\n    \"St32x32bOp\",\n    #\n    # mma.py\n    #\n    \"OperandMajorMode\",\n    \"OperandSource\",\n    \"CtaGroup\",\n    \"Field\",\n    \"MmaTF32Op\",\n    \"MmaF16BF16Op\",\n    \"MmaF16BF16SparseOp\",\n    \"MmaI8Op\",\n    \"MmaFP8Op\",\n    \"MmaMXF8Op\",\n    \"MmaMXF4Op\",\n    \"MmaMXF4NVF4Op\",\n    \"SmemLayoutAtomKind\",\n    #\n    # helpers.py\n    #\n    \"make_smem_layout_atom\",\n    \"tile_to_mma_shape\",\n    \"commit\",\n    \"is_tmem_load\",\n    \"is_tmem_store\",\n    \"get_tmem_copy_properties\",\n    \"find_tmem_tensor_col_offset\",\n    \"make_tmem_copy\",\n    \"make_s2t_copy\",\n    \"get_s2t_smem_desc_tensor\",\n    \"make_umma_smem_desc\",\n]\n",
+  "type": "source"
+}

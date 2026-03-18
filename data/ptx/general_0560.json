@@ -1,0 +1,5 @@
+{
+  "heading": "10.33.Special Registers:%current_graph_exec\uf0c1",
+  "level": 2,
+  "content": "`%current_graph_exec`\n\nAn Identifier for currently executing CUDA device graph.\n\nSyntax (predefined)\n\n```\n.sreg .u64 %current_graph_exec;\n```\n\nDescription\n\nA predefined, read-only special register initialized with the identifier referring to the CUDA\ndevice graph being currently executed. This register is 0 if the executing kernel is not part of a\nCUDA device graph.\n\nRefer to the *CUDA Programming Guide* for more details on CUDA device graphs.\n\nPTX ISA Notes\n\nIntroduced in PTX ISA version 8.0.\n\nTarget ISA Notes\n\nRequires `sm_50` or higher.\n\nExamples\n\n```\nmov.u64  r1, %current_graph_exec;\n```"
+}

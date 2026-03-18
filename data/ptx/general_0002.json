@@ -1,0 +1,5 @@
+{
+  "heading": "1.2.Goals of PTX\uf0c1",
+  "level": 2,
+  "content": "*PTX* provides a stable programming model and instruction set for general purpose parallel\nprogramming. It is designed to be efficient on NVIDIA GPUs supporting the computation features\ndefined by the NVIDIA Tesla architecture. High level language compilers for languages such as CUDA\nand C/C++ generate PTX instructions, which are optimized for and translated to native\ntarget-architecture instructions.\n\nThe goals for PTX include the following:\n\n* Provide a stable ISA that spans multiple GPU generations.\n* Achieve performance in compiled applications comparable to native GPU performance.\n* Provide a machine-independent ISA for C/C++ and other compilers to target.\n* Provide a code distribution ISA for application and middleware developers.\n* Provide a common source-level ISA for optimizing code generators and translators, which map PTX to\n  specific target machines.\n* Facilitate hand-coding of libraries, performance kernels, and architecture tests.\n* Provide a scalable programming model that spans GPU sizes from a single unit to many parallel units."
+}

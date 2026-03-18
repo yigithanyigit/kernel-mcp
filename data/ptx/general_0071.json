@@ -1,0 +1,5 @@
+{
+  "heading": "5.5.2.Tensor Access Modes\uf0c1",
+  "level": 3,
+  "content": "Tensor data can be accessed in two modes:\n\n* Tiled mode:\n\n  In tiled mode, the source multi-dimensional tensor layout is preserved at the destination.\n* Im2col mode:\n\n  In im2col mode, the elements in the Bounding Box of the source tensor are rearranged into columns\n  at the destination. Refer [here](https://in.mathworks.com/help/images/ref/im2col.html) for more details."
+}

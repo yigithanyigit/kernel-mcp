@@ -1,0 +1,9 @@
+{
+  "heading": "10.31.Special Registers:%aggr_smem_size\uf0c1",
+  "instruction": "Special Registers:%aggr_smem_size",
+  "level": 2,
+  "architectures": [
+    "sm_90"
+  ],
+  "content": "`%aggr_smem_size`\n\nTotal size of shared memory used by a CTA of a kernel.\n\nSyntax (predefined)\n\n```\n.sreg .u32 %aggr_smem_size;\n```\n\nDescription\n\nA predefined, read-only special register initialized with total aggregated size of shared memory\nconsisting of the size of user shared memory allocated (statically and dynamically) at launch time\nand the size of shared memory region which is reserved for the NVIDIA system software use.\n\nPTX ISA Notes\n\nIntroduced in PTX ISA version 8.1.\n\nTarget ISA Notes\n\nRequires `sm_90` or higher.\n\nExamples\n\n```\nmov.u32  %r, %aggr_smem_size;\n```"
+}

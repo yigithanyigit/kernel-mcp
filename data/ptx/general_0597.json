@@ -1,0 +1,5 @@
+{
+  "heading": "11.7.3.Cluster Dimension Directives:.maxclusterrank\uf0c1",
+  "level": 3,
+  "content": "`.maxclusterrank`\n\nDeclare the maximum number of CTAs that can be part of the cluster.\n\nSyntax\n\n```\n.maxclusterrank n\n```\n\nDescription\n\nDeclare the maximum number of thread blocks (CTAs) allowed to be part of the cluster.\n\nSemantics\n\nProduct of the number of CTAs in each cluster dimension specified in any invocation of the kernel is\nrequired to be less or equal to that specified in this directive. Otherwise invocation will result\nin a runtime error or kernel launch failure.\n\nThe `.maxclusterrank` directive cannot be used in conjunction with the `.reqnctapercluster` directive.\n\nPTX ISA Notes\n\nIntroduced in PTX ISA version 7.8.\n\nTarget ISA Notes\n\nRequires `sm_90` or higher.\n\nExamples\n\n```\n.entry foo ..maxclusterrank 8         { . . . }\n```"
+}

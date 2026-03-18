@@ -1,0 +1,5 @@
+{
+  "heading": "9.7.1.20.Integer Arithmetic Instructions:bfi\uf0c1",
+  "level": 4,
+  "content": "`bfi`\n\nBit Field Insert.\n\nSyntax\n\n```\nbfi.type  f, a, b, c, d;\n\n.type = { .b32, .b64 };\n```\n\nDescription\n\nAlign and insert a bit field from `a` into `b`, and place the result in `f`. Source `c`\ngives the starting bit position for the insertion, and source `d` gives the bit field length in\nbits.\n\nOperands `a`, `b`, and `f` have the same type as the instruction type. Operands `c` and\n`d` are type `.u32`, but are restricted to the 8-bit value range `0..255`.\n\nIf the bit field length is zero, the result is `b`.\n\nIf the start position is beyond the msb of the input, the result is `b`.\n\nSemantics\n\n```\nmsb = (.type==.b32) ? 31 : 63;\npos = c & 0xff;  // pos restricted to 0..255 range\nlen = d & 0xff;  // len restricted to 0..255 range\n\nf = b;\nfor (i=0; i<len && pos+i<=msb; i++) {\n    f[pos+i] = a[i];\n}\n```\n\nPTX ISA Notes\n\nIntroduced in PTX ISA version 2.0.\n\nTarget ISA Notes\n\n`bfi` requires `sm_20` or higher.\n\nExamples\n\n```\nbfi.b32  d,a,b,start,len;\n```"
+}

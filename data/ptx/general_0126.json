@@ -1,0 +1,5 @@
+{
+  "heading": "8.7.1.Conflict and Data-races\uf0c1",
+  "level": 3,
+  "content": "Two *overlapping* memory operations are said to *conflict* when at least one of them is a *write*.\n\nTwo *conflicting* memory operations are said to be in a *data-race* if they are not related in\n*causality order* and they are not *morally strong*."
+}

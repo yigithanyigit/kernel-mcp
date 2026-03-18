@@ -1,0 +1,5 @@
+{
+  "heading": "11.4.6.Performance-Tuning Directives:.noreturn\uf0c1",
+  "level": 3,
+  "content": "`.noreturn`\n\nIndicate that the function does not return to its caller function.\n\nSyntax\n\n```\n.noreturn\n```\n\nDescription\n\nIndicate that the function does not return to its caller function.\n\nSemantics\n\nAn optional `.noreturn` directive indicates that the function does not return to caller\nfunction. `.noreturn` directive can only be specified on device functions and must appear between\na `.func` directive and its body.\n\nThe directive cannot be specified on functions which have return parameters.\n\nIf a function with `.noreturn` directive returns to the caller function at runtime, then the\nbehavior is undefined.\n\nPTX ISA Notes\n\nIntroduced in PTX ISA version 6.4.\n\nTarget ISA Notes\n\nRequires `sm_30` or higher.\n\nExamples\n\n```\n.func foo .noreturn { ... }\n```"
+}

@@ -1,0 +1,7 @@
+{
+  "heading": "9.7.13.15.8.mbarrier support with shared memory\uf0c1",
+  "instruction": "mbarrier support with shared memory",
+  "level": 5,
+  "architectures": [],
+  "content": "The following table summarizes the support of various mbarrier operations on *mbarrier objects*\nlocated at different shared memory locations:\n\n| mbarrier operations | `.shared::cta` | `.shared::cluster` |\n| --- | --- | --- |\n| `mbarrier.arrive`, `mbarrier.arrive_drop` | Supported | Supported, cannot return result |\n| `mbarrier.expect_tx` | Supported | Supported |\n| `mbarrier.complete_tx` | Supported | Supported |\n| Other mbarrier operations | Supported | Not supported |"
+}

@@ -1,0 +1,8 @@
+{
+  "heading": "Limitations",
+  "level": 3,
+  "content": "The intention of caching is to reduce the host launch overhead before each execution. As above example shows,\nthe consistency between the original Python code and the MLIR program is hard to maintain because of the impact of dynamic factors such as global variables.\nTherefore, the MLIR program **MUST** always be generated to verify that the kernel content matches what was previously built.\n\nFor optimal host launch latency, we recommend using above custom caching method with `cute.compile`.",
+  "source_page": "cute_dsl_general/dsl_jit_caching.html",
+  "source_url": "https://docs.nvidia.com/cutlass/latest/media/docs/pythonDSL/cute_dsl_general/dsl_jit_caching.html",
+  "page_title": "JIT Caching"
+}

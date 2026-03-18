@@ -1,0 +1,13 @@
+{
+  "heading": "Source: cutlass.base_dsl.utils.timer",
+  "module": "cutlass.base_dsl.utils.timer",
+  "file_path": "base_dsl/utils/timer.py",
+  "content": "# Module: `cutlass.base_dsl.utils.timer`\n\nFile: `base_dsl/utils/timer.py`\n\n\n---\n\n## `timer()`\n\n\n\n---\n\n## `decorator(func)`\n\n\n\n---\n\n## `func_wrapper()`\n\n@wraps(func)\n",
+  "symbols": [
+    "timer",
+    "decorator",
+    "func_wrapper"
+  ],
+  "source_code": "# SPDX-FileCopyrightText: Copyright (c) 2025 - 2026 NVIDIA CORPORATION & AFFILIATES. All rights reserved.\n# SPDX-License-Identifier: LicenseRef-NvidiaProprietary\n#\n# Use of this software is governed by the terms and conditions of the\n# NVIDIA End User License Agreement (EULA), available at:\n# https://docs.nvidia.com/cutlass/media/docs/pythonDSL/license.html\n#\n# Any use, reproduction, disclosure, or distribution of this software\n# and related documentation outside the scope permitted by the EULA\n# is strictly prohibited.\n\n\"\"\"\nThis module provides a timing helper functions\n\"\"\"\n\nfrom functools import wraps\n\nfrom .logger import log\n\n\n# TODO: revisit this part when mlir timing manager is ready for pybind.\ndef timer(*dargs, **kwargs):\n    enable = kwargs.get(\"enable\", True)\n\n    def decorator(func):\n        @wraps(func)\n        def func_wrapper(*args, **kwargs):\n            if not enable:\n                return func(*args, **kwargs)\n            from time import time\n\n            start = time()\n            result = func(*args, **kwargs)\n            end = time()\n\n            # Convert time from seconds to us\n            spend_us = (end - start) * 1e6\n\n            # Determine the function type and format the log message\n            if hasattr(func, \"__name__\"):\n                func_name = func.__name__\n                log_message = f\"[JIT-TIMER] Function: {func_name} | Execution Time: {spend_us:.2f} \u00b5s\"\n            elif \"CFunctionType\" in str(type(func)):\n                log_message = f\"[JIT-TIMER] C API Function: {str(func)} | Execution Time: {spend_us:.2f} \u00b5s\"\n            else:\n                log_message = f\"[JIT-TIMER] Anonymous Function | Execution Time: {spend_us:.2f} \u00b5s\"\n\n            log().info(log_message)\n\n            return result\n\n        return func_wrapper\n\n    if len(dargs) == 1 and callable(dargs[0]):\n        return decorator(dargs[0])\n    else:\n        return decorator\n",
+  "type": "source"
+}

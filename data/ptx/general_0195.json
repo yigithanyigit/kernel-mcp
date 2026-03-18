@@ -1,0 +1,5 @@
+{
+  "heading": "9.7.3.2.Floating Point Instructions:copysign\uf0c1",
+  "level": 4,
+  "content": "`copysign`\n\nCopy sign of one input to another.\n\nSyntax\n\n```\ncopysign.type  d, a, b;\n\n.type = { .f32, .f64 };\n```\n\nDescription\n\nCopy sign bit of `a` into value of `b`, and return the result as `d`.\n\nPTX ISA Notes\n\nIntroduced in PTX ISA version 2.0.\n\nTarget ISA Notes\n\nRequires `sm_20` or higher.\n\nExamples\n\n```\ncopysign.f32  x, y, z;\ncopysign.f64  A, B, C;\n```"
+}

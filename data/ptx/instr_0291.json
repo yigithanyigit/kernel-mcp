@@ -1,0 +1,7 @@
+{
+  "heading": "9.7.2.3.Extended-Precision Arithmetic Instructions:sub.cc\uf0c1",
+  "instruction": "Extended-Precision Arithmetic Instructions:sub.cc",
+  "level": 4,
+  "architectures": [],
+  "content": "`sub.cc`\n\nSubtract one value from another, with borrow-out.\n\nSyntax\n\n```\nsub.cc.type  d, a, b;\n\n.type = { .u32, .s32, .u64, .s64 };\n```\n\nDescription\n\nPerforms integer subtraction and writes the borrow-out value into the condition code register.\n\nSemantics\n\n```\nd = a - b;\n```\n\nborrow-out written to `CC.CF`\n\nNotes\n\nNo integer rounding modifiers.\n\nNo saturation.\n\nBehavior is the same for unsigned and signed integers.\n\nPTX ISA Notes\n\n32-bit `sub.cc` introduced in PTX ISA version 1.2.\n\n64-bit `sub.cc` introduced in PTX ISA version 4.3.\n\nTarget ISA Notes\n\n32-bit `sub.cc` is supported on all target architectures.\n\n64-bit `sub.cc` requires `sm_20` or higher.\n\nExamples\n\n```\n@p  sub.cc.u32   x1,y1,z1;   // extended-precision subtraction\n@p  subc.cc.u32  x2,y2,z2;   // of two 128-bit values\n@p  subc.cc.u32  x3,y3,z3;\n@p  subc.u32     x4,y4,z4;\n```"
+}

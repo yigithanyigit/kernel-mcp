@@ -1,0 +1,7 @@
+{
+  "heading": "11.6.4.Linking Directives:.common\uf0c1",
+  "instruction": "Linking Directives:.common",
+  "level": 3,
+  "architectures": [],
+  "content": "`.common`\n\nVisible (externally) symbol declaration.\n\nSyntax\n\n```\n.common identifier\n```\n\nDescription\n\nDeclares identifier to be globally visible but \u201ccommon\u201d.\n\nCommon symbols are similar to globally visible symbols. However multiple object files may declare\nthe same common symbol and they may have different types and sizes and references to a symbol get\nresolved against a common symbol with the largest size.\n\nOnly one object file can initialize a common symbol and that must have the largest size among all\nother definitions of that common symbol from different object files.\n\n`.common` linking directive can be used only on variables with `.global` storage. It cannot be\nused on function symbols or on symbols with opaque type.\n\nPTX ISA Notes\n\nIntroduced in PTX ISA version 5.0.\n\nTarget ISA Notes\n\n`.common` directive requires `sm_20` or higher.\n\nExamples\n\n```\n.common .global .u32 gbl;\n```"
+}

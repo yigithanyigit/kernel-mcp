@@ -1,0 +1,7 @@
+{
+  "heading": "9.7.14.2.Matrix Data-types\uf0c1",
+  "instruction": "Matrix Data-types",
+  "level": 4,
+  "architectures": [],
+  "content": "The matrix multiply and accumulate operation is supported separately on integer, floating-point,\nsub-byte integer and single bit data-types. All operands must contain the same basic type kind,\ni.e., integer or floating-point.\n\nFor floating-point matrix multiply and accumulate operation, different matrix operands may have\ndifferent precision, as described later.\n\n| Data-type | Multiplicands (A or B) | Accumulators (C or D) |\n| --- | --- | --- |\n| Integer | `.u8`, `.s8` | `.s32` |\n| Floating Point | `.f16` | `.f16`, `.f32` |\n| Alternate floating Point | `.bf16` | `.f32` |\n| Alternate floating Point | `.tf32` | `.f32` |\n| Alternate floating Point | `.e4m3` or `.e5m2` or `.e3m2` or `.e2m3` or `.e2m1` | `.f16`, `.f32` |\n| Alternate floating Point with scale | `.e4m3` or `.e5m2` or `.e3m2` or `.e2m3` or `.e2m1` X (Scale) `.ue8m0` | `.f32` |\n| Alternate floating Point with scale | `.e2m1` X (Scale) `.ue8m0` or `.ue4m3` | `.f32` |\n| Floating Point | `.f64` | `.f64` |\n| Sub-byte integer | both `.u4` or both `.s4` | `.s32` |\n| Single-bit integer | `.b1` | `.s32` |"
+}

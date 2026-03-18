@@ -1,0 +1,7 @@
+{
+  "heading": "9.7.1.17.Integer Arithmetic Instructions:fns\uf0c1",
+  "instruction": "Integer Arithmetic Instructions:fns",
+  "level": 4,
+  "architectures": [],
+  "content": "`fns`\n\nFind the n-th set bit\n\nSyntax\n\n```\nfns.b32 d, mask, base, offset;\n```\n\nDescription\n\nGiven a 32-bit value `mask` and an integer value `base` (between 0 and 31), find the n-th (given\nby offset) set bit in `mask` from the `base` bit, and store the bit position in `d`. If not\nfound, store 0xffffffff in `d`.\n\nOperand `mask` has a 32-bit type. Operand `base` has `.b32`, `.u32` or `.s32`\ntype. Operand offset has `.s32` type. Destination `d` has type `.b32.`\n\nOperand `base` must be <= 31, otherwise behavior is undefined.\n\nSemantics\n\n```\nd = 0xffffffff;\nif (offset == 0) {\n    if (mask[base] == 1) {\n        d = base;\n    }\n} else {\n    pos = base;\n    count = |offset| - 1;\n    inc = (offset > 0) ? 1 : -1;\n\n    while ((pos >= 0) && (pos < 32)) {\n        if (mask[pos] == 1) {\n            if (count == 0) {\n              d = pos;\n              break;\n           } else {\n               count = count - 1;\n           }\n        }\n        pos = pos + inc;\n    }\n}\n```\n\nPTX ISA Notes\n\nIntroduced in PTX ISA version 6.0.\n\nTarget ISA Notes\n\n`fns` requires `sm_30` or higher.\n\nExamples\n\n```\nfns.b32 d, 0xaaaaaaaa, 3, 1;   // d = 3\nfns.b32 d, 0xaaaaaaaa, 3, -1;  // d = 3\nfns.b32 d, 0xaaaaaaaa, 2, 1;   // d = 3\nfns.b32 d, 0xaaaaaaaa, 2, -1;  // d = 1\n```"
+}

@@ -1,0 +1,9 @@
+{
+  "heading": "11.4.8.Performance-Tuning Directives:.abi_preserve\uf0c1",
+  "instruction": "Performance-Tuning Directives:.abi_preserve",
+  "level": 3,
+  "architectures": [
+    "sm_80"
+  ],
+  "content": "`.abi_preserve`\n\nSpecify number of general purpose registers that should be preserved by the callers of this function.\n\nSyntax\n\n```\n.abi_preserve N\n```\n\nDescription\n\nIt is an architecture agnostic value specifying actual number of general purpose registers.\nInternally ABI defines some general purpose registers as preserved (callee save) registers.\nInteger N specifies the actual number of general purpose registers that should be preserved by\nthe function.\n\n`.abi_preserve` directive can only be specified on device functions and must appear between\na `.func` directive and its body.\n\nSemantics\n\nWhen this directive is specified compiler backend modifies low level ABI components to ensure that\nnumber of live data variables in the callers of this function that are stored in the callee save\nregisters are less than specified value.\n\nPTX ISA Notes\n\nIntroduced in PTX ISA version 9.0.\n\nTarget ISA Notes\n\nRequires `sm_80` or higher.\n\nExamples\n\n```\n.func bar() .abi_preserve 8\n\n// Indirect call via call prototype\n.func (.param .b32 out[30]) foo (.param .b32 in[30]) .abi_preserve 10 { ... }\n...\nmov.b64 lpfoo, foo;\nprot: .callprototype (.param .b32 out[30]) _ (.param .b32 in[30]) .abi_preserve 10;\ncall (out), lpfoo, (in), prot;\n```"
+}

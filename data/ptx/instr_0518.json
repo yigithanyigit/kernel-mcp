@@ -1,0 +1,9 @@
+{
+  "heading": "9.7.13.14.Parallel Synchronization and Communication Instructions:elect.sync\uf0c1",
+  "instruction": "Parallel Synchronization and Communication Instructions:elect.sync",
+  "level": 4,
+  "architectures": [
+    "sm_90"
+  ],
+  "content": "`elect.sync`\n\nElect a leader thread from a set of threads.\n\nSyntax\n\n```\nelect.sync d|p, membermask;\n```\n\nDescription\n\n`elect.sync` elects one predicated active leader thread from among a set of threads specified by\n`membermask`. `laneid` of the elected thread is returned in the 32-bit destination operand\n`d`. The sink symbol \u2018_\u2019 can be used for destination operand `d`. The predicate destination\n`p` is set to `True` for the leader thread, and `False` for all other threads.\n\nOperand `membermask` specifies a 32-bit integer indicating the set of threads from which a leader\nis to be elected. The behavior is undefined if the executing thread is not in `membermask`.\n\nElection of a leader thread happens deterministically, i.e. the same leader thread is elected for\nthe same `membermask` every time.\n\nThe mandatory `.sync` qualifier indicates that `elect` causes the executing thread to wait until\nall threads in the `membermask` execute the `elect` instruction before resuming execution.\n\nPTX ISA Notes\n\nIntroduced in PTX ISA version 8.0.\n\nTarget ISA Notes\n\nRequires `sm_90` or higher.\n\nExamples\n\n```\nelect.sync    %r0|%p0, 0xffffffff;\n```"
+}

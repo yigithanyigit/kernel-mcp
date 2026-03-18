@@ -1,0 +1,5 @@
+{
+  "heading": "13.14.Changes in PTX ISA Version 7.7\uf0c1",
+  "level": 2,
+  "content": "New Features\n\nPTX ISA version 7.7 introduces the following new features:\n\n* Extends `isspacep` and `cvta` instructions to include the `.param` state space for kernel\n  function parameters.\n\nSemantic Changes and Clarifications\n\nNone."
+}

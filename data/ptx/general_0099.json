@@ -1,0 +1,5 @@
+{
+  "heading": "6.4.4.Labels and Function Names as Operands\uf0c1",
+  "level": 3,
+  "content": "Labels and function names can be used only in `bra`/`brx.idx` and `call` instructions\nrespectively. Function names can be used in `mov` instruction to get the address of the function\ninto a register, for use in an indirect call.\n\nBeginning in PTX ISA version 3.1, the `mov` instruction may be used to take the address of kernel\nfunctions, to be passed to a system call that initiates a kernel launch from the GPU. This feature\nis part of the support for CUDA Dynamic Parallelism. See the *CUDA Dynamic Parallelism Programming\nGuide* for details."
+}
