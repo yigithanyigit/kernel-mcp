@@ -15,7 +15,7 @@ import httpx
 from bs4 import BeautifulSoup
 from openai import AsyncOpenAI
 
-DATA_DIR = Path(__file__).parent.parent.parent / "data"
+DATA_DIR = Path(__file__).resolve().parent.parent.parent / "data"
 PTX_BASE_URL = "https://docs.nvidia.com/cuda/parallel-thread-execution/"
 
 SYSTEM_PROMPT = (

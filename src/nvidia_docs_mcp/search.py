@@ -5,7 +5,21 @@ import math
 import re
 from pathlib import Path
 
-DATA_DIR = Path(__file__).parent.parent.parent / "data"
+def _find_data_dir() -> Path:
+    """Locate the data directory, checking multiple possible locations."""
+    # 1. Relative to source (editable install / dev mode)
+    candidate = Path(__file__).parent.parent.parent / "data"
+    if (candidate / "ptx" / "index.json").exists():
+        return candidate
+    # 2. Relative to CWD (running from repo root)
+    candidate = Path.cwd() / "data"
+    if (candidate / "ptx" / "index.json").exists():
+        return candidate
+    # 3. Fall back to source-relative (will error on load with clear message)
+    return Path(__file__).parent.parent.parent / "data"
+
+
+DATA_DIR = _find_data_dir()
 
 
 def _tokenize(text: str) -> list[str]:

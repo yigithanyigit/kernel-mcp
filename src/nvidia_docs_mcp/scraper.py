@@ -8,7 +8,7 @@ import httpx
 from bs4 import BeautifulSoup, Tag
 from markdownify import markdownify
 
-DATA_DIR = Path(__file__).parent.parent.parent / "data"
+DATA_DIR = Path(__file__).resolve().parent.parent.parent / "data"
 
 PTX_BASE_URL = "https://docs.nvidia.com/cuda/parallel-thread-execution/"
 CUTEDSL_BASE_URL = "https://docs.nvidia.com/cutlass/latest/media/docs/pythonDSL/"
