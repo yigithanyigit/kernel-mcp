@@ -451,6 +451,47 @@ def explain_kernel(trace_path: str, kernel_name: str) -> str:
     return "\n".join(lines)
 
 
+@mcp.tool()
+def get_profiling_guide(topic: str | None = None) -> str:
+    """Get intra-kernel profiling guides and code templates for CuTe DSL.
+
+    Returns ready-to-use code for instrumenting GPU kernels with cycle-level
+    timing, pipeline stage profiling, barrier wait measurement, and Nsight
+    Compute metric collection.
+
+    Args:
+        topic: Specific topic. Options:
+            - "overview" — how intra-kernel profiling works
+            - "clock_read" — reading %clock64/%globaltimer in CuTe DSL
+            - "gemm_profiling" — full GEMM kernel profiling template
+            - "pipeline_profiling" — MMA vs copy overlap measurement
+            - "mbarrier_profiling" — barrier wait time analysis
+            - "ptx_timing_registers" — PTX special registers reference
+            - "nsight_compute_metrics" — key Nsight Compute metrics for kernel analysis
+            - None — returns overview + all available topics
+    """
+    from nvidia_docs_mcp.profiling_templates import ALL_TEMPLATES
+
+    if topic and topic in ALL_TEMPLATES:
+        return ALL_TEMPLATES[topic]
+
+    if topic:
+        # Fuzzy match
+        topic_lower = topic.lower()
+        for key, content in ALL_TEMPLATES.items():
+            if topic_lower in key or key in topic_lower:
+                return content
+        return (
+            f"Unknown topic '{topic}'. Available topics:\n"
+            + "\n".join(f"- {k}" for k in ALL_TEMPLATES.keys())
+        )
+
+    # No topic — return overview + topic list
+    overview = ALL_TEMPLATES["overview"]
+    topics = "\n".join(f"- `{k}` — {v.split(chr(10))[0].strip('# ')}" for k, v in ALL_TEMPLATES.items())
+    return f"{overview}\n\n## Available Profiling Guides\n\n{topics}\n\nUse `get_profiling_guide(topic)` for detailed code templates."
+
+
 def main():
     if "--scrape" in sys.argv:
         import asyncio
