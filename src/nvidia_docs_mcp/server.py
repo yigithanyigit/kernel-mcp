@@ -370,15 +370,18 @@ def list_cutedsl_modules(filter: str | None = None) -> str:
 def analyze_trace(trace_path: str) -> str:
     """Analyze a PyTorch profiler Chrome trace file (Kineto JSON).
 
-    Parses the trace and returns: GPU utilization, top kernels by time,
-    CPU operation breakdown, GPU idle gaps with diagnosis, and sync overhead.
+    Parses the trace and returns: GPU utilization over time (timeline with visual bars),
+    top kernels by time, CPU operation breakdown, GPU idle gaps with diagnosis, and sync overhead.
 
     Args:
         trace_path: Path to the trace file (.json or .json.gz)
     """
-    from nvidia_docs_mcp.trace_analyzer import analyze_trace as _analyze, format_analysis
+    from nvidia_docs_mcp.trace_analyzer import analyze_trace as _analyze, format_analysis, format_timeline, parse_trace
     analysis = _analyze(trace_path)
-    return _truncate(format_analysis(analysis))
+    events = parse_trace(trace_path)
+    timeline = format_timeline(events)
+    overview = format_analysis(analysis)
+    return _truncate(timeline + "\n\n" + overview)
 
 
 @mcp.tool()

@@ -333,6 +333,115 @@ def format_analysis(analysis: TraceAnalysis) -> str:
     return "\n".join(lines)
 
 
+def format_timeline(events: list[TraceEvent], num_segments: int = 10) -> str:
+    """Segment the trace into time windows and show GPU utilization per segment."""
+    kernels = sorted([e for e in events if e.is_kernel], key=lambda e: e.ts)
+    if not kernels:
+        return "No GPU kernels found in trace."
+
+    trace_start = kernels[0].ts
+    trace_end = max(k.end for k in kernels)
+    total = trace_end - trace_start
+    if total <= 0:
+        return "Trace too short to segment."
+
+    seg_dur = total / num_segments
+
+    lines = []
+    lines.append("# Timeline Analysis (GPU utilization over time)")
+    lines.append("")
+    lines.append(f"Total GPU kernel span: {total} us, {num_segments} segments of ~{seg_dur:.0f} us each")
+    lines.append("")
+
+    for seg_idx in range(num_segments):
+        seg_start = trace_start + seg_idx * seg_dur
+        seg_end = seg_start + seg_dur
+
+        # Find kernels overlapping this segment
+        seg_kernels = []
+        gpu_busy = 0
+        for k in kernels:
+            if k.end <= seg_start or k.ts >= seg_end:
+                continue
+            seg_kernels.append(k)
+            overlap_start = max(k.ts, seg_start)
+            overlap_end = min(k.end, seg_end)
+            gpu_busy += overlap_end - overlap_start
+
+        util = gpu_busy / seg_dur if seg_dur > 0 else 0
+
+        # Build a visual bar
+        bar_len = 30
+        filled = int(util * bar_len)
+        bar = "█" * filled + "░" * (bar_len - filled)
+
+        # Count gaps in this segment
+        gaps = 0
+        total_gap_dur = 0
+        for i in range(len(seg_kernels) - 1):
+            gap = seg_kernels[i + 1].ts - seg_kernels[i].end
+            if gap > 0:
+                gaps += 1
+                total_gap_dur += gap
+
+        # Identify dominant kernel type
+        kernel_names: dict[str, int] = {}
+        for k in seg_kernels:
+            kernel_names[k.name] = kernel_names.get(k.name, 0) + k.dur
+
+        dominant = max(kernel_names.items(), key=lambda x: x[1])[0] if kernel_names else "none"
+        # Shorten name
+        if "nvjet" in dominant.lower():
+            dominant_short = "GEMM (nvJet)"
+        elif "cudnn" in dominant.lower() and "sdpa" in dominant.lower():
+            dominant_short = "Attention (cuDNN SDPA)"
+        elif "triton_red" in dominant.lower():
+            dominant_short = "Triton reduction"
+        elif "triton_poi" in dominant.lower():
+            dominant_short = "Triton pointwise"
+        elif "triton_per" in dominant.lower():
+            dominant_short = "Triton persistent"
+        else:
+            dominant_short = dominant[:35]
+
+        rel_start = seg_start - trace_start
+        lines.append(
+            f"  {rel_start:7.0f}-{rel_start + seg_dur:7.0f}us  "
+            f"{bar} {util:5.1%}  "
+            f"{len(seg_kernels):3d} kernels, {gaps} gaps ({total_gap_dur:.0f}us idle)  "
+            f"dominant: {dominant_short}"
+        )
+
+    # Identify underutilized segments
+    lines.append("")
+    underutilized = []
+    for seg_idx in range(num_segments):
+        seg_start = trace_start + seg_idx * seg_dur
+        seg_end = seg_start + seg_dur
+        gpu_busy = 0
+        for k in kernels:
+            if k.end <= seg_start or k.ts >= seg_end:
+                continue
+            overlap_start = max(k.ts, seg_start)
+            overlap_end = min(k.end, seg_end)
+            gpu_busy += overlap_end - overlap_start
+        util = gpu_busy / seg_dur
+        if util < 0.6:
+            underutilized.append((seg_idx, util))
+
+    if underutilized:
+        lines.append("## Underutilized Segments")
+        lines.append("")
+        for seg_idx, util in underutilized:
+            rel_start = seg_idx * seg_dur
+            lines.append(
+                f"- Segment {seg_idx + 1} ({rel_start:.0f}-{rel_start + seg_dur:.0f}us): "
+                f"only {util:.1%} GPU utilization — likely CPU overhead or kernel launch latency"
+            )
+
+    return "\n".join(lines)
+
+
 def format_bottlenecks(analysis: TraceAnalysis) -> str:
     lines = []
     lines.append("# Performance Bottleneck Analysis")
