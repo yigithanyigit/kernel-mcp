@@ -118,6 +118,28 @@ class DocIndex:
                 if qt in instr_lower:
                     score *= 3.0
 
+            # Demote niche/specialized variants unless explicitly queried.
+            # Dense is the general case. Sparse, convolution, weight-stationary
+            # are specializations that should only rank high when asked for.
+            query_lower = " ".join(query_tokens)
+            niche_terms = {
+                "sparse": ["sparse", ".sp", "sparsity", "ordered_metadata"],
+                "convolution": ["convolution", "conv", "collector", "ashift", "im2col"],
+                "weight_stationary": [".ws", "weight_stationary"],
+            }
+            is_niche = False
+            for niche, keywords in niche_terms.items():
+                if not any(k in query_lower for k in keywords):
+                    check_text = heading_lower + " " + instr_lower
+                    if any(k in check_text for k in keywords):
+                        is_niche = True
+                        break
+
+            if is_niche:
+                # Cap the score — niche results should never outrank generic ones
+                # unless the user explicitly asks for them
+                score = min(score, 0.01)
+
             if score > 0:
                 scores[filename] = score
 
