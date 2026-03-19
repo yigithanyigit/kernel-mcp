@@ -313,6 +313,215 @@ def my_kernel_benchmark(config):
 ```
 """
 
+NSIGHT_PYTHON_API = """# nsight-python API Reference
+
+`pip install nsight-python` (Apache-2.0, Beta)
+Requires: Python >= 3.10, NCU CLI installed on the system.
+
+## @nsight.analyze.kernel — Core Profiling Decorator
+
+Profiles GPU kernels via Nsight Compute, collects metrics, handles thermal management.
+
+```python
+from nsight import analyze
+
+@analyze.kernel(
+    configs=[(2048,), (4096,), (8192,)],  # parameter sweep
+    runs=10,                               # executions per config
+    metrics=["gpu__time_duration.sum"],     # NCU metrics to collect
+    derive_metric=None,                    # custom metric function
+    normalize_against=None,                # baseline annotation name for speedup
+    combine_kernel_metrics=None,           # combine multiple kernels: lambda x,y: x+y
+    ignore_kernel_list=None,               # kernel names to skip
+    clock_control="none",                  # "base" locks clocks, "none" leaves them
+    cache_control="all",                   # "all" flushes caches before each pass
+    replay_mode="kernel",                  # "kernel" or "range"
+    thermal_mode="auto",                   # "auto", "manual", "off"
+    output="progress",                     # "quiet", "progress", "verbose"
+    output_csv=False,                      # generate CSV files
+)
+def my_benchmark(size):
+    with nsight.annotate("my_kernel"):
+        launch_kernel(size)
+
+result = my_benchmark()  # returns ProfileResults
+df = result.to_dataframe()
+```
+
+## ProfileResults.to_dataframe() columns
+
+| Column | Description |
+|---|---|
+| Annotation | Name of the annotated region |
+| AvgValue | Average metric across runs |
+| StdDev | Standard deviation |
+| MinValue, MaxValue | Range |
+| NumRuns | Run count |
+| CI95_Lower, CI95_Upper | 95% confidence interval |
+| RelativeStdDevPct | Std dev as % of mean |
+| StableMeasurement | True if RelativeStdDevPct < 2% |
+| Metric | Metric name |
+| Kernel | GPU kernel name(s) |
+| GPU | Device name |
+| ComputeClock, MemoryClock | Clock frequencies |
+
+## nsight.annotate — Marking Profiling Regions
+
+```python
+import nsight
+
+# As context manager:
+with nsight.annotate("matmul"):
+    C = A @ B
+
+# As decorator:
+@nsight.annotate("my_op")
+def my_operation():
+    ...
+```
+
+Constraints: no nesting, no duplicate names within a run.
+
+## @nsight.analyze.plot — Visualization
+
+```python
+@analyze.plot(
+    filename="perf.png",
+    metric="gpu__time_duration.sum",
+    title="Kernel Performance",
+    plot_type="bar",              # "line" or "bar"
+    annotate_points=True,         # show values on points
+    show_aggregate="avg",         # "avg" or "geomean"
+    row_panels=["dtype"],         # facet by parameter
+    col_panels=["transpose"],
+    variant_fields=["block_size"],
+    variant_annotations=["triton"],
+)
+@analyze.kernel(configs=configs, runs=10)
+def benchmark(size, dtype):
+    ...
+```
+
+## Common Patterns
+
+### Compare two implementations
+```python
+@analyze.kernel(runs=10)
+def compare(size):
+    with nsight.annotate("torch"):
+        torch.mm(A, B)
+    with nsight.annotate("cutedsl"):
+        my_cutedsl_kernel(A, B, C)
+```
+
+### Custom TFLOPs metric
+```python
+def tflops(gpu_time_ns, M, N, K):
+    flops = 2 * M * N * K
+    return flops / gpu_time_ns  # GFLOPS (ns denominator gives GFLOPS)
+
+@analyze.kernel(
+    configs=[(1024, 1024, 1024), (2048, 2048, 2048)],
+    metrics=["gpu__time_duration.sum"],
+    derive_metric=tflops,
+    runs=10,
+)
+def gemm_benchmark(M, N, K):
+    with nsight.annotate("gemm"):
+        launch_gemm(M, N, K)
+```
+
+### Speedup against baseline
+```python
+@analyze.plot(metric="speedup", filename="speedup.png")
+@analyze.kernel(
+    configs=configs,
+    normalize_against="torch",  # baseline annotation
+    derive_metric=lambda x: x,  # identity (normalized values ARE the speedup)
+    runs=10,
+)
+def speedup_test(size):
+    with nsight.annotate("torch"):
+        torch.mm(A, B)
+    with nsight.annotate("triton"):
+        triton_mm(A, B)
+```
+
+### Multiple raw metrics
+```python
+@analyze.kernel(
+    metrics=[
+        "gpu__time_duration.sum",
+        "dram__throughput.avg.pct_of_peak_sustained_elapsed",
+        "sm__warps_active.avg.pct_of_peak_sustained_active",
+    ],
+    runs=5,
+)
+def multi_metric(size):
+    with nsight.annotate("kernel"):
+        launch(size)
+
+result = multi_metric()
+df = result.to_dataframe()  # has rows for each metric
+```
+
+## Pipeline internals
+
+1. Collection: spawns `ncu` subprocess, re-executes function under profiling
+2. Extraction: reads `.ncu-rep` via `ncu_report`, filters by NVTX domain
+3. Transformation: aggregates stats (mean, std, CI95, stability check)
+4. Visualization: matplotlib plots with NVIDIA color palette
+"""
+
+INGERO_REFERENCE = """# ingero — eBPF-based CUDA Causal Tracing
+
+ingero (https://github.com/ingero-io/ingero) is an eBPF-based GPU observability
+agent that traces CUDA Runtime and Driver APIs to build causal chains explaining
+GPU latency. It has MCP server support.
+
+## What it does
+
+- Scans /proc for processes linked to libcudart.so
+- Loads eBPF uprobes onto CUDA runtime/driver API entry/exit points
+- Records PID/TID/timestamps into per-layer ring buffers
+- Builds causal chains: Python call → aten op → CUDA runtime → driver → GPU kernel
+- Explains WHY a kernel was launched and what's blocking it
+
+## When to use ingero vs other tools
+
+| Tool | Use case |
+|---|---|
+| torch.profiler (Kineto) | Offline trace of a training step — export JSON, analyze later |
+| nsight-python (NCU) | Per-kernel metrics — occupancy, memory throughput, warp stalls |
+| nsight-systems (nsys) | System-wide timeline — CPU/GPU overlap, multi-stream, NVTX |
+| ingero (eBPF) | Live causal tracing — "why is this kernel waiting?" with full stack |
+| Intra-kernel (%clock64) | Inside one kernel — which pipeline stage (MMA/copy/sync) is slow |
+
+## Setup
+
+```bash
+# Requires Linux, root/CAP_SYS_ADMIN for eBPF
+git clone https://github.com/ingero-io/ingero
+cd ingero
+go build -o ingero ./cmd/ingero
+sudo ./ingero  # starts eBPF probes + MCP server
+```
+
+## MCP integration
+
+ingero runs as a standalone MCP server. You can add it alongside kernel-mcp
+in your Claude Code settings to have both documentation+profiling and live tracing:
+
+```json
+{
+  "mcpServers": {
+    "nvidia-docs": { "command": "uv", "args": ["--directory", "...", "run", "nvidia-docs-mcp"] },
+    "ingero": { "command": "sudo", "args": ["./ingero", "--mcp"] }
+  }
+}
+```
+"""
+
 ALL_TEMPLATES = {
     "overview": INTRA_KERNEL_OVERVIEW,
     "clock_read": CLOCK_READ_TEMPLATE,
@@ -321,4 +530,6 @@ ALL_TEMPLATES = {
     "mbarrier_profiling": MBARRIER_PROFILING_TEMPLATE,
     "ptx_timing_registers": PTX_TIMING_REGISTERS,
     "nsight_compute_metrics": NSIGHT_COMPUTE_METRICS,
+    "nsight_python_api": NSIGHT_PYTHON_API,
+    "ingero": INGERO_REFERENCE,
 }
