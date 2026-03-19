@@ -49,11 +49,25 @@ def _truncate(text: str, limit: int = MAX_RESPONSE_CHARS) -> str:
 mcp = FastMCP(
     "nvidia-docs",
     instructions=(
-        "NVIDIA GPU programming documentation server. "
-        "Provides access to PTX ISA instructions, CuTe DSL (Python DSL for CUDA kernels) documentation, "
-        "and CuTe DSL source code with examples. "
-        "Use these tools to understand PTX instructions, CuTe DSL APIs, read source implementations, "
-        "and learn from real-world kernel examples (GEMM, FMHA, MLA, Mamba2, distributed ops)."
+        "IMPORTANT: Use these tools PROACTIVELY whenever working with CUDA, GPU kernels, "
+        "CuTe DSL, CUTLASS, PTX, Triton, or GPU performance.\n\n"
+        "YOU MUST call these tools when:\n"
+        "- Writing or debugging CuTe DSL code (search_cutedsl, get_cutedsl_api, read_cutedsl_source)\n"
+        "- You encounter ANY CuTe DSL API you're unsure about (get_cutedsl_api with the module name)\n"
+        "- You need to understand how a PTX instruction works (get_ptx_instruction)\n"
+        "- You need to understand GPU memory layouts, thread mappings, or register fragments (search_ptx)\n"
+        "- You want to see how NVIDIA implements something (read_cutedsl_source, search_cutedsl_source)\n"
+        "- You're looking at real examples of GEMM, FMHA, MLA, Mamba2 kernels (list_cutedsl_modules)\n"
+        "- You're profiling or optimizing GPU code (analyze_trace, find_bottlenecks, get_profiling_guide)\n"
+        "- You see imports like `cutlass.cute`, `cute.arch`, `cute_nvgpu`, `pipeline` — ALWAYS check the API\n"
+        "- You're unsure about wgmma, tcgen05, mma, cp.async, mbarrier, TMA, or any CUDA concept\n\n"
+        "DO NOT guess CuTe DSL APIs from memory. ALWAYS look them up — the API has many subtle parameters.\n"
+        "DO NOT guess PTX instruction behavior. ALWAYS check — wrong assumptions cause silent correctness bugs.\n\n"
+        "Available knowledge: PTX ISA v9.2 (all architectures sm_50 to sm_120a), "
+        "CuTe DSL docs + full Python source code (125 modules), "
+        "103 real kernel examples (Blackwell FMHA, MLA decode, Mamba2 SSD, persistent GEMM, distributed ops), "
+        "247 figure descriptions (thread-to-register layouts, memory diagrams, packing formats), "
+        "profiling guides (intra-kernel timing, Nsight Compute metrics, trace analysis)."
     ),
 )
 
