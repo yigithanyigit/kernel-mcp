@@ -1,0 +1,19 @@
+{"schemaVersion": 1, "traceEvents": [
+  {"ph": "X", "cat": "cpu_op", "name": "aten::mm", "pid": 1, "tid": 1, "ts": 1000, "dur": 50, "args": {"External id": 1, "Input Dims": [[128, 512], [512, 256]]}},
+  {"ph": "X", "cat": "Runtime", "name": "cudaLaunchKernel", "pid": 1, "tid": 1, "ts": 1020, "dur": 15, "args": {"correlation": 100, "External id": 1}},
+  {"ph": "X", "cat": "Kernel", "name": "ampere_sgemm_128x64_tn", "pid": 2, "tid": 7, "ts": 1060, "dur": 200, "args": {"correlation": 100, "device": 0, "stream": 7, "grid": [2, 2, 1], "block": [128, 1, 1], "registers per thread": 64, "shared memory": 16384, "External id": 1}},
+  {"ph": "X", "cat": "cpu_op", "name": "aten::relu_", "pid": 1, "tid": 1, "ts": 1055, "dur": 20, "args": {"External id": 2}},
+  {"ph": "X", "cat": "Runtime", "name": "cudaLaunchKernel", "pid": 1, "tid": 1, "ts": 1060, "dur": 10, "args": {"correlation": 101, "External id": 2}},
+  {"ph": "X", "cat": "Kernel", "name": "vectorized_elementwise_kernel<4, relu>", "pid": 2, "tid": 7, "ts": 1265, "dur": 30, "args": {"correlation": 101, "device": 0, "stream": 7, "grid": [256, 1, 1], "block": [256, 1, 1], "registers per thread": 16, "shared memory": 0, "External id": 2}},
+  {"ph": "X", "cat": "cpu_op", "name": "aten::mm", "pid": 1, "tid": 1, "ts": 1080, "dur": 45, "args": {"External id": 3, "Input Dims": [[128, 256], [256, 128]]}},
+  {"ph": "X", "cat": "Runtime", "name": "cudaLaunchKernel", "pid": 1, "tid": 1, "ts": 1095, "dur": 12, "args": {"correlation": 102, "External id": 3}},
+  {"ph": "X", "cat": "Kernel", "name": "ampere_sgemm_64x64_tn", "pid": 2, "tid": 7, "ts": 1300, "dur": 150, "args": {"correlation": 102, "device": 0, "stream": 7, "grid": [2, 1, 1], "block": [128, 1, 1], "registers per thread": 64, "shared memory": 16384, "External id": 3}},
+  {"ph": "X", "cat": "cpu_op", "name": "aten::softmax", "pid": 1, "tid": 1, "ts": 1130, "dur": 80, "args": {"External id": 4}},
+  {"ph": "X", "cat": "Runtime", "name": "cudaLaunchKernel", "pid": 1, "tid": 1, "ts": 1170, "dur": 10, "args": {"correlation": 103, "External id": 4}},
+  {"ph": "X", "cat": "Kernel", "name": "softmax_warp_forward", "pid": 2, "tid": 7, "ts": 1455, "dur": 80, "args": {"correlation": 103, "device": 0, "stream": 7, "grid": [128, 1, 1], "block": [32, 1, 1], "registers per thread": 32, "shared memory": 0, "External id": 4}},
+  {"ph": "X", "cat": "cpu_op", "name": "aten::mm", "pid": 1, "tid": 1, "ts": 1215, "dur": 40, "args": {"External id": 5, "Input Dims": [[128, 128], [128, 64]]}},
+  {"ph": "X", "cat": "Runtime", "name": "cudaLaunchKernel", "pid": 1, "tid": 1, "ts": 1230, "dur": 10, "args": {"correlation": 104, "External id": 5}},
+  {"ph": "X", "cat": "Kernel", "name": "ampere_sgemm_64x32_tn", "pid": 2, "tid": 7, "ts": 1540, "dur": 90, "args": {"correlation": 104, "device": 0, "stream": 7, "grid": [2, 1, 1], "block": [64, 1, 1], "registers per thread": 48, "shared memory": 8192, "External id": 5}},
+  {"ph": "X", "cat": "Memcpy", "name": "Memcpy DtoH (Pageable -> Device)", "pid": 2, "tid": 7, "ts": 1635, "dur": 25, "args": {"device": 0, "stream": 7, "bytes": 32768}},
+  {"ph": "X", "cat": "Runtime", "name": "cudaDeviceSynchronize", "pid": 1, "tid": 1, "ts": 1260, "dur": 410, "args": {}}
+]}

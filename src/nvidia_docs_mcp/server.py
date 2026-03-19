@@ -366,6 +366,88 @@ def list_cutedsl_modules(filter: str | None = None) -> str:
     return "\n".join(lines)
 
 
+@mcp.tool()
+def analyze_trace(trace_path: str) -> str:
+    """Analyze a PyTorch profiler Chrome trace file (Kineto JSON).
+
+    Parses the trace and returns: GPU utilization, top kernels by time,
+    CPU operation breakdown, GPU idle gaps with diagnosis, and sync overhead.
+
+    Args:
+        trace_path: Path to the trace file (.json or .json.gz)
+    """
+    from nvidia_docs_mcp.trace_analyzer import analyze_trace as _analyze, format_analysis
+    analysis = _analyze(trace_path)
+    return _truncate(format_analysis(analysis))
+
+
+@mcp.tool()
+def find_bottlenecks(trace_path: str) -> str:
+    """Find performance bottlenecks in a PyTorch profiler trace.
+
+    Identifies: low GPU utilization, small unfused kernels, large GPU idle gaps,
+    sync overhead, and single-stream usage. Provides actionable suggestions.
+
+    Args:
+        trace_path: Path to the trace file (.json or .json.gz)
+    """
+    from nvidia_docs_mcp.trace_analyzer import analyze_trace as _analyze, format_bottlenecks
+    analysis = _analyze(trace_path)
+    return _truncate(format_bottlenecks(analysis))
+
+
+@mcp.tool()
+def explain_kernel(trace_path: str, kernel_name: str) -> str:
+    """Deep-dive into a specific kernel from a profiler trace.
+
+    Shows: duration stats, launch configuration, GPU time percentage,
+    gaps before/after, and what's happening on CPU during execution.
+
+    Args:
+        trace_path: Path to the trace file (.json or .json.gz)
+        kernel_name: Full or partial kernel name to search for
+    """
+    from nvidia_docs_mcp.trace_analyzer import analyze_trace as _analyze, parse_trace
+    events = parse_trace(trace_path)
+    analysis = _analyze(trace_path)
+
+    name_lower = kernel_name.lower()
+    matching = [k for k in analysis.kernel_stats if name_lower in k["name"].lower()]
+
+    if not matching:
+        available = [k["name"][:60] for k in analysis.kernel_stats[:10]]
+        return f"No kernel matching '{kernel_name}'. Top kernels:\n" + "\n".join(f"- {n}" for n in available)
+
+    lines = []
+    for k in matching[:3]:
+        lines.append(f"# Kernel: `{k['name']}`")
+        lines.append("")
+        lines.append(f"- Invocations: {k['count']}")
+        lines.append(f"- Total GPU time: {k['total_us']} us ({k['pct_of_gpu']:.1f}% of GPU busy)")
+        lines.append(f"- Mean: {k['mean_us']:.1f} us, Min: {k['min_us']} us, Max: {k['max_us']} us")
+        if k.get("grid"):
+            lines.append(f"- Grid: {k['grid']}, Block: {k.get('block')}")
+        if k.get("registers"):
+            lines.append(f"- Registers/thread: {k['registers']}, Shared mem: {k.get('shared_mem', 0)} bytes")
+
+        # Find gaps involving this kernel
+        relevant_gaps = [
+            g for g in analysis.gpu_gaps
+            if name_lower in g.before_kernel.lower() or name_lower in g.after_kernel.lower()
+        ]
+        if relevant_gaps:
+            lines.append("")
+            lines.append("## Gaps involving this kernel")
+            for g in relevant_gaps[:5]:
+                direction = "after" if name_lower in g.before_kernel.lower() else "before"
+                other = g.after_kernel if direction == "after" else g.before_kernel
+                lines.append(f"- {g.duration} us idle {direction} this kernel (other: `{other[:50]}`)")
+
+        lines.append("")
+
+    return "\n".join(lines)
+
+
 def main():
     if "--scrape" in sys.argv:
         import asyncio
