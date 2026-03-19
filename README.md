@@ -18,12 +18,17 @@ Agents can query "how does wgmma.mma_async work on Hopper?" and get back the ful
 
 ```bash
 uv sync
-uv run nvidia-docs-mcp --scrape  # scrape docs + index source code (~60s)
 ```
 
-### Optional: Generate figure descriptions
+That's it. All data (PTX ISA, CuTe DSL docs, source code, figure descriptions) is **pre-built and included in the repo**. No scraping needed.
 
-PTX ISA contains 247 figures (register layouts, memory diagrams, packing formats) that are critical for understanding instructions. By default these are referenced by caption only. To generate detailed text descriptions using a VLM:
+### Optional: Re-scrape docs (only if you want to update to newer versions)
+
+```bash
+uv run nvidia-docs-mcp --scrape  # re-scrape docs from NVIDIA (~60s)
+```
+
+### Optional: Re-generate figure descriptions (requires fal.ai API key)
 
 ```bash
 FAL_KEY=your-fal-key uv run nvidia-docs-mcp --describe-figures
