@@ -336,7 +336,9 @@ def read_cutedsl_source(module_or_file: str) -> str:
     if file_path:
         header += f"\nFile: `{file_path}`"
 
-    return _truncate(f"{header}\n\n```python\n{source}\n```")
+    # Don't use _truncate for source code — it mangles code with TOC splitting.
+    # Just return the full source. Claude Code handles large responses via file fallback.
+    return f"{header}\n\n```python\n{source}\n```"
 
 
 @mcp.tool()
