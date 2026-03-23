@@ -52,12 +52,21 @@ class DocIndex:
                 doc = json.loads(filepath.read_text())
                 self.documents[entry["file"]] = doc
                 # Build searchable text from all fields
+                # Repeat heading/module/filepath for extra weight
+                heading = doc.get("heading", "")
+                module = doc.get("module", "")
+                file_path = doc.get("file_path", "")
                 searchable = " ".join([
-                    doc.get("heading", ""),
+                    heading, heading,  # double-weight headings
+                    module, module,    # double-weight module path
+                    file_path, file_path,  # double-weight file path
                     doc.get("instruction", ""),
                     doc.get("content", ""),
                     " ".join(doc.get("architectures", [])),
                     doc.get("source_page", ""),
+                    doc.get("docstring", ""),
+                    " ".join(doc.get("symbols", [])),
+                    doc.get("category", ""),
                 ])
                 self._doc_tokens[entry["file"]] = _tokenize(searchable)
 
@@ -93,12 +102,14 @@ class DocIndex:
                 token_counts[t] = token_counts.get(t, 0) + 1
 
             score = 0.0
+            matched_tokens = 0
             for qt in query_tokens:
                 # Exact match
                 if qt in token_set:
                     tf = token_counts[qt] / len(doc_tokens)
                     idf = self._idf_cache.get(qt, 1.0)
                     score += tf * idf
+                    matched_tokens += 1
                 else:
                     # Partial/prefix match (for things like "wgmma" matching "wgmma.mma_async")
                     for dt in token_set:
@@ -106,17 +117,28 @@ class DocIndex:
                             tf = token_counts[dt] / len(doc_tokens)
                             idf = self._idf_cache.get(dt, 1.0)
                             score += tf * idf * 0.5
+                            matched_tokens += 1
                             break
 
-            # Boost heading/instruction matches
+            # Boost documents that match a higher fraction of query tokens
+            if len(query_tokens) > 2 and matched_tokens > 0:
+                coverage = matched_tokens / len(query_tokens)
+                score *= (0.5 + coverage)  # 0.5x for 0% coverage, 1.5x for 100%
+
+            # Boost heading/instruction/filepath matches
             doc = self.documents[filename]
             heading_lower = doc.get("heading", "").lower()
             instr_lower = doc.get("instruction", "").lower()
+            file_path_lower = doc.get("file_path", "").lower()
+            module_lower = doc.get("module", "").lower()
             for qt in query_tokens:
                 if qt in heading_lower:
                     score *= 2.0
                 if qt in instr_lower:
                     score *= 3.0
+                # Boost file path / module matches (e.g. "epilogue" in path)
+                if qt in file_path_lower or qt in module_lower:
+                    score *= 2.5
 
             # Demote niche/specialized variants unless explicitly queried.
             # Dense is the general case. Sparse, convolution, weight-stationary
